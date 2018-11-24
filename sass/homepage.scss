@@ -363,6 +363,7 @@ footer{
             font-size: 13px;
             margin-top:10px;
             a{
+                @extend .hv_a
                 color: #555;
                 padding: 0 8px;
             }
