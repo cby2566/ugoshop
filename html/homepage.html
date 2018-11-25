@@ -5,9 +5,15 @@
         <link rel="stylesheet" type="text/css" href="../css/base.css" />
         <link rel="stylesheet" type="text/css" href="../css/homepage.css" />
         <link rel="stylesheet" type="text/css" href="../css/homepage_main.css" />
-
+        
+        <script type="text/javascript" src="../lib/mF/myfocus-2.0.4.full.js"></script>
+        <script type="text/javascript" src="../lib/mF/mf-pattern/mF_kdui.js"></script>
+        <link rel="stylesheet" type="text/css" href="../lib/mF/mf-pattern/mF_kdui.css" />
+        
     </head>
     <body>
+
+   
     <!-- 顶部菜单 -->
         <header id="header" class="">
             <nav class="nav_top con">
@@ -84,7 +90,34 @@
         </article>
         <!-- 顶部结束 -->
         <!-- 轮播图 -->
-        <div class="scroll_tu"></div>
+        <div class="scroll_tu" id="scroll_tu">
+            <div class="pic">
+                <ul>
+                    <li>
+                        <img src="../img/luntu3.jpg"  />
+                    </li>
+                    <li>
+                        <img src="../img/luntu2.jpg"  />
+                    </li>
+                    <li>
+                        <img src="../img/luntu1.jpg"  />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    <script type="text/javascript">
+        myFocus.set({
+            id: 'scroll_tu',//焦点图盒子ID
+            pattern: 'mF_fancy',//焦点图风格的名称
+            time: 3,//切换时间间隔(秒)
+            trigger: 'click',//触发切换模式:'click'(点击)/'mouseover'(悬停)
+            // delay: 200,//'mouseover'模式下的切换延迟(毫秒)
+            txtHeight: 'default'//标题高度设置(像素),'default'为默认CSS高度，0为隐藏
+        });
+    </script>
+
+
+
         <!-- 展示区 -->
         <main id="webmain">
             <article class="webz con">
@@ -377,6 +410,7 @@
                     </div>
                 </div>
             </footer>
+
 
     </body>
 </html>

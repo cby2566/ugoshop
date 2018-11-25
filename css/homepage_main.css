@@ -1,7 +1,14 @@
 @charset "UTF-8";
 .scroll_tu {
   height: 340px;
-  background: pink; }
+  background: pink;
+  overflow: hidden;
+  width: 100%; }
+  .scroll_tu li {
+    display: block; }
+    .scroll_tu li img {
+      display: block;
+      margin-left: -352px; }
 
 #webmain {
   background-color: #f2f2f2; }

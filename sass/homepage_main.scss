@@ -4,6 +4,15 @@
 .scroll_tu{
     height: 340px;
     background:pink;
+    overflow: hidden;
+    width: 100%;
+    li{
+        display:block;
+        img{
+        display:block;
+        margin-left: -352px;
+    }
+    }
 }
 
 //展示区
