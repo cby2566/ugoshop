@@ -21,7 +21,7 @@ body {
   float: left;
   margin-right: 30px;
   width: 400px;
-  z-index: 100; }
+  z-index: 50; }
   .goods_key .goods_key_l .goods_key_img {
     margin-bottom: 15px;
     border: 1px solid #EDEDED;
@@ -58,7 +58,7 @@ body {
   float: right;
   position: relative;
   width: 570px;
-  z-index: 99;
+  z-index: 50;
   height: 380px; }
   .goods_look .goods_tagName {
     padding-left: 10px;
@@ -221,7 +221,7 @@ body {
   height: 500px;
   position: absolute;
   right: 123px;
-  top: 699px;
+  top: 872px;
   border-top: 2px solid #F70800;
   border-left: 1px solid #e8e8e8;
   border-right: 1px solid #e8e8e8;

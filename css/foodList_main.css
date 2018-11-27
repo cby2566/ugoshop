@@ -97,11 +97,67 @@
         margin-top: 12px; }
         .flist_t .goods .qian_comment .goods_comment a {
           color: #00aebd; }
+  .flist_t .ping {
+    background: red;
+    width: 314px;
+    position: absolute;
+    border-left: 2px solid #d6d6d6;
+    border-right: 2px solid #d6d6d6;
+    height: 0px;
+    border-top: 1px solid #e5e5e5;
+    background: #fafafa;
+    line-height: 34px;
+    transition: height 0.5s;
+    top: 423px;
+    left: -2px;
+    z-index: 9;
+    overflow: hidden; }
+    .flist_t .ping > div:nth-child(1) {
+      border-right: 1px solid #e5e5e5;
+      width: 216px;
+      height: 26px;
+      overflow: hidden;
+      padding-left: 6px;
+      padding-top: 8px; }
+      .flist_t .ping > div:nth-child(1) span {
+        display: block;
+        font-size: 12px;
+        margin-left: 10px;
+        height: 17px;
+        line-height: 17px;
+        text-align: center;
+        color: #FFF;
+        width: 58px;
+        background: #00bfcf; }
+    .flist_t .ping > div:nth-child(2) {
+      width: 60px;
+      padding-left: 26px;
+      font-size: 12px;
+      height: 34px;
+      overflow: hidden; }
+    .flist_t .ping > div:nth-child(3) {
+      clear: both;
+      height: 56px;
+      background: #fff1e7;
+      border-top: 1px solid #e5e5e5;
+      padding-left: 24px; }
+      .flist_t .ping > div:nth-child(3) p {
+        font-weight: 700;
+        height: 24px;
+        font-family: "微软雅黑","黑体";
+        color: #6c6c6c;
+        font-size: 14px; }
   .flist_t .goods:hover {
     margin: 0px;
     border: 2px solid #fa531b;
-    margin-right: 13px;
-    margin-bottom: 19px; }
+    margin-right: 12px;
+    margin-bottom: 19px;
+    z-index: 99; }
+    .flist_t .goods:hover .ping {
+      height: 93px;
+      border-bottom: 2px solid #fa531b;
+      border-left: 2px solid #fa531b;
+      border-right: 2px solid #fa531b; }
 
 #flist_t:after {
   content: ".";
@@ -116,14 +172,7 @@
   height: 50px;
   background: red;
   margin: 10px;
-  padding: 10px; }
-
-.ping {
-  background: red;
-  width: 314px;
-  height: 50px;
-  position: absolute;
-  bottom: -40px;
-  z-index: 9; }
+  padding: 10px;
+  display: none; }
 
 /*# sourceMappingURL=foodList_main.css.map */

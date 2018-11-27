@@ -185,10 +185,11 @@
                 background: url(img/searchbar.jpg) no-repeat 0 -133px;
             }
         }
+        
         .xnav_h{
-            display:none;
+            display:none;//渲染之后使用
             position:absolute;
-
+            z-index:99;
             height:auto;
             width:998px;
             overflow:hidden;
@@ -240,6 +241,9 @@
             }
 
         }
+    }
+    .xnav:hover .xnav_h{
+        display:block;
     }
 }
 
@@ -363,7 +367,7 @@ footer{
             font-size: 13px;
             margin-top:10px;
             a{
-                @extend .hv_a
+                @extend .hv_a;
                 color: #555;
                 padding: 0 8px;
             }

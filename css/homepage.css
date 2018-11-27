@@ -5,6 +5,7 @@
   font-size: 12px; }
 
 .nav_top {
+
   height: 28px; }
   .nav_top .notice {
     float: left;
@@ -144,6 +145,7 @@
   #xnav .xnav .xnav_h {
     display: none;
     position: absolute;
+    z-index: 99;
     height: auto;
     width: 998px;
     overflow: hidden;
@@ -187,6 +189,8 @@
           line-height: 24px;
           color: #555;
           font-size: 12px; }
+  #xnav .xnav:hover .xnav_h {
+    display: block; }
 
 footer {
   width: 100%;
@@ -285,10 +289,10 @@ footer {
         color: #555;
         padding: 0 8px; }
 
-.hv_a, .nav_top > ul li a, footer .footer_info .footer-list a {
+.hv_a, .nav_top > ul li a, footer .footer_info .footer-list a, footer .footer_info .copyright a {
   font-size: 12px; }
 
-.hv_a:hover, .nav_top > ul li a:hover, footer .footer_info .footer-list a:hover {
+.hv_a:hover, .nav_top > ul li a:hover, footer .footer_info .footer-list a:hover, footer .footer_info .copyright a:hover {
   color: #f70800; }
 
 /*# sourceMappingURL=homepage.css.map */
