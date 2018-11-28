@@ -39,13 +39,24 @@
     cursor: pointer;
     text-align: center;
     color: #333333; }
-  .foot_list_nav .list_nav_l li:hover {
+  .foot_list_nav .list_nav_l li:hover, .foot_list_nav .list_nav_l .paipai {
     background: url(img/jian.png) center 17px no-repeat;
     color: #FFF;
     display: block;
     line-height: 18px; }
-    .foot_list_nav .list_nav_l li:hover span {
+    .foot_list_nav .list_nav_l li:hover span, .foot_list_nav .list_nav_l .paipai span {
       background: #00bfcf; }
+    .foot_list_nav .list_nav_l li:hover .jg_pai, .foot_list_nav .list_nav_l .paipai .jg_pai {
+      background: url(../img/classify.png) no-repeat;
+      background-position: -51px -304px; }
+    .foot_list_nav .list_nav_l li:hover .jg_pai2, .foot_list_nav .list_nav_l .paipai .jg_pai2 {
+      background: url(../img/classify.png) no-repeat;
+      background-position: 3px -304px; }
+  .foot_list_nav .list_nav_l .jg_pai {
+    background: url(../img/classify.png) no-repeat;
+    background-position: 44px -329px;
+    display: inline-block;
+    width: 51px; }
 .foot_list_nav .list_nav_r {
   font-size: 12px; }
   .foot_list_nav .list_nav_r span {

@@ -5,6 +5,9 @@
         <link rel="stylesheet" type="text/css" href="../css/homepage.css" />
         <link rel="stylesheet" type="text/css" href="../css/base.css" />
         <link rel="stylesheet" type="text/css" href="../css/reg.css" />
+
+        <script type="text/javascript" src="../lib/jquery-1.10.1.min.js"></script>
+        <script type="text/javascript" src="../js/login.js"></script>
     </head>
     <body>
     <!-- 顶部菜单 -->
@@ -28,7 +31,7 @@
         <div class="reg_lg">
             <a href=""></a>
             <span></span>
-            <p>已经注册，<a href="">现在登录》</a></p>
+            <p>已经注册，<a href="login.html">现在登录》</a></p>
         </div>
         <div class="reg_til">
             <div class="reg1 fl">
@@ -40,7 +43,7 @@
         <div class="land">
             <div class="input1 clearfix">
                 <div class="input1_l fl">
-                    <span>手机号码：<i class="ik1"></i></span>
+                    <span>用户名：<i class="ik1"></i></span>
                     <span>验证码：</span>
                     <span>设置密码：<i class="ik2"></i></span>
                     <span>重复密码：<i class="ik2"></i></span>
@@ -48,14 +51,18 @@
                 </div>
                 <div class="input1_r fl">
                     <input type="text" class="tel" />
-                    <input type="text" class="yanz" /><span>123</span>
+                    <input type="text" class="yanz" /><span><a href="function:;">123</a></span>
                     <input type="password" class="pwd" />
                     <input type="password" class="r_pwd" />
+                    <div class="i_message">
+                        <div class="div1">请输入常用手机号，避免忘记</div>
+                        <div class="div2 div1_1">输入密码，6-20位字符，可使用字母</div>
+                    </div>
                 </div>
             </div>
             <div class="asd">
                 <div class="tiaokuan">
-                    <input type="checkbox" />
+                    <input type="checkbox" checked="checked" />
                     <span>我已阅读并同意<a href="" class="tiaokuan1">《优品惠用户服务承诺》</a></span>
                 </div>
             <div class="submit"></div>

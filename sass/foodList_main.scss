@@ -47,7 +47,7 @@
             text-align: center;
             color: #333333;
         }
-        li:hover{
+        li:hover,.paipai{
             background:url(img/jian.png) center 17px no-repeat;
             color: #FFF;
             display: block;
@@ -56,6 +56,20 @@
             span{
                 background:#00bfcf;
             }
+            .jg_pai{
+                background: url(../img/classify.png) no-repeat;
+                background-position: -51px -304px;
+            }
+            .jg_pai2{
+                background: url(../img/classify.png) no-repeat;
+                background-position: 3px -304px;
+            }
+        }
+        .jg_pai{
+                background: url(../img/classify.png) no-repeat;
+                background-position: 44px -329px;
+                display:inline-block;
+                width: 51px;
         }
 
     }
