@@ -228,3 +228,26 @@
     padding:10px;
     display:none;
 }
+
+//顶部底部导航
+#div1{
+    div:nth-child(1){
+        margin-left:124px;   
+    }
+    .nav_zz{
+        height: 75px;
+        width: 80px;
+        margin-right: 28px;
+        float: left;
+        img{
+            display:block;
+        }
+        span{
+            display:block;
+            color: #333333;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+        }
+    }
+}

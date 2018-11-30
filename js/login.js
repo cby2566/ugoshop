@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-11-28 09:08:32
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-11-28 20:29:43
+* @Last Modified time: 2018-11-29 17:47:26
 */
 
 $(function(){
@@ -144,7 +144,7 @@ $(function(){
     });
 // 登录界面验证
     $('.log_sit').click(function(event) {
-        if(l_tel.val()&&l_pws.val()){
+        if(l_tel.val()&&l_pws.val()){ 
             console.log(l_tel.val(),l_pws.val());
 
             $.ajax({
@@ -154,9 +154,12 @@ $(function(){
                 data: {'fname': l_tel.val()},
                 success:function(data1){
                     if(data1==l_pws.val()){
-                        console.log(1);
+                        // console.log(1);
+                        // console.log(Cookie.get('name')); 
+                        Cookie.set('name',l_tel.val(),new Date());
                         $('.ktips').css('display','none');
                         l_tel.css('border','1px solid #a2a2a2');
+                        location.href='../html/homepage.html';
                     }else{
                         $('.ktips').css('display','block');
                         l_tel.css('border','1px solid #ffadb0');
@@ -165,7 +168,7 @@ $(function(){
                 }
             });
         }else{
-            console.log(1);
+            // Cookie.set('name',l_tel.val());
         }
     }); 
 

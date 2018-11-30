@@ -1,6 +1,7 @@
 @charset "utf-8";
 body{
     font-size:12px;
+    height:100%;
 }
 .loc{
     padding:20px 0;
@@ -28,7 +29,8 @@ body{
         float: left;
         margin-right: 30px;
         width: 400px;
-        z-index: 50;
+        top:-10px;
+        z-index: 0;
         .goods_key_img{
             margin-bottom: 15px;
             border: 1px solid #EDEDED;
@@ -43,7 +45,8 @@ body{
             background:pink;
         }
         .fenx{
-            position: relative;
+            position: absolute;
+            left:234px;
             span{
                 float: right;
                 padding:15px 15px;
@@ -73,7 +76,7 @@ body{
     float: right;
     position: relative;
     width: 570px;
-    z-index: 50;
+    z-index: 1;
     height: 380px;
     .goods_tagName{
         padding-left:10px;
@@ -93,6 +96,12 @@ body{
         font-size: 18px;
         line-height: 22px;
         font-weight:700;
+    }
+    .goods_xiang{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        color: #666;
+        font-size: 12px;
     }
     .priceBox{
         position: relative;
@@ -162,6 +171,8 @@ body{
                 width: 111px;
                 height: 26px;
                 line-height: 26px;
+                position:relative;
+                z-index:1;
                 a{
                     display:inline-block;
                     width: 26px;
@@ -228,11 +239,14 @@ body{
     overflow: hidden;
     background: url(../img/declaration2.jpg) no-repeat;
     margin-bottom: 20px;
+    margin-top:20px;
+    position:relative;
+    top:20px;
 }
 .item_xia{
     width: 790px;
     height: 500px;
-    background:red;
+    // background:red;
     .xia_tag{
         height: 43px;
         border-bottom: 1px solid #e8e8e8;
@@ -260,10 +274,15 @@ body{
             top: 2px;
         }
     }
+    .xia_tag_xi{
+        position:fixed;
+        top:0;
+        width:790px;
+    }
 }
 .item_xiayou{
     width: 188px;
-    height: 500px;
+    height: 580px;
     position:absolute;
     right:123px;
     top:872px;
@@ -275,4 +294,30 @@ body{
         padding: 12px 20px 12px 20px;
         border-bottom: 1px solid #e8e8e8;
     }
+}
+.fw_title{
+    width: 732px;
+    height: 26px;
+    margin-top:40px;
+    margin-bottom: 40px;
+    background: url(../img/title_bg.png) 0 -60px no-repeat;
+}
+.sp_fw_title{
+    background-position:0 1px;
+}
+.fw_pi{
+    background-position:0 29px;
+}
+.cainixihuan{
+    background:url(../img/cainixihuan.PNG) no-repeat;
+    width:184px;
+    height:269px;
+    cursor:pointer;
+}
+.cainixihuan:hover{
+    background:url(../img/cainixihuan1.PNG) no-repeat;
+    background-position:-2px -7px;
+}
+main{
+    height: 5103px;
 }

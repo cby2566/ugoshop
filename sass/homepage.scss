@@ -26,6 +26,20 @@
             padding-left: 18px;
             float: left;
         }
+        ul{
+            position:relative;
+            top:-28px;
+            li{
+               position:relative;
+               left:0px;
+               a{
+                display:block;
+                width:100px;
+                text-align:center;
+                padding-left:40px;
+               } 
+            }
+        }
     }
     >ul{
         float:right;

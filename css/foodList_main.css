@@ -186,4 +186,20 @@
   padding: 10px;
   display: none; }
 
+#div1 div:nth-child(1) {
+  margin-left: 124px; }
+#div1 .nav_zz {
+  height: 75px;
+  width: 80px;
+  margin-right: 28px;
+  float: left; }
+  #div1 .nav_zz img {
+    display: block; }
+  #div1 .nav_zz span {
+    display: block;
+    color: #333333;
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px; }
+
 /*# sourceMappingURL=foodList_main.css.map */

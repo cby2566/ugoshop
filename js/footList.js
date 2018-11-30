@@ -2,47 +2,43 @@
 * @Author: Marte
 * @Date:   2018-11-24 10:05:50
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-11-28 21:56:14
+* @Last Modified time: 2018-11-29 16:41:13
 */
 var $data=new Object();
 
 $(function(){
-    xun($('.flist_t'));
+    // xun($('.flist_t'));
     $.ajax({
          url: '../api/ulist2.php',
          type: 'GET',
          dataType: 'text',
-         data: {'param1': 'value1'},
+         data: {'flag': 's'},
          success:function(arr){
             $data=JSON.parse(arr);
-            console.log($data)
+            // console.log($data)
             xun($('.flist_t'));
          }
      })
      .done(function() {
-         console.log("success");
+         // console.log("success");
      })
      .fail(function() {
          console.log("error");
      })
      .always(function() {
-         console.log("complete");
+         // console.log("complete");
      });
      var jg=0;
      $('.list_nav_l li').click(function(event) {
         $('.list_nav_l li').removeClass('paipai');
         // if($(this).attr('class')){}
         var this2=document.getElementById('jg_pai');
-        console.log(this2.parentNode.getAttribute('class'));
+        console.log(this2.parentNode.getAttribute('class'));//获取不到class
              
         $(this).addClass('paipai');
      });
-    $('.list_nav_l li:eq(5)').click(function(event) {
-
-    });
-          
-
-   
+ 
+    
 });
 function xun(ele){
     ele.html('');
@@ -69,6 +65,11 @@ function xun(ele){
     </div>`;
 
     }
-    
     ele.html(data+data+data);
+
+    //购买
+     $('.goods').bind('click',function(){
+        // ele.dataset.sid
+        location.href='../html/itemDetailed.html?id='+$(this).data("sid"); 
+     }); 
 }

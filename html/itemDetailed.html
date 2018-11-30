@@ -6,20 +6,17 @@
         <link rel="stylesheet" type="text/css" href="../css/itemDetailed.css" />
 
         <link rel="stylesheet" type="text/css" href="../css/homepage.css" />
+        <script type="text/javascript" src="../lib/jquery-1.10.1.min.js"></script>
+        <script type="text/javascript" src="../js/item.js"></script>
+        <script type="text/javascript" src="../lib/js.js"></script>
+        <link rel="stylesheet" type="text/css" href="../lib/cs.css" />
     </head>
     <body>
 
 <!-- 顶部菜单 -->
         <header id="header" class="">
             <nav class="nav_top con">
-                <div class="notice">
-                    <span>公告</span>
-                    <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                    </ul>
-                </div>
+                
                 <ul>
                     <li><a href="foodList.html">注册</a>|</li>
                     <li><a href="javascript:void(0)">登入</a>|</li>
@@ -27,7 +24,7 @@
                     <li><a href="javascript:void(0)">我的关注</a>|</li>
                     <li><a href="javascript:void(0)">资讯</a>|</li>
                     <li><a href="javascript:void(0)">品牌馆</a>|</li>
-                    <li><a href="javascript:void(0)"><img src="../css/img/phone.png" width="9" height="12"/>手机优品惠</a></li>
+                    <li><a href="javascript:void(0)">手机优品惠</a></li>
                 </ul>
             </nav>
         </header>
@@ -45,7 +42,7 @@
                     </div>
                 </div>
                 <div class="mycart fr">
-                    <img src="../css/img/gwc.png" height="18" width="19" alt="" />
+                    <img src="../css/img/gwc.png" height="18" width="19" alt="" style="top:6px;"/>
                     <a href="javascript:void(0)">我的购物车</a>
                     <span>0</span>
                     <i></i>
@@ -186,9 +183,13 @@
             </ul>
         </div>
         <div class="goods_key">
-            <div class="goods_key_l fl">
-                <div class="goods_key_img"></div>
-                <div class="key_img_list"></div>
+            <div class="goods_key_l fl" id="MagnifierWrap2">
+                <div class="MagnifierMain goods_key_img" ></div>
+                <span class="spe_leftBtn">&lt;</span>
+                <span class="spe_rightBtn">&gt;</span>
+                <div class="spec-items">
+                    <ul></ul>
+                </div>
                 <div class="fenx">
                     <i></i>
                     <span>分享</span>
@@ -230,17 +231,110 @@
             </div>
             <div class="other">TV商品 此商品由 <span>优购物官方直营店</span> 发货，提供售后服务</div>
         </div>
-        <div class="fenlie"></div>
+        <div  class="fenlie"></div>
         <div class="item_xia lf">
             <div class="xia_tag">
-            <a class="xia_xiang asd">商品详情</a>
-            <a class="xia_ping">评论<span>(50)</span></a>
-            <a class="xia_tu">服务说明</a>
+                <a href="#k1" class="xia_xiang asd">商品详情</a>
+                <a href="#k2" class="xia_ping">评论<span>(50)</span></a>
+                <a href="#k3" class="xia_tu">服务说明</a>
             </div>
+            <h3 id="k1" class="fw_title sp_fw_title"></h3>
+            <div ><img src="../img/dog.PNG" alt="" /></div>
+            <div><img src="../img/优购80_01.jpg" alt="" /></div>
+            <div><img src="../img/优购80_02.jpg" alt="" /></div>
+            <div><img src="../img/优购80_03.jpg" alt="" /></div>
+            <div><img src="../img/优购80_05.jpg" alt="" /></div>
+            <div><img src="../img/优购80_01.jpg" alt="" /></div>
+            <h3 id="k2" class="fw_title" style="background: url(../img/title_bg.png) 0 -27px no-repeat;"></h3>
+            <div><img src="../img/dog2.PNG" alt="" /></div>
+            <h3 id="k3" class="fw_title"></h3>
+            <div><img src="../img/return_goods_des.png" alt="" /></div>
+            <div><img src="../img/price_explain.jpg" alt="" /></div>
+            
+
         </div>
         <div class="item_xiayou">
             <h3>大家都在看</h3>
+            <div class="cainixihuan"></div>
+            <div class="cainixihuan"></div>
         </div>
     </main>
+    <div class="ceshiyon"></div>
+    <footer>
+                <div class="con footer_box">
+                    <img src="../img/footer_ad.jpg" height="102" width="1000" alt="" />
+                </div>
+                <div class="con footer_flist">
+                    <dl>
+                        <dt>新手上路</dt>
+                        <dd><a href="">新用户注册</a></dd>
+                        <dd><a href="">忘记密码</a></dd>
+                        <dd><a href="">购物流程</a></dd>
+                    </dl>
+                    <dl>
+                        <dt>支付配送</dt>
+                        <dd><a href="">货到付款</a></dd>
+                        <dd><a href="">支付宝</a></dd>
+                        <dd><a href="">配送方式</a></dd>
+                    </dl>
+                    <dl>
+                        <dt>会员服务</dt>
+                        <dd><a href="">服务承诺</a></dd>
+                        <dd><a href="">会员制度</a></dd>
+                        <dd><a href="">积分制度</a></dd>
+                        <dd><a href="">退换货原则</a></dd>
+                    </dl>
+                    <dl>
+                        <dt>关于惠优品</dt>
+                        <dd><a href="">企业介绍</a></dd>
+                        <dd><a href="">联系我们</a></dd>
+                        <dd><a href="">招商专区</a></dd>
+                    </dl>
+                    <dl class="flistdl2">
+                        <dt class="fl"><img src="../img/foot_ewm.jpg" height="80" width="80" alt="" />
+                        <i class="font12">手机优品惠</i>
+                        <em class="font13">（优购物）</em></dt>
+                        <dd class="fl f2f"><img src="../img/foot_dh.jpg" height="38" width="149" alt="" /></dd>
+                    </dl>
+                </div>
+                <div class="footer_info">
+                    <p class="footer-list"><a target="_blank" href="http://www.ugoshop.com">首页</a> | 
+                    <a target="_blank">关于优品惠</a> |
+                    <a target="_blank">优购物</a> |
+                    <a target="_blank">联系我们</a> | 
+                    <a target="_blank">招贤纳士</a> | 
+                    <a target="_blank">招商专区</a> | 
+                    <a target="_blank">供应商入口</a> |
+                    <a target="_blank">新人培训</a> |
+                    <a target="_blank">友情链接</a> | 
+                    <a target="_blank">网站地图</a> | 
+                    <a target="_blank">资讯中心</a> | 
+                    <a target="_blank">评论</a> |
+                    <a target="_blank"> 图片</a>
+                    </p>
+                    <!-- <div class="yqlink">
+                        <p class="dlphh lf"><em>友情链接：
+                        </em><a>配眼镜</a><a>佐卡伊珠宝网</a>
+                        <a >腕表名表</a>
+                        <a >如何开网店</a>
+                        <a >免费试用</a>
+                        <a >钻戒网</a></p>
+                        <div class="r_button fr">▼</div>
+                    </div> -->
+                    <p class="copyright">优品_优品惠（优购物）全球优品特卖网站 专属于千万女性的优品特卖网站,优品_优品惠（优购物）电视购物官方网站,100%正品保证 支持货到付款.</p>
+                    <p class="copyright">Copyright©2007-2017 &nbsp;  公司名称:北京优品惠网络科技有限公司    &nbsp;   公司地址:北京市北京经济技术开发区同济南路19号7幢2层C区   服务热线：400-707-0707</p>
+                    <p class="footer-list copyright"> 统一社会信用代码:91110302339739621C  &nbsp;  ICP备案号:京ICP备15039150号-1   &nbsp;  食品流通许可证编号:JY11131010332635 &nbsp;
+                    <a>营业执照</a>
+                    <a>京网文(2017)10902-1271</a>
+                    <a>增值业务经营许可证：京B2-20181380 </a>
+                    </p>
+                    <div style="margin:0 auto;text-align:center;">
+                        <a style="display:inline-block;text-decoration:none;height:22px;line-height:22px;">
+                        <img src="../img/bei.png" style="float:left;">
+                        <p style="float:left;margin: 0px 0px 0px 5px; color:#555;">京公网安备 11030102000055号</p>
+                        </a>        
+                    </div>
+                </div>
+            </footer>
     </body>
 </html>

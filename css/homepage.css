@@ -5,7 +5,6 @@
   font-size: 12px; }
 
 .nav_top {
-
   height: 28px; }
   .nav_top .notice {
     float: left;
@@ -20,6 +19,17 @@
       background-position: -98px -196px;
       padding-left: 18px;
       float: left; }
+    .nav_top .notice ul {
+      position: relative;
+      top: -28px; }
+      .nav_top .notice ul li {
+        position: relative;
+        left: 0px; }
+        .nav_top .notice ul li a {
+          display: block;
+          width: 100px;
+          text-align: center;
+          padding-left: 40px; }
   .nav_top > ul {
     float: right;
     line-height: 28px;

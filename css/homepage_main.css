@@ -46,6 +46,8 @@
     border: 1px solid #ddd;
     margin-top: 12px;
     position: relative; }
+    .webz .webz_live .img_tit {
+      color: #000; }
     .webz .webz_live .webz_live_list {
       height: 278px;
       overflow: hidden;
@@ -67,7 +69,9 @@
             position: relative; }
             .webz .webz_live .webz_live_list ul li .live_cc .live_cc_img {
               width: 300px;
-              height: 160px; }
+              height: 160px;
+              background: url(../img/dooo.jpg);
+              background-size: 100%; }
               .webz .webz_live .webz_live_list ul li .live_cc .live_cc_img .live_ing {
                 width: 51px;
                 height: 22px;
@@ -105,7 +109,7 @@
               background: rgba(0, 0, 0, 0.5);
               position: absolute;
               left: 50%;
-              top: 50%;
+              top: 82px;
               margin: -20px 0 0 -65px;
               color: #fff;
               font-size: 18px;
@@ -114,6 +118,8 @@
               text-indent: 20px;
               z-index: 10;
               cursor: pointer; }
+              .webz .webz_live .webz_live_list ul li .live_cc .live_back span {
+                margin-left: 10px; }
             .webz .webz_live .webz_live_list ul li .live_cc > a .live_tit {
               margin-top: 10px;
               height: 52px;
@@ -245,7 +251,8 @@
       border: 1px solid #ddd;
       padding: 15px 10px;
       background: #FFF;
-      position: relative; }
+      position: relative;
+      overflow: hidden; }
       .webz .zhuti .everyLun .d_prev, .webz .zhuti .everyLun .d_next {
         position: absolute;
         top: 50%;
@@ -254,7 +261,8 @@
         height: 34px;
         border: 3px solid rgba(153, 153, 153, 0.2);
         cursor: pointer;
-        border-radius: 50%; }
+        border-radius: 50%;
+        z-index: 2; }
       .webz .zhuti .everyLun .d_prev {
         left: 5px; }
       .webz .zhuti .everyLun .d_next {
@@ -282,7 +290,10 @@
         -webkit-transform: rotate(45deg);
         -moz-transform: rotate(45deg); }
       .webz .zhuti .everyLun ul {
-        width: 2000px; }
+        width: 2000px;
+        position: relative;
+        left: 0px;
+        z-index: 1; }
         .webz .zhuti .everyLun ul li > div {
           float: left;
           width: 210px;

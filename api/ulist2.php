@@ -9,9 +9,9 @@ $arr=$res->fetch_all(MYSQLI_ASSOC);
 
 echo json_encode($arr,JSON_UNESCAPED_UNICODE);
 }
-function sel_item($value){
+function sel_item($value,$sk){
     $sname='sid';
-    $sk=1;
+    // $sk=1;
     $fu='=';
     $str='where '.$sname.$fu.$sk;
     sel($value,$str);
@@ -21,12 +21,15 @@ function sel_pai($value){
     $str='order by '.$order.' desc';
     sel($value,'',$str);
 }
-sel($conn);
+
+// sel($conn);
 // sel_pai($conn);
-// $ulist=$_GET['flag'];
-// if($ulist=='s'){
-//     sel($conn);
-// }
+$ulist=$_GET['flag'];
+if($ulist=='s'){
+    sel($conn);
+}else if($ulist=='i'){
+    sel_item($conn,$_GET['id']);
+}
 
 
 ?>

@@ -62,6 +62,9 @@
         border: 1px solid #ddd;
         margin-top: 12px;
         position: relative;
+        .img_tit{
+            color:#000;
+        }
         .webz_live_list{
             height: 278px;
             overflow: hidden;
@@ -81,9 +84,12 @@
                         border-left: 1px solid #eee;
                         margin-left: -1px;
                         position: relative;
+                        
                         .live_cc_img{
                             width: 300px;
                             height: 160px;
+                            background:url(../img/dooo.jpg);
+                            background-size:100%;
                             .live_ing{
                                 width: 51px;
                                 height: 22px;
@@ -126,7 +132,7 @@
                                 background: rgba(0,0,0,.5);
                                 position: absolute;
                                 left: 50%;
-                                top: 50%;
+                                top: 82px;
                                 margin: -20px 0 0 -65px;
                                 color: #fff;
                                 font-size: 18px;
@@ -135,6 +141,9 @@
                                 text-indent: 20px;
                                 z-index: 10;
                                 cursor: pointer;
+                                span{
+                                    margin-left:10px;
+                                }
                             }
                         >a{
                             .live_tit{
@@ -300,6 +309,7 @@
         padding: 15px 10px;
         background: #FFF;
         position:relative;
+        overflow:hidden;
         .d_prev, .d_next {
             position: absolute;
             top: 50%;
@@ -309,6 +319,7 @@
             border: 3px solid rgba(153,153,153,.2);
             cursor: pointer;
             border-radius: 50%;
+            z-index: 2;
         }
         .d_prev{
             left: 5px;
@@ -342,6 +353,9 @@
         }
         ul{
             width:2000px;
+            position:relative;
+            left:0px;
+            z-index: 1;
             li{
                 >div{
                     float: left;

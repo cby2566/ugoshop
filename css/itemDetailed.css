@@ -1,5 +1,6 @@
 body {
-  font-size: 12px; }
+  font-size: 12px;
+  height: 100%; }
 
 .loc {
   padding: 20px 0;
@@ -21,7 +22,8 @@ body {
   float: left;
   margin-right: 30px;
   width: 400px;
-  z-index: 50; }
+  top: -10px;
+  z-index: 0; }
   .goods_key .goods_key_l .goods_key_img {
     margin-bottom: 15px;
     border: 1px solid #EDEDED;
@@ -34,7 +36,8 @@ body {
     height: 60px;
     background: pink; }
   .goods_key .goods_key_l .fenx {
-    position: relative; }
+    position: absolute;
+    left: 234px; }
     .goods_key .goods_key_l .fenx span {
       float: right;
       padding: 15px 15px; }
@@ -58,7 +61,7 @@ body {
   float: right;
   position: relative;
   width: 570px;
-  z-index: 50;
+  z-index: 1;
   height: 380px; }
   .goods_look .goods_tagName {
     padding-left: 10px;
@@ -76,6 +79,11 @@ body {
     font-size: 18px;
     line-height: 22px;
     font-weight: 700; }
+  .goods_look .goods_xiang {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 12px; }
   .goods_look .priceBox {
     position: relative;
     padding: 15px 10px 10px 10px;
@@ -127,7 +135,9 @@ body {
       border: 1px solid #ccc;
       width: 111px;
       height: 26px;
-      line-height: 26px; }
+      line-height: 26px;
+      position: relative;
+      z-index: 1; }
       .goods_look .addressBox div:nth-child(2) .box a {
         display: inline-block;
         width: 26px;
@@ -186,12 +196,14 @@ body {
   height: 80px;
   overflow: hidden;
   background: url(../img/declaration2.jpg) no-repeat;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  margin-top: 20px;
+  position: relative;
+  top: 20px; }
 
 .item_xia {
   width: 790px;
-  height: 500px;
-  background: red; }
+  height: 500px; }
   .item_xia .xia_tag {
     height: 43px;
     border-bottom: 1px solid #e8e8e8;
@@ -215,10 +227,14 @@ body {
       border-top: 2px solid #F70800;
       margin-top: -3px;
       top: 2px; }
+  .item_xia .xia_tag_xi {
+    position: fixed;
+    top: 0;
+    width: 790px; }
 
 .item_xiayou {
   width: 188px;
-  height: 500px;
+  height: 580px;
   position: absolute;
   right: 123px;
   top: 872px;
@@ -229,5 +245,31 @@ body {
   .item_xiayou h3 {
     padding: 12px 20px 12px 20px;
     border-bottom: 1px solid #e8e8e8; }
+
+.fw_title {
+  width: 732px;
+  height: 26px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  background: url(../img/title_bg.png) 0 -60px no-repeat; }
+
+.sp_fw_title {
+  background-position: 0 1px; }
+
+.fw_pi {
+  background-position: 0 29px; }
+
+.cainixihuan {
+  background: url(../img/cainixihuan.PNG) no-repeat;
+  width: 184px;
+  height: 269px;
+  cursor: pointer; }
+
+.cainixihuan:hover {
+  background: url(../img/cainixihuan1.PNG) no-repeat;
+  background-position: -2px -7px; }
+
+main {
+  height: 5103px; }
 
 /*# sourceMappingURL=itemDetailed.css.map */
