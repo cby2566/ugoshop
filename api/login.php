@@ -29,7 +29,11 @@ function isUser($vconn,$user){
 // $page=isset($_GET['page']);
 // $psw=isset($_POST['psw']) ? $_POST['psw'] : '123456';
 
-isUser($conn,$_GET['fname']);
+if(isset($_GET['psw'])){
+    zhul($conn,$_GET['fname'],$_GET['psw']);
+}else{
+    isUser($conn,$_GET['fname']);
+}
 
 // echo isset($_GET['fname']) ? $_GET['fname'] : '默认值';
 // echo $_GET['fname'];
@@ -37,9 +41,15 @@ isUser($conn,$_GET['fname']);
 // var_dump(isset($_GET['fname']));
 function isPws($fna){
     $conn=new mysqli('localhost','root','','ugoshop');
-    $sql="SELECT fpws FROM f_user where fname=".$fna."";
+    $sql="SELECT fpws FROM f_user where fname='".$fna."'";
     $res=$conn->query($sql);//结果集
     $res3=$res->fetch_row();
     return $res3[0];
+}
+//注册了
+function zhul($vconn,$us,$ps){
+    $sql='INSERT INTO f_user (fname,fpws) VALUES ("'.$us.'","'.$ps.'")';
+    $res=$vconn->query($sql);
+    echo "ok";
 }
 ?>

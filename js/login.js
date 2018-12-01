@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-11-28 09:08:32
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-11-29 17:47:26
+* @Last Modified time: 2018-11-30 15:41:25
 */
 
 $(function(){
@@ -39,7 +39,10 @@ $(function(){
 
 
     tel.on("input",function(){
-        $('.i_message .div1').css({'visibility':'visible'});   
+        //用户名验证 含正则
+        var reg=new RegExp('[0-9a-z]{3,11}');
+        $('.i_message .div1').css({'visibility':'visible'});
+
         $.ajax({
             url: '../api/login.php',
             type: 'GET',
@@ -48,30 +51,12 @@ $(function(){
             success:function(data1){
                 // var arr=JSON.parse(data);
                 if(data1=='no'){
-                    $('.input1_l span:nth-child(1) i').addClass('ik3');
-                    $('.input1_l span:nth-child(1) i').css('top','8px');
-                    $('.i_message .div1').html('请输入常用手机号，避免忘记')
-                    flag[0]=1;
-                }else{
-                    $('.input1_l span:nth-child(1) i').addClass('ik1');
-                    $('.i_message .div1').html('用户名重复')
-                    $('.input1_l span:nth-child(1) i').removeClass('ik3');
-                    flag[0]=0;
-                }
-            }
-        });
-        $.ajax({
-            url: '../api/login.php',
-            type: 'GET',
-            dataType: 'text',
-            data: {'fname': tel.val()},
-            success:function(data1){
-                // var arr=JSON.parse(data);
-                if(data1=='no'){
-                    $('.input1_l span:nth-child(1) i').addClass('ik3');
-                    $('.input1_l span:nth-child(1) i').css('top','8px');
-                    $('.i_message .div1').html('请输入常用手机号，避免忘记')
-                    flag[0]=1;
+                    if(tel.val().search(reg)!=-1){
+                        $('.input1_l span:nth-child(1) i').addClass('ik3');
+                        $('.input1_l span:nth-child(1) i').css('top','8px');
+                        $('.i_message .div1').html('请输入常用手机号，避免忘记');
+                        flag[0]=1;
+                    }
                 }else{
                     $('.input1_l span:nth-child(1) i').addClass('ik1');
                     $('.i_message .div1').html('用户名重复')
@@ -95,6 +80,7 @@ $(function(){
         }
     });
     pwd.on("blur",function(){
+        //用户名验证
         $('.i_message .div2').css({'visibility':'hidden'});
     });
     rpwd.on("input",function(){
@@ -139,7 +125,18 @@ $(function(){
                     return;
                 }
             }
-            console.log(0009);   
+            // console.log(0009);
+            $.ajax({
+                url: '../api/login.php',
+                type: 'GET',
+                dataType: 'text',
+                data: {'fname': tel.val(),'psw': rpwd.val()},
+                success:function(data){
+                    
+                }
+            });
+            
+            location.href='../html/login.html';
         }
     });
 // 登录界面验证
@@ -156,7 +153,9 @@ $(function(){
                     if(data1==l_pws.val()){
                         // console.log(1);
                         // console.log(Cookie.get('name')); 
+                        
                         Cookie.set('name',l_tel.val(),new Date());
+
                         $('.ktips').css('display','none');
                         l_tel.css('border','1px solid #a2a2a2');
                         location.href='../html/homepage.html';

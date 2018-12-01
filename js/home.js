@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-11-29 14:50:52
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-11-29 18:00:21
+* @Last Modified time: 2018-11-30 16:53:15
 */
 var $data=[];
 $(function(){
@@ -10,6 +10,7 @@ $(function(){
     fnuxn();
     gongg();
     ddenglul();
+    cbl();
     // xun();
     $.ajax({
         url: '../api/ulist2.php',
@@ -53,7 +54,7 @@ function xun(){
     var ul=$('.item_list_box ul');
     ul.html('');
     var data='';
-    console.log($data);
+    // console.log($data);
          
     for(var i=0;i<$data.length;i++){
         data+=`
@@ -90,6 +91,20 @@ function gongg(){
 function ddenglul(){
     if(Cookie.get('name')){
         $('.zhucel').html('欢迎尊敬的用户：'+Cookie.get('name'));
+
+        $.ajax({
+            url: '../api/car.php',
+            type: 'GET',
+            dataType: 'text',
+            data: {'flag': 'y','x':Cookie.get('name')},
+            success:function(data){
+                var su=JSON.parse(data);
+                $('.mycart span').text(su[0]['su']);
+                $('.go_wu_che').text(su[0]['su']);
+                
+            }
+        });
+
         $('.denglul').html('退出！');
         $('.denglul').removeAttr('href');
         $('.denglul').bind('click',function(){
@@ -98,4 +113,29 @@ function ddenglul(){
             location.href='homepage.html';
         });
     }
+}
+function cbl(){
+    $('.you').mouseover(function(event) {
+        // console.log(event.target.dataset.ce);
+        $('.zuo div').css('visibility','hidden');
+        $('.zuo div').eq(event.target.dataset.ce-1).css('visibility','visible');
+             
+    });
+    $('.you').mouseout(function(event) {
+        /* Act on the event */
+        $('.zuo div').css('visibility','hidden');
+    });
+    $('.you div:eq(1)').click(function(event) {
+        /* Act on the event */
+        console.log(event.target);
+        lcar();
+    });
+    $('.you div:eq(3)').click(function(event) {
+        /* Act on the event */
+        console.log(event.target);
+        $(document).scrollTop(0);
+    });
+}
+function lcar(){
+    location.href='../html/CarCar.html';
 }

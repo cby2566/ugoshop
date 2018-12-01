@@ -305,4 +305,54 @@ footer {
 .hv_a:hover, .nav_top > ul li a:hover, footer .footer_info .footer-list a:hover, footer .footer_info .copyright a:hover {
   color: #f70800; }
 
+.cbl {
+  position: fixed;
+  bottom: 0px;
+  right: 1px; }
+  .cbl .zuo {
+    position: absolute;
+    top: 0px;
+    left: -36px;
+    width: 36px;
+    height: 144px; }
+    .cbl .zuo div {
+      color: #fff;
+      position: relative;
+      left: -54px;
+      width: 90px;
+      height: 36px;
+      line-height: 36px;
+      background: url(img/xfbj.png) no-repeat 0 -412px;
+      text-align: center;
+      font-size: 12px;
+      cursor: pointer;
+      visibility: hidden; }
+  .cbl .you {
+    width: 36px;
+    height: 144px; }
+    .cbl .you div {
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      background: url(img/xfbj.png) no-repeat; }
+      .cbl .you div a {
+        display: block;
+        width: 20px;
+        height: 14px;
+        background: red;
+        font-size: 12px;
+        text-align: center;
+        color: #fff;
+        border-radius: 5px;
+        padding-bottom: 2px;
+        float: right; }
+    .cbl .you div:nth-child(1) {
+      background-position: 0 0; }
+    .cbl .you div:nth-child(2) {
+      background-position: 0 -46px; }
+    .cbl .you div:nth-child(3) {
+      background-position: 0 -184px; }
+    .cbl .you div:nth-child(4) {
+      background-position: 0 -276px; }
+
 /*# sourceMappingURL=homepage.css.map */

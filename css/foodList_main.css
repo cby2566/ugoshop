@@ -202,4 +202,12 @@
     text-align: center;
     font-size: 14px; }
 
+#P_fan {
+  color: #fff;
+  width: 200px;
+  height: 50px;
+  background: red;
+  position: relative;
+  left: 900px; }
+
 /*# sourceMappingURL=foodList_main.css.map */

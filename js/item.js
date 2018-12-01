@@ -2,10 +2,17 @@
 * @Author: Marte
 * @Date:   2018-11-29 09:19:25
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-11-29 17:04:36
+* @Last Modified time: 2018-11-30 21:05:12
 */
-
+var item_sum=0;
+var sssid=0;
+var newcl='jia';
 $(function(){
+    dang_goods();
+
+    ddenglul();
+    cbl();
+    
     goods_tagName=$('.goods_tagName');
     goods_xiang=$('.goods_xiang');
     goods_Name=$('.goods_Name');
@@ -85,4 +92,135 @@ function fangdajing(){
     
     //调用放大镜插件：传最大盒子id即可
     MagnifierF("MagnifierWrap2");
+}
+//购物车小标
+function ddenglul(){
+    if(Cookie.get('name')){
+        $('.zhucel').html('欢迎尊敬的用户：'+Cookie.get('name'));
+
+        $.ajax({
+            url: '../api/car.php',
+            type: 'GET',
+            dataType: 'text',
+            data: {'flag': 'y','x':Cookie.get('name')},
+            success:function(data){
+                var su=JSON.parse(data);
+                sssid=su[0]['fid'];
+                console.log(sssid);
+                su=su.length;
+                $('.mycart span').text(su);
+                $('.go_wu_che').text(su);
+                
+            }
+        });
+
+        $('.denglul').html('退出！');
+        $('.denglul').removeAttr('href');
+        $('.denglul').bind('click',function(){
+            Cookie.remove('name');
+
+            location.href='homepage.html';
+        });
+    }
+}
+
+//侧边栏
+function cbl(){
+    $('.you').mouseover(function(event) {
+        // console.log(event.target.dataset.ce);
+        $('.zuo div').css('visibility','hidden');
+        $('.zuo div').eq(event.target.dataset.ce-1).css('visibility','visible');
+             
+    });
+    $('.you').mouseout(function(event) {
+        /* Act on the event */
+        $('.zuo div').css('visibility','hidden');
+    });
+    $('.you div:eq(1)').click(function(event) {
+        /* Act on the event */
+        console.log(event.target);
+        lcar();
+    });
+    $('.you div:eq(3)').click(function(event) {
+        /* Act on the event */
+        console.log(event.target);
+        $(document).scrollTop(0);
+    });
+}
+function lcar(){
+    location.href='../html/CarCar.html';
+}
+//飞入
+function feirufei(){
+    var yoy=Cookie.get('name')?Cookie.get('name'):1;
+    
+         
+    $('.addCart').on('click',function(even){
+        // console.log(123123123);
+        item_sum=item_sum+Number($('#goodsNumberInput').val());
+        console.log(item_sum,Number($('#goodsNumberInput').val()));
+        if(newcl=='jia'){
+            $.ajax({
+                url: '../api/car.php',
+                type: 'GET',
+                dataType: 'text',
+                data: {'flag': newcl,
+                'fid':location.search.substring(4,location.search.length),
+                'x':item_sum,
+                'yoy':yoy},
+                success:function(data){
+                    console.log(data); 
+                }
+            });
+        }else{
+           $.ajax({
+                url: '../api/car.php',
+                type: 'GET',
+                dataType: 'text',
+                data: {'flag': newcl,
+                'fid':location.search.substring(4,location.search.length),
+                'x':Number($('#goodsNumberInput').val()),
+                'yoy':sssid},
+                success:function(data){
+                    console.log(data); 
+                }
+            }); 
+        }
+        
+        
+
+    });
+    $('.addCart').shoping({
+        endElement:".cbl",
+        iconCSS:"",
+        iconImg:"../img/bei.png",
+        endFunction:function(element){
+            $("#num").html(parseInt($("#num").html())+1);
+            // console.log(element);
+            return false;
+        }
+    });
+}
+function dang_goods(){
+    $.ajax({
+        url: '../api/addCar.php',
+        type: 'GET',
+        dataType: 'text',
+        data: {'flag': Cookie.get('name'),'sid':location.search.substring(4,location.search.length)},
+        success:function(data){
+            console.log(data);
+                 
+            if (data!='string'){
+                newcl='jia';
+                var arr=JSON.parse(data);
+                item_sum=Number(arr['sum']);
+                sssid=Number(arr['fid']);
+                feirufei();
+            }else{
+                newcl='news';
+                feirufei();
+            }
+            
+        }
+    });
 }

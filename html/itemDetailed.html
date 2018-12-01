@@ -6,9 +6,11 @@
         <link rel="stylesheet" type="text/css" href="../css/itemDetailed.css" />
 
         <link rel="stylesheet" type="text/css" href="../css/homepage.css" />
+        <script type="text/javascript" src="../js/common.js"></script>
         <script type="text/javascript" src="../lib/jquery-1.10.1.min.js"></script>
         <script type="text/javascript" src="../js/item.js"></script>
         <script type="text/javascript" src="../lib/js.js"></script>
+        <script type="text/javascript" src="../lib/jquery-addShopping.js"></script>
         <link rel="stylesheet" type="text/css" href="../lib/cs.css" />
     </head>
     <body>
@@ -17,14 +19,14 @@
         <header id="header" class="">
             <nav class="nav_top con">
                 
-                <ul>
-                    <li><a href="foodList.html">注册</a>|</li>
-                    <li><a href="javascript:void(0)">登入</a>|</li>
+                <ul class="denglu">
+                    <li><a class='zhucel' href="reg.html">注册</a>|</li>
+                    <li><a class='denglul' href="login.html">登入</a>|</li>
                     <li><a href="javascript:void(0)">我的订单</a>|</li>
                     <li><a href="javascript:void(0)">我的关注</a>|</li>
                     <li><a href="javascript:void(0)">资讯</a>|</li>
                     <li><a href="javascript:void(0)">品牌馆</a>|</li>
-                    <li><a href="javascript:void(0)">手机优品惠</a></li>
+                    <li><a href="javascript:void(0)"><img src="../css/img/phone.png" width="9" height="12" style="position: relative;top:8px;"/>手机优品惠</a></li>
                 </ul>
             </nav>
         </header>
@@ -49,6 +51,21 @@
                 </div>
             </article>
         </article>
+        <!-- 侧边栏 -->
+        <div class="cbl">
+            <div class="zuo">
+                <div>用户中心</div>
+                <div>购物车</div>
+                <div>二维码</div>
+                <div>向上</div>
+            </div>
+            <div class="you">
+                <div data-ce='1'></div>
+                <div data-ce='2'><a class="go_wu_che">0</a></div>
+                <div data-ce='3'></div>
+                <div data-ce='4'></div>
+            </div>
+        </div>
         <!-- 导航条 -->
         <article id="xnav">
             <nav class="xnav con">
@@ -218,7 +235,8 @@
                     <span>数量</span>
                 </div>
                 <div class="fl">
-                    <input type="text" value="广州市天河区元岗路" /><a href="">有货</a><br />
+                    <div class="emqs"></div><a href=""></a><br />
+                    <!-- <div class="emqs"></div> -->
                     <div class="box">
                         <a href="javascript:;" id="lessBtn">-</a>
                         <input id="goodsNumberInput" type="text" value="1">
@@ -229,6 +247,7 @@
             <div class="addCart">
                 <i></i>加入购物车
             </div>
+
             <div class="other">TV商品 此商品由 <span>优购物官方直营店</span> 发货，提供售后服务</div>
         </div>
         <div  class="fenlie"></div>
@@ -336,5 +355,6 @@
                     </div>
                 </div>
             </footer>
+
     </body>
 </html>

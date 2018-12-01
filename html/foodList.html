@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="../css/homepage.css" />
         <link rel="stylesheet" type="text/css" href="../css/foodList_main.css" />
         
+        <script type="text/javascript" src="../js/common.js"></script>
         <script type="text/javascript" src="../lib/jquery-1.10.1.min.js"></script>
         <script type="text/javascript" src="../js/footList.js"></script>
     </head>
@@ -21,9 +22,9 @@
                         <li>3</li>
                     </ul>
                 </div>
-                <ul>
-                    <li><a href="foodList.html">注册</a>|</li>
-                    <li><a href="javascript:void(0)">登入</a>|</li>
+                <ul class="denglu">
+                    <li><a class='zhucel' href="reg.html">注册</a>|</li>
+                    <li><a class='denglul' href="login.html">登入</a>|</li>
                     <li><a href="javascript:void(0)">我的订单</a>|</li>
                     <li><a href="javascript:void(0)">我的关注</a>|</li>
                     <li><a href="javascript:void(0)">资讯</a>|</li>
@@ -53,6 +54,21 @@
                 </div>
             </article>
         </article>
+        <!-- 侧边栏 -->
+        <div class="cbl">
+            <div class="zuo">
+                <div>用户中心</div>
+                <div>购物车</div>
+                <div>二维码</div>
+                <div>向上</div>
+            </div>
+            <div class="you">
+                <div data-ce='1'></div>
+                <div data-ce='2'><a class="go_wu_che">0</a></div>
+                <div data-ce='3'></div>
+                <div data-ce='4'></div>
+            </div>
+        </div>
         <!-- 导航条 -->
         <article id="xnav">
             <nav class="xnav con">
@@ -174,6 +190,9 @@
                 </div>
             </div>
 
+        </div>
+        <div id="P_fan">
+            <a>下一页</a>
         </div>
         <div class="goods_b"></div>
         <!-- 底部 -->

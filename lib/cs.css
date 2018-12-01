@@ -37,7 +37,8 @@ img {
 
 .MagnifierPop {
 	position: absolute;
-	top: 0;
+	top: 0px;
+	
 	overflow: hidden;
 	/*background: #fff url(http://fan.yoka.com/fan5.0/img/loading.gif) no-repeat center center;*/
 }

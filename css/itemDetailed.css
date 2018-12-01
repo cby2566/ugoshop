@@ -125,36 +125,36 @@ body {
       display: block;
       height: 45px;
       width: 50px; }
-  .goods_look .addressBox div:nth-child(2) {
-    padding-top: 20px; }
-    .goods_look .addressBox div:nth-child(2) input:nth-child(1) {
-      border: 1px solid #555;
-      margin-bottom: 20px; }
-    .goods_look .addressBox div:nth-child(2) .box {
-      margin-right: 10px;
-      border: 1px solid #ccc;
-      width: 111px;
+  .goods_look .addressBox div:nth-child(2) div:nth-child(1) {
+    margin-bottom: 20px;
+    height: 33px;
+    width: 179px;
+    background: url(../img/mily.PNG); }
+  .goods_look .addressBox div:nth-child(2) .box {
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    width: 111px;
+    height: 26px;
+    line-height: 26px;
+    position: relative;
+    z-index: 1; }
+    .goods_look .addressBox div:nth-child(2) .box a {
+      display: inline-block;
+      width: 26px;
+      height: 26px;
+      text-align: center; }
+    .goods_look .addressBox div:nth-child(2) .box input {
+      border-top: none;
+      border-bottom: none;
+      border-left: 1px solid #ccc;
+      border-right: 1px solid #ccc;
+      width: 48px;
       height: 26px;
       line-height: 26px;
+      text-align: center;
+      color: #222;
       position: relative;
-      z-index: 1; }
-      .goods_look .addressBox div:nth-child(2) .box a {
-        display: inline-block;
-        width: 26px;
-        height: 26px;
-        text-align: center; }
-      .goods_look .addressBox div:nth-child(2) .box input {
-        border-top: none;
-        border-bottom: none;
-        border-left: 1px solid #ccc;
-        border-right: 1px solid #ccc;
-        width: 48px;
-        height: 26px;
-        line-height: 26px;
-        text-align: center;
-        color: #222;
-        position: relative;
-        top: -2px; }
+      top: -2px; }
 
 .addCart {
   clear: both;

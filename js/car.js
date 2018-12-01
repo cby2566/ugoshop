@@ -2,21 +2,36 @@
 * @Author: Marte
 * @Date:   2018-11-29 19:28:17
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-11-29 22:21:14
+* @Last Modified time: 2018-11-30 21:24:02
 */
 var $data=new Array();
 $(function(){
+ddenglul();
 
 // card.html('<p style="height:200px;width:800px;text-align:center;line-height:200px;font-size:36px;">没有任何商品</p>');
-
+var fid='0';
+if(Cookie.get('name')){
+    fid=Cookie.get('name');
+    console.log(fid);
+}else{
+   fid='0'; 
+}
 $.ajax({
     url: '../api/car.php',
     type: 'GET',
     dataType: 'text',
-    data: {'flag': 'g'},
+    data: {'flag': 'g','fid':fid},
     success:function(data){
+        // console.log(data)
+             
         $data=JSON.parse(data);
-        xun($data);
+        if($data.length==0){
+            $('.cart_split').html('<p style="height:200px;width:800px;text-align:center;line-height:200px;font-size:36px;">没有任何商品</p>');
+        }else{
+            xun($data);
+        }
+             
+        // xun($data);
     }
 });
 
@@ -64,7 +79,7 @@ function xun(data){
     }
     card.html(di+arr);
     Sclick();
-
+    quanxuan();
     hei();//求和
     
     $('.shopping_con :checked').click(function(event) {
@@ -94,20 +109,46 @@ function Sclick(){
          var shu=$(this).parent().find('input');
          var sum=$(this).parent().parent().parent().find('.c_sum i');
          var dan=$(this).parent().parent().parent().find('.c_price_num i');
+         var x=parseInt(shu.val())-1;
         if(shu.val()!='1'){
-            shu.val(parseInt(shu.val())-1);
-            sum.text(parseInt(shu.val())*parseInt(dan.text()));
-            hei();
+            $.ajax({
+            url: '../api/car.php',
+            type: 'GET',
+            dataType: 'text',
+            data: {'flag': 'jia','fid':$(this).parent().parent().parent().data('sid'),'x':x,'yoy':Cookie.get('name')},
+            success:function(data){
+                console.log(data);
+                shu.val(x);
+                sum.text(x*parseInt(dan.text()));
+                hei();
+            }
+            });
+
+            
         }
     });
 
     $('.jia').click(function(event) {
         var shu=$(this).parent().find('input');
-         var sum=$(this).parent().parent().parent().find('.c_sum i');
-         var dan=$(this).parent().parent().parent().find('.c_price_num i');
-        shu.val(parseInt(shu.val())+1);
-        sum.text(parseInt(shu.val())*parseInt(dan.text()));
-        hei();
+        var sum=$(this).parent().parent().parent().find('.c_sum i');
+        var dan=$(this).parent().parent().parent().find('.c_price_num i');
+        var x=parseInt(shu.val())+1;
+        // var ffname=Cookie.get('name')?Cookie.get('name'):3;
+        $.ajax({
+            url: '../api/car.php',
+            type: 'GET',
+            dataType: 'text',
+            data: {'flag': 'jia','fid':$(this).parent().parent().parent().data('sid'),'x':x,'yoy':Cookie.get('name')},
+            success:function(data){
+                console.log(data);
+                shu.val(x);
+                sum.text(x*parseInt(dan.text()));
+                hei();
+            }
+        });
+
+             
+        
     });
 }
 function hei(){
@@ -121,4 +162,29 @@ function hei(){
     document.querySelector('.c_paid i').innerHTML=ns-10;
     document.querySelector('.fs_14').innerHTML=ns;
     return ns;
+}
+
+// 登录退出
+function ddenglul(){
+    if(Cookie.get('name')){
+        $('.zhucel').html('欢迎尊敬的用户：'+Cookie.get('name'));
+        $('.denglul').html('退出！');
+        $('.denglul').removeAttr('href');
+        $('.denglul').bind('click',function(){
+            Cookie.remove('name');
+
+            location.href='homepage.html';
+        });
+    }
+    
+}
+function quanxuan(){
+    console.log($('.shopping_con [type=checkbox]'));
+    console.log($('.quanxian'));
+    $('.quanxian').prop('checked',false);
+    $('.quanxian').click(function(event) {
+        /* Act on the event */
+        $('.shopping_con [type=checkbox]').prop('checked',true);
+        hei();
+    });
 }
