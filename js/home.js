@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-11-29 14:50:52
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-11-30 16:53:15
+* @Last Modified time: 2018-12-01 15:21:25
 */
 var $data=[];
 $(function(){
@@ -99,8 +99,8 @@ function ddenglul(){
             data: {'flag': 'y','x':Cookie.get('name')},
             success:function(data){
                 var su=JSON.parse(data);
-                $('.mycart span').text(su[0]['su']);
-                $('.go_wu_che').text(su[0]['su']);
+                $('.mycart span').text(su.length);
+                $('.go_wu_che').text(su.length);
                 
             }
         });

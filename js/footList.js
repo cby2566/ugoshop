@@ -2,7 +2,7 @@
 * @Author: Marte
 * @Date:   2018-11-24 10:05:50
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-11-30 22:38:32
+* @Last Modified time: 2018-12-01 15:22:22
 */
 var $data=new Object();
 
@@ -102,8 +102,8 @@ function ddenglul(){
             data: {'flag': 'y','x':Cookie.get('name')},
             success:function(data){
                 var su=JSON.parse(data);
-                $('.mycart span').text(su[0]['su']);
-                $('.go_wu_che').text(su[0]['su']);
+                $('.mycart span').text(su.length);
+                $('.go_wu_che').text(su.length);
                 
             }
         });
@@ -149,7 +149,7 @@ function ahj(){
          url: '../api/ulist2.php',
          type: 'GET',
          dataType: 'text',
-         data: {'flag': 'd'},
+         data: {'flag': 'd','page':'0'},
          success:function(arr){
             $data=JSON.parse(arr);
             // console.log($data);
@@ -159,6 +159,8 @@ function ahj(){
 }
 //获取页数
 function ahj2(){
+    var dpage=1;
+    var zpage=0;
     $.ajax({
          url: '../api/ulist2.php',
          type: 'GET',
@@ -169,9 +171,46 @@ function ahj2(){
             // console.log($data);
             var ahj2j=Math.ceil(arr.length/6);
             for(var i=0;i<ahj2j;i++){
-                $('#P_fan').prepend('<span>'+i+'</span>');
-                
+                $('#P_fan').prepend('<span>'+(3-i)+'</span>');
             }
+
+            $('#P_fan span').click(function(event) {
+                // console.log(event.target);
+                dpage=Number(event.target.innerText);
+                $.ajax({
+                    url: '../api/ulist2.php',
+                    type: 'GET',
+                    dataType: 'text',
+                    data: {'page': (Number(event.target.innerText)-1)*6,'flag':'d'},
+                    success:function(arr){
+                        $data=JSON.parse(arr);
+                        // console.log($data);
+                        xun($('.flist_t'),$data);
+                    }
+                });
+                
+            });
          }
      });
+    $('#P_fan a').click(function(event) {
+        /* Act on the event */
+         zpage=$('#P_fan span').length;
+         if(dpage<zpage){
+            $.ajax({
+                url: '../api/ulist2.php',
+                type: 'GET',
+                dataType: 'text',
+                data: {'page': dpage*6,'flag':'d'},
+                success:function(arr){
+                    $data=JSON.parse(arr);
+                    // console.log($data);
+                    xun($('.flist_t'),$data);
+                    dpage++;
+                    console.log(dpage);
+                         
+                }
+            });
+         } 
+         
+    });
 }

@@ -18,6 +18,7 @@ function sel_item($value,$sk){
 }
 function sel_pai($value,$limit1,$limit2){
     // $order='sid';
+    
     $str='order by sid limit '.$limit1.','.$limit2;
     sel($value,'',$str);
 }
@@ -30,7 +31,7 @@ if($ulist=='s'){
 }else if($ulist=='i'){
     sel_item($conn,$_GET['id']);
 }else if($ulist=='d'){
-    sel_pai($conn,'0','6');
+    sel_pai($conn,$_GET['page'],'6');
 }
 
 ?>

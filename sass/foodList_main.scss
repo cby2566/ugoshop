@@ -254,10 +254,33 @@
 
 //翻页
 #P_fan{
-    color:#fff;
+    // color:#fff;
+    margin-top:10px;
     width:200px;
     height:50px;
-    background:red;
+    // background:red;
     position:relative;
     left:900px;
+    span{
+        margin-right: 5px;
+        border: 1px solid #C5C5C5;
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        width: 20px;
+        background: #FFF;
+        cursor: pointer;
+    }
+    a{
+        margin-right: 5px;
+        border: 1px solid #C5C5C5;
+        display: inline-block;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        background: #FFF;
+        cursor: pointer;
+
+    }
 }

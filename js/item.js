@@ -2,16 +2,14 @@
 * @Author: Marte
 * @Date:   2018-11-29 09:19:25
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-11-30 21:05:12
+* @Last Modified time: 2018-12-01 16:08:21
 */
 var item_sum=0;
 var sssid=0;
 var newcl='jia';
 $(function(){
-    dang_goods();
-
-    ddenglul();
-    cbl();
+    getfid();
+    
     
     goods_tagName=$('.goods_tagName');
     goods_xiang=$('.goods_xiang');
@@ -105,8 +103,7 @@ function ddenglul(){
             data: {'flag': 'y','x':Cookie.get('name')},
             success:function(data){
                 var su=JSON.parse(data);
-                sssid=su[0]['fid'];
-                console.log(sssid);
+
                 su=su.length;
                 $('.mycart span').text(su);
                 $('.go_wu_che').text(su);
@@ -157,6 +154,7 @@ function feirufei(){
          
     $('.addCart').on('click',function(even){
         // console.log(123123123);
+        
         item_sum=item_sum+Number($('#goodsNumberInput').val());
         console.log(item_sum,Number($('#goodsNumberInput').val()));
         if(newcl=='jia'){
@@ -202,6 +200,9 @@ function feirufei(){
     });
 }
 function dang_goods(){
+    if(Cookie.get('name')==undefined){
+        alert('还没登录！');
+    }
     $.ajax({
         url: '../api/addCar.php',
         type: 'GET',
@@ -217,10 +218,27 @@ function dang_goods(){
                 sssid=Number(arr['fid']);
                 feirufei();
             }else{
+                console.log('string');
+                     
                 newcl='news';
                 feirufei();
             }
             
+        }
+    });
+}
+//12月1日补
+function getfid(){
+    $.ajax({
+        url: '../api/getfid.php',
+        type: 'GET',
+        dataType: 'text',
+        data: {'fname': '123'},
+        success:function(data){
+            sssid=Number(data);
+            dang_goods();
+            ddenglul();
+            cbl();
         }
     });
 }

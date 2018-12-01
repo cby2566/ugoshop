@@ -2,12 +2,13 @@
 * @Author: Marte
 * @Date:   2018-11-29 19:28:17
 * @Last Modified by:   Marte
-* @Last Modified time: 2018-11-30 21:24:02
+* @Last Modified time: 2018-12-01 15:47:28
 */
 var $data=new Array();
+var fid='';
 $(function(){
 ddenglul();
-
+hui_home();
 // card.html('<p style="height:200px;width:800px;text-align:center;line-height:200px;font-size:36px;">没有任何商品</p>');
 var fid='0';
 if(Cookie.get('name')){
@@ -27,6 +28,10 @@ $.ajax({
         $data=JSON.parse(data);
         if($data.length==0){
             $('.cart_split').html('<p style="height:200px;width:800px;text-align:center;line-height:200px;font-size:36px;">没有任何商品</p>');
+                $('.c_paid').html('0');
+                $('.fs_14').html('0');
+                $('.c_piece i').html('0');
+                
         }else{
             xun($data);
         }
@@ -40,8 +45,13 @@ function xun(data){
     var card=$('.cart_split');
     card.html('');
     var di=dian(card);
-    // console.log(data);
+    console.log(data);
     
+    //12月1日获得id
+    fid=data[0]['fid'];
+    console.log(fid);
+         
+
     var arr="";
     for(var i=0;i<data.length;i++){
         arr+=`<div class="shopping_con clearfix" data-role="product" data-attr="" data-sid="${data[i]['SID']}">
@@ -77,11 +87,14 @@ function xun(data){
                     <input data-role="product" type="checkbox" checked="checked"></div>
                 </div>`;
     }
+
+    
+
     card.html(di+arr);
     Sclick();
     quanxuan();
     hei();//求和
-    
+    dels();
     $('.shopping_con :checked').click(function(event) {
         hei();
     });
@@ -187,4 +200,27 @@ function quanxuan(){
         $('.shopping_con [type=checkbox]').prop('checked',true);
         hei();
     });
+}
+// 删除
+function dels(){
+    $('.i_del').click(function(event) {
+        /* Act on the event */
+        $.ajax({
+            url: '../api/del.php',
+            type: 'GET',
+            dataType: 'text',
+            data: {'flag': 'jia','fid':fid,'sid':$(this).parent().parent().data('sid')},
+            success:function(data){
+                console.log(data);
+                location.reload();
+            }
+        }); 
+    });
+}
+function hui_home(){
+    $('.car_til').click(function(event) {
+        /* Act on the event */
+        location.href='../html/homepage.html';
+    });
+    
 }

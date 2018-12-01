@@ -3,7 +3,7 @@
  * @Author: Marte
  * @Date:   2018-11-29 19:49:59
  * @Last Modified by:   Marte
- * @Last Modified time: 2018-11-30 21:04:10
+ * @Last Modified time: 2018-12-01 15:51:18
  */
 
 include 'cont.php';
@@ -11,7 +11,7 @@ include 'cont.php';
 // include 'ulist2.php';
 
 function car($vcon,$fid='1'){
-    $sql="SELECT ulist.*,(SELECT car.sum FROM car WHERE car.sid = ulist.SID and car.fid in(SELECT f_user.fid FROM f_user WHERE f_user.fname='$fid'))'sum' FROM ulist WHERE ulist.sid in 
+    $sql="SELECT ulist.*,(SELECT car.sum FROM car WHERE car.sid = ulist.SID and car.fid in(SELECT f_user.fid FROM f_user WHERE f_user.fname='$fid'))'sum' ,(SELECT car.fid FROM car WHERE car.sid = ulist.SID and car.fid in(SELECT f_user.fid FROM f_user WHERE f_user.fname='$fid'))'fid' FROM ulist WHERE ulist.sid in 
 (SELECT car.sid FROM car WHERE car.fid in (SELECT f_user.fid FROM f_user WHERE f_user.fname='$fid'));";
 
     $res=$vcon ->query($sql);

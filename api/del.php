@@ -3,15 +3,12 @@
  * @Author: Marte
  * @Date:   2018-11-30 20:26:35
  * @Last Modified by:   Marte
- * @Last Modified time: 2018-11-30 20:27:28
+ * @Last Modified time: 2018-12-01 16:04:02
  */
 include 'cont.php';
-
-function jial($vcon,$ff){
-    $sql="SELECT * FROM car WHERE car.sid=12 and car.fid in(SELECT f_user.fid FROM f_user WHERE f_user.fname='$ff')";
-    $res=$vcon ->query($sql);
-    
-    // echo json_encode($arr[0],JSON_UNESCAPED_UNICODE);
+    $fid=$_GET['fid'];
+    $sid=$_GET['sid'];
+    $sql="DELETE FROM car WHERE sid = $sid and fid=$fid";
+    $res=$conn ->query($sql);
     var_dump($res);
-}
 ?>
