@@ -10,8 +10,8 @@ $(function(){
     // xun($('.flist_t'));
     ddenglul();
     cbl();
-    ahj();
-    ahj2();
+    //ahj();
+    //ahj2();
      var jg=0;
      $('.list_nav_l li').click(function(event) {
         var sdata=$data.slice();//拷贝数据不让排序干扰

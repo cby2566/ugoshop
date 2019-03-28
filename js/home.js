@@ -6,23 +6,24 @@
 */
 var $data=[];
 $(function(){
-    daoji();
+    //daoji();
     fnuxn();
     gongg();
     ddenglul();
     cbl();
     // xun();
-    $.ajax({
-        url: '../api/ulist2.php',
-        type: 'GET',
-        dataType: 'text',
-        data: {'flag': 's'},
-        success:function(arr){
-            $data=JSON.parse(arr);
-            // console.log($data)
-            xun();
-        }
-    }); 
+    // $.ajax({
+    //     url: '../api/ulist2.php',
+    //     type: 'GET',
+    //     dataType: 'text',
+    //     data: {'flag': 's'},
+    //     success:function(arr){
+    //         $data=JSON.parse(arr);
+    //         // console.log($data)
+    //
+    //         //xun(); 3月28日
+    //     }
+    // });
 });
 function daoji(){
     var ss=59;
