@@ -4,6 +4,10 @@
 * @Last Modified by:   Marte
 * @Last Modified time: 2018-12-01 15:21:25
 */
+//require('../css/homepage.css');
+//require('../css/homepage_main.css');
+import '../css/homepage_main.css';
+import '../css/homepage.css';
 $(function(){
     fnuxn();
     gongg();

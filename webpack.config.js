@@ -21,6 +21,7 @@ module.exports = {
 		//编译es6->es5：babel(babel-loader,babel-core,babel-preset-env)
             {
                 test:/\.js$/,
+				include:__dirname+"/src",
                 exclude:__dirname+'/node_modules',
                 use:{
                     loader:'babel-loader',
@@ -30,6 +31,24 @@ module.exports = {
                     }
                 }
             },
+			{
+				test:/\.css$/,
+				use:['style-loader','css-loader']
+			},
+			 // 图片的处理：依赖file-loader
+            {
+                test:/\.(jpe?g|png|gif|bmp)$/,
+                use:{
+                    loader:'url-loader',
+                    options:{
+                        // 设置转换base64编码的临界值
+                        limit:undefined,
+                        name:'img/[name].[hash:7].[ext]',
+                        // outputPath: './assets',
+                        // publicPath: '/img'
+                    }
+                }
+            }
 	   ]
    } 
 }

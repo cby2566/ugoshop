@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "webpack",
+    "start": "webpack",
     "server": "webpack-dev-server --open"
   },
   "repository": {
@@ -24,6 +24,11 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.0",
     "webpack-dev-server": "^3.2.1"
