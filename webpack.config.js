@@ -36,6 +36,7 @@ module.exports = {
 				use:['style-loader','css-loader']
 			},
 			// sass编译加载器
+			//提示要装node-sass，还非要cnpm装！
             {
                 test:/\.scss$/,
                 loader:['style-loader','css-loader','sass-loader']
