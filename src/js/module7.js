@@ -1,0 +1,1 @@
+export var firstName = '我是模块7';

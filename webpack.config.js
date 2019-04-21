@@ -10,7 +10,7 @@ module.exports = {
   },
   mode:'development',
   devServer: {
-    contentBase: "./src",//本地服务器所加载的页面所在的目录,目录有点东西（http://localhost:8089/html/homepage.html）
+    contentBase: "./src",//本地服务器所加载的页面所在的目录;目录有点东西（http://localhost:8089/html/homepage.html）//就相当于直接把home.js输出到src/目录下，所以HTML里要改相对路径。../home.js
     historyApiFallback: true,//不跳转
     inline: true,//实时刷新
 	port:8089,
@@ -35,7 +35,12 @@ module.exports = {
 				test:/\.css$/,
 				use:['style-loader','css-loader']
 			},
-			 // 图片的处理：依赖file-loader
+			// sass编译加载器
+            {
+                test:/\.scss$/,
+                loader:['style-loader','css-loader','sass-loader']
+            },
+			// 图片的处理：依赖file-loader
             {
                 test:/\.(jpe?g|png|gif|bmp)$/,
                 use:{
