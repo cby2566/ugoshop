@@ -12,56 +12,56 @@
 .nav_top{
     height:28px;
     
-    .notice{
-        float:left;
-        width:250px;
-        overflow:hidden;
-        height:28px;
-        line-height:28px;
-        position:relative;
-        span{
-            background-image:url(img/icons.png);
-            background-repeat:no-repeat;
-            background-position:-98px -196px;
-            padding-left: 18px;
-            float: left;
-        }
-        ul{
-            position:relative;
-            top:-28px;
-            li{
-               position:relative;
-               left:0px;
-               a{
-                display:block;
-                width:100px;
-                text-align:center;
-                padding-left:40px;
-               } 
-            }
-        }
-    }
-    >ul{
-        float:right;
-        line-height:28px;
-        position:relative;
-        li{
-            float:left;
-            color:#666;
-            a{
-                @extend .hv_a;
-                padding-left:10px;
-                padding-right:10px;
-                color:#666;
-            }
-            a:last-child{
-                padding-left:12px;
-                img{
-                    padding-right:4px;
-                }
-            }
-        }
-    }
+    //.notice{
+    //    float:left;
+    //    width:250px;
+    //    overflow:hidden;
+    //    height:28px;
+    //    line-height:28px;
+    //    position:relative;
+    //    span{
+    //        background-image:url(img/icons.png);
+    //        background-repeat:no-repeat;
+    //        background-position:-98px -196px;
+    //        padding-left: 18px;
+    //        float: left;
+    //    }
+    //    ul{
+    //        position:relative;
+    //        top:-28px;
+    //        li{
+    //           position:relative;
+    //           left:0px;
+    //           a{
+    //            display:block;
+    //            width:100px;
+    //            text-align:center;
+    //            padding-left:40px;
+    //           }
+    //        }
+    //    }
+    //}
+    //>ul{
+    //    float:right;
+    //    line-height:28px;
+    //    position:relative;
+    //    li{
+    //        float:left;
+    //        color:#666;
+    //        a{
+    //            @extend .hv_a;
+    //            padding-left:10px;
+    //            padding-right:10px;
+    //            color:#666;
+    //        }
+    //        a:last-child{
+    //            padding-left:12px;
+    //            img{
+    //                padding-right:4px;
+    //            }
+    //        }
+    //    }
+    //}
 }
 //logo和搜索框
 #header_logo{

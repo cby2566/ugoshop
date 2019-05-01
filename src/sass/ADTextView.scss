@@ -1,0 +1,26 @@
+//垂直滚动文字组件
+.notice{
+  display: flex;
+  height: 28px;
+  >p{
+      display: flex;
+      flex-direction: column;
+      line-height: 28px;
+      span:nth-child(2){
+        //color: red;
+      }
+      span{
+        position:relative;
+      }
+  }
+  >p:nth-child(1){
+    flex-direction: row;
+    i{
+      display: inline-block;
+      width: 28px;
+      background-image: url('../css/img/icons.png');
+      background-repeat: no-repeat;
+      background-position: -98px -196px;
+    }
+  }
+}

@@ -13,13 +13,15 @@ import '../css/homepage.css';//这里的相对路径，有点不清楚;下面的
 import '../sass/module7.scss'
 import {firstName} from '../js/module7.js';//是用的当前的js的相对路径，打包后自动转换了吧
 console.log(firstName);
+import head from '../js/adNav.js';//html所在的目录，跳到这里
 
 $(function(){
-    fnuxn();
-    gongg();
+    //fnuxn();
+    //gongg();
     ddenglul();
     cbl();
 
+    head.carousel();
 });
 function fnuxn(){
     $('.d_next').click(function(event) {
