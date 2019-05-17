@@ -2,6 +2,8 @@
 .notice{
   display: flex;
   height: 28px;
+  width: max-content;
+  overflow: hidden;
   >p{
       display: flex;
       flex-direction: column;

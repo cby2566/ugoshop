@@ -5,46 +5,8 @@
   font-size: 12px; }
 
 .nav_top {
-  height: 28px; }
-  /*.nav_top .notice {*/
-    /*float: left;*/
-    /*width: 250px;*/
-    /*overflow: hidden;*/
-    /*height: 28px;*/
-    /*line-height: 28px;*/
-    /*position: relative; }*/
-    /*.nav_top .notice span {*/
-      /*background-image: url(img/icons.png);*/
-      /*background-repeat: no-repeat;*/
-      /*background-position: -98px -196px;*/
-      /*padding-left: 18px;*/
-      /*float: left; }*/
-    /*.nav_top .notice ul {*/
-      /*position: relative;*/
-      /*top: -28px; }*/
-      /*.nav_top .notice ul li {*/
-        /*position: relative;*/
-        /*left: 0px; }*/
-        /*.nav_top .notice ul li a {*/
-          /*display: block;*/
-          /*width: 100px;*/
-          /*text-align: center;*/
-          /*padding-left: 40px; }*/
-  /*.nav_top > ul {*/
-    /*float: right;*/
-    /*line-height: 28px;*/
-    /*position: relative; }*/
-    /*.nav_top > ul li {*/
-      /*float: left;*/
-      /*color: #666; }*/
-      /*.nav_top > ul li a {*/
-        /*padding-left: 10px;*/
-        /*padding-right: 10px;*/
-        /*color: #666; }*/
-      /*.nav_top > ul li a:last-child {*/
-        /*padding-left: 12px; }*/
-        /*.nav_top > ul li a:last-child img {*/
-          /*padding-right: 4px; }*/
+  height: 28px;
+}
 
 #header_logo .header_logo {
   height: 82px;

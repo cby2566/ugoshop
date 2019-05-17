@@ -51,10 +51,10 @@
             display:inline-block;
             width: 116px;
             height: 34px;
-            background:url(img/program_list_btn.png) no-repeat;
+            background:url(../css/img/program_list_btn.png) no-repeat;
         }
     }
-// 直播展示区1
+ //直播展示区1
     .webz_live{
         width: 960px;
         padding: 19px;
@@ -262,7 +262,7 @@
                 position: absolute;
                 bottom: 0;
                 right: -5px;
-                background-image: url(img/bg_tag.png);
+                background-image: url('../css/img/bg_tag.png');
                 background-repeat: no-repeat;
                 background-size: 100%;
                 color: #FFF;
@@ -290,7 +290,7 @@
                     float: left;
                     width: 17px;
                     height: 19px;
-                    background: url(img/icon_clock.png) no-repeat;
+                    background: url('../css/img/icon_clock.png') no-repeat;
                     background-size: 100%;
                     margin: 5px 8px 0 10px;
                 }

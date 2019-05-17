@@ -14,6 +14,6 @@ export default {
         // setInterval(function () {
         //     p.children.item(1).left=
         // },100);
-
+        //5.16改
     }
 }

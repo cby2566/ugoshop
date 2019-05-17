@@ -7,8 +7,12 @@
 //require('../css/homepage.css');
 //require('../css/homepage_main.css');
 //import '../css/homepage_main.css';
-import '../css/homepage_main.css';
-import '../css/homepage.css';//这里的相对路径，有点不清楚;下面的JS也是
+
+//import '../css/homepage_main.css';
+//import '../css/homepage.css';//这里的相对路径，有点不清楚;下面的JS也是
+
+import '../sass/homepage_main.scss';
+import '../sass/homepage.scss';
 
 import '../sass/module7.scss'
 import {firstName} from '../js/module7.js';//是用的当前的js的相对路径，打包后自动转换了吧
