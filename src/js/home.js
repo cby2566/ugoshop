@@ -19,6 +19,24 @@ import {firstName} from '../js/module7.js';//是用的当前的js的相对路径
 console.log(firstName);
 import head from '../js/adNav.js';//html所在的目录，跳到这里
 
+//7.15
+//import Vue from 'vue';
+// new Vue({
+//     el:'#app',
+//     data:{a:'Hello Vue!'},
+//     template: '<div>123</div>'
+// })
+//
+let data = "我是数据";
+
+setTimeout(()=>{
+    getData(data);
+});
+
+setTimeout(()=>{
+    getData('我是数据10');
+},5000);
+
 $(function(){
     //fnuxn();
     //gongg();

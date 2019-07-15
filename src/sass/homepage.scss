@@ -12,10 +12,24 @@
 .nav_top{
     height:28px;
     display: flex;
-  justify-content: space-between;
     ul{
       width: max-content;
       display: flex;
+      li{
+          display: flex;
+          align-items: center;
+          a{
+              margin: 0 5px;
+              display: flex;
+              align-items: center;
+          }
+          a:last-child{
+              img{
+                  margin-right: 4px;
+              }
+          }
+
+      }
     }
 }
 //logo和搜索框

@@ -15,6 +15,7 @@
         <script type="text/javascript" src="../js/common.js"></script>
         <!-- <script type="text/javascript" src="../js/iPublic.js"></script> -->
         <script type="text/javascript" src="../home.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
     </head>
     <body>
 
@@ -36,15 +37,16 @@
                         <!--<li><a>【紧急通知】关于短信发送异常的公告</a></li>-->
                     <!--</ul>-->
                 </div>
-                    <ul class="denglu">
-                        <li><a class='zhucel' href="reg.html">注册</a>|</li>
-                        <li><a class='denglul' href="login.html">登入</a>|</li>
-                        <li><a href="javascript:void(0)">我的订单</a>|</li>
-                        <li><a href="javascript:void(0)">我的关注</a>|</li>
-                        <li><a href="javascript:void(0)">资讯</a>|</li>
-                        <li><a href="javascript:void(0)">品牌馆</a>|</li>
-                        <li><a href="javascript:void(0)"><img src="../css/img/phone.png" width="9" height="12"/>手机优品惠</a></li>
-                    </ul>
+                <div style=" flex:1;"></div>
+                <ul class="denglu">
+                    <li><a class='zhucel' href="reg.html">注册</a>|</li>
+                    <li><a class='denglul' href="login.html">登入</a>|</li>
+                    <li><a href="javascript:void(0)">我的订单</a>|</li>
+                    <li><a href="javascript:void(0)">我的关注</a>|</li>
+                    <li><a href="javascript:void(0)">资讯</a>|</li>
+                    <li><a href="javascript:void(0)">品牌馆</a>|</li>
+                    <li><a href="javascript:void(0)"><img src="../css/img/phone.png" width="9" height="12"/>手机优品惠</a></li>
+                </ul>
                 <div>
 
             </nav>
@@ -70,6 +72,9 @@
                 </div>
             </article>
         </article>
+        <div id="app">
+            <template><boss></boss></template>
+        </div>
         <!-- 导航条 -->
         <article id="xnav">
             <nav class="xnav con">
@@ -580,7 +585,30 @@
                     </div>
                 </div>
             </footer>
+            <script>
+                let xData = {data : ''}
+                var boss = Vue.component('boss', {
+                    data: function () {
+                        return {
+                            count: xData
+                        }
+                    },
+                    template: '<b>{{count.data}}</b>'
+                })
 
+                var vm = new Vue({
+                    el:'#app',
+                    data:{a:'Hello Vue!'},
+                    //template: '<App/>'
+                    component:boss
+                })
+                //组件
+                
 
+                function getData(data){
+                    xData.data = data;
+                    console.log(data);
+                }
+            </script>
     </body>
 </html>
