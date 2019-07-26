@@ -19,7 +19,6 @@
     </head>
     <body>
 
-   
     <!-- 顶部菜单 -->
         <header id="header" class="">
             <nav class="nav_top con">
@@ -72,12 +71,13 @@
                 </div>
             </article>
         </article>
-        <div id="app">
+        <!-- <div id="app">
             <template><boss></boss></template>
-        </div>
+        </div> -->
+
         <!-- 导航条 -->
         <article id="xnav">
-            <nav class="xnav con">
+            <nav class="xnav con" id="app">
                 <ul>
                     <li><a href="javascript:void(0)">首页</a></li>
                     <li><a href="javascript:void(0)" class="shiping">视频</a></li>
@@ -89,106 +89,15 @@
                     <li><span></span></li>
                 </ul>
                 <div class="xnav_h">
-                    <div class="kinds">
+                    <div class="kinds" v-for="(v,i) in menuData" :key="i">
                         <div class="kinds_top">
                             <div class="stat">
-                                <img src="../css/img/newsix_03.png" height="42" width="30" alt="" />
+                                <img :src="'../css/img/'+v.url" height="42" width="30" alt="" />
                             </div>
-                            <a href="">品质厨房</a>
+                            <a href="">{{v.title}}</a>
                         </div>
-                        <div class="kindsbot">
-                            <a href="">厨房烹饪</a>
-                            <a href="">厨房电器</a>
-                            <a href="">餐饮用具</a>
-                            <a href="">厨房配件</a>
-                        </div>
-                    </div>
-
-                    <div class="kinds">
-                        <div class="kinds_top">
-                            <div class="stat">
-                                <img src="../css/img/newsix_05.png" height="42" width="30" alt="" />
-                            </div>
-                            <a href="">美食·民生</a>
-                        </div>
-                        <div class="kindsbot">
-                            <a href="foodList.html">进口食品</a>
-                            <a href="">营养保健</a>
-                            <a href="">休闲食品</a>
-                            <a href="">粮油干货</a>
-                            <a href="">酒水茶饮</a>
-                            <a href="">生鲜食品</a>
-                        </div>
-                    </div>
-
-                    <div class="kinds">
-                        <div class="kinds_top">
-                            <div class="stat">
-                                <img src="../css/img/newsix_07.png" height="42" width="30" alt="" />
-                            </div>
-                            <a href="">健康生活</a>
-                        </div>
-                        <div class="kindsbot">
-                            <a href="">优质睡眠</a>
-                            <a href="">收纳用品</a>
-                            <a href="">生活用品</a>
-                            <a href="">生活电器</a>
-                            <a href="">装饰/家居</a>
-                            <a href="">健身/户外</a>
-                            <a href="">医疗器械</a>
-                        </div>
-                    </div>
-
-
-                    <div class="kinds">
-                        <div class="kinds_top">
-                            <div class="stat">
-                                <img src="../css/img/newsix_09.png" height="42" width="30" alt="" />
-                            </div>
-                            <a href="">魅力穿戴</a>
-                        </div>
-                        <div class="kindsbot">
-                            <a href="">男装</a>
-                            <a href="">女装</a>
-                            <a href="">内衣</a>
-                            <a href="">箱包</a>
-                            <a href="">鞋子</a>
-                            <a href="">配饰</a>
-                            <a href="">户外鞋服</a>
-                        </div>
-                    </div>
-
-                    <div class="kinds">
-                        <div class="kinds_top">
-                            <div class="stat">
-                                <img src="../css/img/newsix_11.png" height="42" width="30" alt="" />
-                            </div>
-                            <a href="">珠宝收藏</a>
-                        </div>
-                        <div class="kindsbot">
-                            <a href="">翡翠玉石</a>
-                            <a href="">宝石珍珠</a>
-                            <a href="">水晶玛瑙</a>
-                            <a href="">时尚饰品</a>
-                            <a href="">钟表</a>
-                            <a href="">文化收藏</a>
-                        </div>
-                    </div>
-
-                    <div class="kinds">
-                        <div class="kinds_top">
-                            <div class="stat">
-                                <img src="../css/img/newsix_11.png" height="42" width="30" alt="" />
-                            </div>
-                            <a href="">珠宝收藏</a>
-                        </div>
-                        <div class="kindsbot">
-                            <a href="">翡翠玉石</a>
-                            <a href="">宝石珍珠</a>
-                            <a href="">水晶玛瑙</a>
-                            <a href="">时尚饰品</a>
-                            <a href="">钟表</a>
-                            <a href="">文化收藏</a>
+                        <div class="kindsbot" >
+                            <a href="" v-for="(j,x) of v.item" :key="x">{{j}}</a>
                         </div>
                     </div>
                 </div>
@@ -586,28 +495,32 @@
                 </div>
             </footer>
             <script>
-                let xData = {data : ''}
+                let xData = {data : '',menuData:[{title:'',item:''}]};
+                //注意，响应式只有一层
+
                 var boss = Vue.component('boss', {
                     data: function () {
-                        return {
-                            count: xData
-                        }
+                        return xData;
                     },
-                    template: '<b>{{count.data}}</b>'
+                    template: '<b>{{data}}</b>'
                 })
 
                 var vm = new Vue({
                     el:'#app',
-                    data:{a:'Hello Vue!'},
-                    //template: '<App/>'
-                    component:boss
+                    data:xData
+                    //data:{a:'Hello Vue!'},
+                    // template: '<App/>' 二
+                    //component:boss
                 })
                 //组件
                 
 
                 function getData(data){
                     xData.data = data;
-                    console.log(data);
+                }
+                function getMenuData(data){
+                    xData.menuData = data.getMenuData();
+                    console.log(xData.menuData)
                 }
             </script>
     </body>

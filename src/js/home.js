@@ -27,6 +27,11 @@ import head from '../js/adNav.js';//html所在的目录，跳到这里
 //     template: '<div>123</div>'
 // })
 //
+
+//引入vue用的数据
+import MenuData from '../js/newMenu.js';
+
+
 let data = "我是数据";
 
 setTimeout(()=>{
@@ -118,3 +123,9 @@ function cbl(){
 function lcar(){
     location.href='../html/CarCar.html';
 }
+
+
+//用于主页vue的数据转换
+setTimeout(()=>{
+    getMenuData(MenuData);
+});
