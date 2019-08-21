@@ -6,7 +6,7 @@
 
 --使用ES6
 
---使用sass重新样式（被CSS样式卡主了）
+--使用sass重新样式
 
 
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
