@@ -37,6 +37,12 @@ setTimeout(()=>{
     getData('我是数据10');
 },5000);
 
+setTimeout(()=>{
+    getLab(function (){
+        console.log(data+'1999999');
+        return 'xxx';
+    })
+});
 $(function(){
     //fnuxn();
     //gongg();

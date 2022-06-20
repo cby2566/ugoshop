@@ -587,6 +587,7 @@
             </footer>
             <script>
                 let xData = {data : ''}
+                //组件
                 var boss = Vue.component('boss', {
                     data: function () {
                         return {
@@ -595,16 +596,18 @@
                     },
                     template: '<b>{{count.data}}</b>'
                 })
-
+                //实例
                 var vm = new Vue({
                     el:'#app',
                     data:{a:'Hello Vue!'},
                     //template: '<App/>'
                     component:boss
                 })
-                //组件
                 
-
+                //数据站
+                function getLab(callbk){
+                    console.log(callbk());
+                }
                 function getData(data){
                     xData.data = data;
                     console.log(data);
