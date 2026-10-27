@@ -10,3 +10,7 @@ dist/
 *.rm
 *.wav
 *.avi
+
+# WorkBuddy 工作区（2026-10）
+.workbuddy/
+.temp/

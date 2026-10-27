@@ -1,0 +1,1983 @@
+{
+  "sha": "c14f310d315f88d84f900df076116c7696c1a331",
+  "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/c14f310d315f88d84f900df076116c7696c1a331",
+  "tree": [
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "00caae1b7a718bff8bc9bbdbc1f49331e45e1383",
+      "size": 97,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/00caae1b7a718bff8bc9bbdbc1f49331e45e1383"
+    },
+    {
+      "path": "PROJECT_SUMMARY.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe48e8a8303a553415f112c817093e7d40e0e79f",
+      "size": 24312,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/fe48e8a8303a553415f112c817093e7d40e0e79f"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f511db51067749faae0eea503d5b864deb50d805",
+      "size": 496,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/f511db51067749faae0eea503d5b864deb50d805"
+    },
+    {
+      "path": "doc",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4d9cea60a7c5583a441edd2f7f1b43faee74e021",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/4d9cea60a7c5583a441edd2f7f1b43faee74e021"
+    },
+    {
+      "path": "doc/start.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c746d4c06434bac11178c055ddb12a2aaadc6608",
+      "size": 313,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/c746d4c06434bac11178c055ddb12a2aaadc6608"
+    },
+    {
+      "path": "package-lock.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dfcf5022f1c9a823053f66f3cb03f654bade1b99",
+      "size": 271541,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/dfcf5022f1c9a823053f66f3cb03f654bade1b99"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a870336f59daf45674d95d805e792fb22ca069a",
+      "size": 996,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/1a870336f59daf45674d95d805e792fb22ca069a"
+    },
+    {
+      "path": "src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2c04c67ac553ef85bd470d5ae1b7ebcc76227fe2",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/2c04c67ac553ef85bd470d5ae1b7ebcc76227fe2"
+    },
+    {
+      "path": "src/api",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "337875f15d6707dc35bb06d2cd8f4b8e57be094b",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/337875f15d6707dc35bb06d2cd8f4b8e57be094b"
+    },
+    {
+      "path": "src/api/addCar.php",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf475fa0a9057fbf3f8fcedc477beed04e06959a",
+      "size": 550,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/bf475fa0a9057fbf3f8fcedc477beed04e06959a"
+    },
+    {
+      "path": "src/api/car.php",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f5dc1954a340a87002507e68c56a2ed9e97fb8ba",
+      "size": 1774,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/f5dc1954a340a87002507e68c56a2ed9e97fb8ba"
+    },
+    {
+      "path": "src/api/cont.php",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "becdb1bc30a2e292b572826f805f0c66fe0582bb",
+      "size": 616,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/becdb1bc30a2e292b572826f805f0c66fe0582bb"
+    },
+    {
+      "path": "src/api/del.php",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "45df77c8947c396798e06c05fdb01a8efda1b1c4",
+      "size": 314,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/45df77c8947c396798e06c05fdb01a8efda1b1c4"
+    },
+    {
+      "path": "src/api/getfid.php",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a5e57fcd04fefc01bda6009a0ba3c8559b44c7b7",
+      "size": 322,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/a5e57fcd04fefc01bda6009a0ba3c8559b44c7b7"
+    },
+    {
+      "path": "src/api/login.php",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "160d993190242ea0544bb985b485fedd35cf1523",
+      "size": 1414,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/160d993190242ea0544bb985b485fedd35cf1523"
+    },
+    {
+      "path": "src/api/ulist2.php",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cd1a5029936618f65f8a53240fd54991de0a9a51",
+      "size": 855,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/cd1a5029936618f65f8a53240fd54991de0a9a51"
+    },
+    {
+      "path": "src/css",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2bfcbf91d716105f7566f53204b5bcb48bae37c2",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/2bfcbf91d716105f7566f53204b5bcb48bae37c2"
+    },
+    {
+      "path": "src/css/base.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "df9de4a7752a15110c62e7cd05cda559e1ac99a8",
+      "size": 1401,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/df9de4a7752a15110c62e7cd05cda559e1ac99a8"
+    },
+    {
+      "path": "src/css/car.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "94f13029187a525514c0c0cedfa3ae8168e01811",
+      "size": 4649,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/94f13029187a525514c0c0cedfa3ae8168e01811"
+    },
+    {
+      "path": "src/css/car.css.map",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "524fad8879bf534bd1153b0a5ab90ab442728e06",
+      "size": 3485,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/524fad8879bf534bd1153b0a5ab90ab442728e06"
+    },
+    {
+      "path": "src/css/foodList_main.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "729661c4620f7419aca2d8e677dbc59bad8a316a",
+      "size": 5759,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/729661c4620f7419aca2d8e677dbc59bad8a316a"
+    },
+    {
+      "path": "src/css/foodList_main.css.map",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d7d5849b842e6b1516586a0cd288b813db2f3d6e",
+      "size": 4281,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/d7d5849b842e6b1516586a0cd288b813db2f3d6e"
+    },
+    {
+      "path": "src/css/homepage.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "627b896578fe8bf577a40c73ed8bdd1c7236f731",
+      "size": 8674,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/627b896578fe8bf577a40c73ed8bdd1c7236f731"
+    },
+    {
+      "path": "src/css/homepage.css.map",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdc5119861aa098388d01fec679ccf4cd1b6e2e1",
+      "size": 6574,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/cdc5119861aa098388d01fec679ccf4cd1b6e2e1"
+    },
+    {
+      "path": "src/css/homepage_main.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0cdb8d667d23433b66a1466eb0e02a99882c1333",
+      "size": 14258,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/0cdb8d667d23433b66a1466eb0e02a99882c1333"
+    },
+    {
+      "path": "src/css/homepage_main.css.map",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e2581901980e26c07fa1df5c6cd17975ddeefee0",
+      "size": 8017,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/e2581901980e26c07fa1df5c6cd17975ddeefee0"
+    },
+    {
+      "path": "src/css/img",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b071c0f8dbf21fc5bdba21ed14c3f84a3cf636fb",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/b071c0f8dbf21fc5bdba21ed14c3f84a3cf636fb"
+    },
+    {
+      "path": "src/css/img/bg_tag.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a91c4e9d9bed8ef5cb8b9fbfcb270c304942d054",
+      "size": 7312,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/a91c4e9d9bed8ef5cb8b9fbfcb270c304942d054"
+    },
+    {
+      "path": "src/css/img/gwc.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e5bf28b142100acef160d6d089845c6d2a922aa0",
+      "size": 389,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/e5bf28b142100acef160d6d089845c6d2a922aa0"
+    },
+    {
+      "path": "src/css/img/icon-tv.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8cd444163ebb987610f455bb2ae798879ff0496",
+      "size": 366,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/d8cd444163ebb987610f455bb2ae798879ff0496"
+    },
+    {
+      "path": "src/css/img/icon.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c6cb51feff3e6287252cd7d45d5fc5b40bc8efc8",
+      "size": 1305,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/c6cb51feff3e6287252cd7d45d5fc5b40bc8efc8"
+    },
+    {
+      "path": "src/css/img/icon_2.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "896272a853200ecaa4b519661d172cce8a8c7f7f",
+      "size": 1440,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/896272a853200ecaa4b519661d172cce8a8c7f7f"
+    },
+    {
+      "path": "src/css/img/icon_clock.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1409f3549320dadaa1c0f63e1303f1d5100f8b29",
+      "size": 2496,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/1409f3549320dadaa1c0f63e1303f1d5100f8b29"
+    },
+    {
+      "path": "src/css/img/icon_home.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dbb8d4675dec3f0f4dc15e7100c64e8c811522f4",
+      "size": 1181,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/dbb8d4675dec3f0f4dc15e7100c64e8c811522f4"
+    },
+    {
+      "path": "src/css/img/icons.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "96372478954327d52d0820174d283d7a1daa0c61",
+      "size": 7062,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/96372478954327d52d0820174d283d7a1daa0c61"
+    },
+    {
+      "path": "src/css/img/icons1.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b4c5bc4760d5b99041f35982ad22c0094c766c8",
+      "size": 6651,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/4b4c5bc4760d5b99041f35982ad22c0094c766c8"
+    },
+    {
+      "path": "src/css/img/jian.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "937405b5b21ebbaf04a79248c8e9962d7c866b54",
+      "size": 174,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/937405b5b21ebbaf04a79248c8e9962d7c866b54"
+    },
+    {
+      "path": "src/css/img/key_icon.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b75f746a7ee07210d6b2b4a4732926743232777d",
+      "size": 30449,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/b75f746a7ee07210d6b2b4a4732926743232777d"
+    },
+    {
+      "path": "src/css/img/leftyin.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "957de01105256fd9a512eae8857be8b2142e10b4",
+      "size": 635,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/957de01105256fd9a512eae8857be8b2142e10b4"
+    },
+    {
+      "path": "src/css/img/logo.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c33ec4b3e313ab098cc19868edca31a0e76052e",
+      "size": 6457,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/1c33ec4b3e313ab098cc19868edca31a0e76052e"
+    },
+    {
+      "path": "src/css/img/logom.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e8996889c41198b5216338f144fdfdc6e45ed41",
+      "size": 4569,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/3e8996889c41198b5216338f144fdfdc6e45ed41"
+    },
+    {
+      "path": "src/css/img/newsix_03.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e5c08cfe8adf5d77d212f4f977de7beb41b0237c",
+      "size": 627,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/e5c08cfe8adf5d77d212f4f977de7beb41b0237c"
+    },
+    {
+      "path": "src/css/img/newsix_05.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5b7f2ce4eaa2640455ec0d5630de0cf7527f49ab",
+      "size": 809,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/5b7f2ce4eaa2640455ec0d5630de0cf7527f49ab"
+    },
+    {
+      "path": "src/css/img/newsix_07.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "14659e251f14ba9340c0137ac6eca1a8235e1668",
+      "size": 667,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/14659e251f14ba9340c0137ac6eca1a8235e1668"
+    },
+    {
+      "path": "src/css/img/newsix_09.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "adb88c51a4f4e8000e65cdaa16afe085c3aa57a6",
+      "size": 849,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/adb88c51a4f4e8000e65cdaa16afe085c3aa57a6"
+    },
+    {
+      "path": "src/css/img/newsix_11.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "496ab75af3840c8b0e5a3525feddfa69a832bb9e",
+      "size": 715,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/496ab75af3840c8b0e5a3525feddfa69a832bb9e"
+    },
+    {
+      "path": "src/css/img/newsix_13.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e3055c0c2026c1abce696c39b733d1cc72da4a38",
+      "size": 602,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/e3055c0c2026c1abce696c39b733d1cc72da4a38"
+    },
+    {
+      "path": "src/css/img/phone.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3aafe85be9e021ec1d1d9be8657ed79e8c12d2fe",
+      "size": 151,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/3aafe85be9e021ec1d1d9be8657ed79e8c12d2fe"
+    },
+    {
+      "path": "src/css/img/program_list_btn.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c8d2c7aacd5550b51a41600f9aa74622c85edc5",
+      "size": 2035,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/7c8d2c7aacd5550b51a41600f9aa74622c85edc5"
+    },
+    {
+      "path": "src/css/img/rightyin.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e1b8755aff6ec2d595fa462254cfb08ef429459",
+      "size": 690,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/8e1b8755aff6ec2d595fa462254cfb08ef429459"
+    },
+    {
+      "path": "src/css/img/searchbar.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0775aaa2bae3c53afb8371fccbd358956ef4e203",
+      "size": 19710,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/0775aaa2bae3c53afb8371fccbd358956ef4e203"
+    },
+    {
+      "path": "src/css/img/sixhover_03.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "705f9c2075adc89af0be6dfa8b0a050feb7fc2c6",
+      "size": 1426,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/705f9c2075adc89af0be6dfa8b0a050feb7fc2c6"
+    },
+    {
+      "path": "src/css/img/u_shopping.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ab1b21a799011f8586ce872b373743064e08b87",
+      "size": 7385,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/0ab1b21a799011f8586ce872b373743064e08b87"
+    },
+    {
+      "path": "src/css/img/welland.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ffed8e937df5c526cf2df359a18073e63f81320",
+      "size": 20245,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/7ffed8e937df5c526cf2df359a18073e63f81320"
+    },
+    {
+      "path": "src/css/img/welreg_01.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff3bbe9a421f1d107fdc4a6f81d86cbfa932bb4a",
+      "size": 14103,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/ff3bbe9a421f1d107fdc4a6f81d86cbfa932bb4a"
+    },
+    {
+      "path": "src/css/img/xfbj.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5874731fd664c9677fa0dda4f85e09fc7db8ea26",
+      "size": 7718,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/5874731fd664c9677fa0dda4f85e09fc7db8ea26"
+    },
+    {
+      "path": "src/css/itemDetailed.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "50474f8a6f609b6b7764923bb58c3cbf843995e1",
+      "size": 6564,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/50474f8a6f609b6b7764923bb58c3cbf843995e1"
+    },
+    {
+      "path": "src/css/itemDetailed.css.map",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "df4c55adb4a4cf09b9aa49ea8289c3ec51729396",
+      "size": 5029,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/df4c55adb4a4cf09b9aa49ea8289c3ec51729396"
+    },
+    {
+      "path": "src/css/reg.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91c8b00674437ff389c82b29a170beda15a12a4a",
+      "size": 6701,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/91c8b00674437ff389c82b29a170beda15a12a4a"
+    },
+    {
+      "path": "src/css/reg.css.map",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8fe931d4f35ad7d1aecfe974b8e703f483ce3ab4",
+      "size": 5404,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/8fe931d4f35ad7d1aecfe974b8e703f483ce3ab4"
+    },
+    {
+      "path": "src/css/text.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5555b7aa3212112779d87f1f3f97372296f29307",
+      "size": 81,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/5555b7aa3212112779d87f1f3f97372296f29307"
+    },
+    {
+      "path": "src/css/text.css.map",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8c79c57db5e79f7cbab0a6f9b81218053cad244",
+      "size": 149,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/f8c79c57db5e79f7cbab0a6f9b81218053cad244"
+    },
+    {
+      "path": "src/html",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "938ccae7abd39629f6387351bc1ed094402ebc14",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/938ccae7abd39629f6387351bc1ed094402ebc14"
+    },
+    {
+      "path": "src/html/CarCar.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab80233068894af918a5a5d4568a1fee1effd434",
+      "size": 11113,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/ab80233068894af918a5a5d4568a1fee1effd434"
+    },
+    {
+      "path": "src/html/foodList.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b817d8d996e0c7b56ac5424814a37292295bb659",
+      "size": 13306,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/b817d8d996e0c7b56ac5424814a37292295bb659"
+    },
+    {
+      "path": "src/html/homepage.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b89eac5c05741a9c791f0aec0486a9d791a5c3b",
+      "size": 26034,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/8b89eac5c05741a9c791f0aec0486a9d791a5c3b"
+    },
+    {
+      "path": "src/html/itemDetailed.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bed06387a7a3b2aa63902fd639ff85b27b873cdf",
+      "size": 16983,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/bed06387a7a3b2aa63902fd639ff85b27b873cdf"
+    },
+    {
+      "path": "src/html/login.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "32764ed7ec86a78ccc2a2bd018d86477cdc114a0",
+      "size": 7716,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/32764ed7ec86a78ccc2a2bd018d86477cdc114a0"
+    },
+    {
+      "path": "src/html/reg.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8583dc9cf4e471dc3e15f312e58e06a6a84960fb",
+      "size": 8054,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/8583dc9cf4e471dc3e15f312e58e06a6a84960fb"
+    },
+    {
+      "path": "src/img",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "33401e2707efb485524fb49d3e538ea05e968b14",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/33401e2707efb485524fb49d3e538ea05e968b14"
+    },
+    {
+      "path": "src/img/bei.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9f763946dd6606addeab24e40e2369124d53a048",
+      "size": 19256,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/9f763946dd6606addeab24e40e2369124d53a048"
+    },
+    {
+      "path": "src/img/cainixihuan.PNG",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c354fd31d028cbb842cf1fcf4608af8afd6b5dda",
+      "size": 47313,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/c354fd31d028cbb842cf1fcf4608af8afd6b5dda"
+    },
+    {
+      "path": "src/img/cainixihuan1.PNG",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "28631bc706d5f0463de5db243a4fb4b811d8893a",
+      "size": 47564,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/28631bc706d5f0463de5db243a4fb4b811d8893a"
+    },
+    {
+      "path": "src/img/carcar.PNG",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b4a1abb813b9ffe6c08774295e048f8160ffc1c3",
+      "size": 10134,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/b4a1abb813b9ffe6c08774295e048f8160ffc1c3"
+    },
+    {
+      "path": "src/img/classify.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea064cf903a379f3bdc32bb7e22ab605273090e3",
+      "size": 5350,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/ea064cf903a379f3bdc32bb7e22ab605273090e3"
+    },
+    {
+      "path": "src/img/declaration2.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a792ea6da346474061e255e2ef02c2232b3b837c",
+      "size": 24176,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/a792ea6da346474061e255e2ef02c2232b3b837c"
+    },
+    {
+      "path": "src/img/dog.PNG",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6440de25c2ce53473be7301348eab1e2e0967337",
+      "size": 21001,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/6440de25c2ce53473be7301348eab1e2e0967337"
+    },
+    {
+      "path": "src/img/dog2.PNG",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "618f0ca94312bdf6dff7c9842796088479ea0ce5",
+      "size": 27558,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/618f0ca94312bdf6dff7c9842796088479ea0ce5"
+    },
+    {
+      "path": "src/img/dooo.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5d63c4737533758a4203bf75771eded3143e565c",
+      "size": 119036,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/5d63c4737533758a4203bf75771eded3143e565c"
+    },
+    {
+      "path": "src/img/foot_dh.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9413070b5fac6de15d567b1e1cc443a750e855f2",
+      "size": 3065,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/9413070b5fac6de15d567b1e1cc443a750e855f2"
+    },
+    {
+      "path": "src/img/foot_ewm.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "34079778b7718dfd9eadc0abb908b9166e1ae543",
+      "size": 7660,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/34079778b7718dfd9eadc0abb908b9166e1ae543"
+    },
+    {
+      "path": "src/img/footer_ad.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef63afcaf5c3ed8221275674d57848b7c7b50576",
+      "size": 39495,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/ef63afcaf5c3ed8221275674d57848b7c7b50576"
+    },
+    {
+      "path": "src/img/goods1.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9a4af31ec18540dbaa9c7d4a365861d49155777",
+      "size": 41343,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/a9a4af31ec18540dbaa9c7d4a365861d49155777"
+    },
+    {
+      "path": "src/img/goods2_1.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7141d5ffa3ef1a799d83a2e4fa0a5053247f364",
+      "size": 94147,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/e7141d5ffa3ef1a799d83a2e4fa0a5053247f364"
+    },
+    {
+      "path": "src/img/goods2_2.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05d94be9ea66a960f417f8d2b4133838b3136aa5",
+      "size": 66181,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/05d94be9ea66a960f417f8d2b4133838b3136aa5"
+    },
+    {
+      "path": "src/img/goods2_3.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d97e51953a291abd9c4e0894ad3c3b736b11042",
+      "size": 95961,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/2d97e51953a291abd9c4e0894ad3c3b736b11042"
+    },
+    {
+      "path": "src/img/goods3_1.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1adcb7f711d348dc7e8f7ba5e57be7f436540fd9",
+      "size": 33131,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/1adcb7f711d348dc7e8f7ba5e57be7f436540fd9"
+    },
+    {
+      "path": "src/img/goods3_2.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "32445de030b2c9d27a52e46713141a2643177fd8",
+      "size": 92872,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/32445de030b2c9d27a52e46713141a2643177fd8"
+    },
+    {
+      "path": "src/img/goods3_3.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4664e09230f1d39dc3fb9c4124680681fc35ed73",
+      "size": 83597,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/4664e09230f1d39dc3fb9c4124680681fc35ed73"
+    },
+    {
+      "path": "src/img/goods4_1.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13366fc661b4fe827816a692d8e5a61592d64ca8",
+      "size": 32993,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/13366fc661b4fe827816a692d8e5a61592d64ca8"
+    },
+    {
+      "path": "src/img/goods4_2.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc7ff2d72954d2a7e7eb8dd733bfff749543ee02",
+      "size": 26253,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/cc7ff2d72954d2a7e7eb8dd733bfff749543ee02"
+    },
+    {
+      "path": "src/img/goods4_3.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "058734889008d5d0b69202c3d6d5563812251bf7",
+      "size": 25717,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/058734889008d5d0b69202c3d6d5563812251bf7"
+    },
+    {
+      "path": "src/img/goods5_1.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d9df77cee7407783e28eb15268278667c859e2f4",
+      "size": 34533,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/d9df77cee7407783e28eb15268278667c859e2f4"
+    },
+    {
+      "path": "src/img/goods5_2.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a19390c6fe30a5dd93ca5abe089facbb9ba1874d",
+      "size": 56722,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/a19390c6fe30a5dd93ca5abe089facbb9ba1874d"
+    },
+    {
+      "path": "src/img/goods5_3.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "435826e9295c78f16935c281ae29ff929fdb71c6",
+      "size": 59850,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/435826e9295c78f16935c281ae29ff929fdb71c6"
+    },
+    {
+      "path": "src/img/goods6_1.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f81871daebeaea2864738b38fe0ac862f184c855",
+      "size": 54561,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/f81871daebeaea2864738b38fe0ac862f184c855"
+    },
+    {
+      "path": "src/img/goods6_2.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "582140e548a356acffbb490b908ca656586b8ed8",
+      "size": 68893,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/582140e548a356acffbb490b908ca656586b8ed8"
+    },
+    {
+      "path": "src/img/goods6_3.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d00cc172fbb87722a92b478e8a3e8cce7f6845f",
+      "size": 71823,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/7d00cc172fbb87722a92b478e8a3e8cce7f6845f"
+    },
+    {
+      "path": "src/img/goods_midea.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f462155c6329d2d5b0d3c79488f529cd8a40d8b",
+      "size": 29425,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/1f462155c6329d2d5b0d3c79488f529cd8a40d8b"
+    },
+    {
+      "path": "src/img/icon_a_1245.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "caf9025a56742987ac27de86152eb3ebf88e888b",
+      "size": 1817,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/caf9025a56742987ac27de86152eb3ebf88e888b"
+    },
+    {
+      "path": "src/img/icon_a_364.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b229199f17bb754e209e21b4df15aae822e8ccf8",
+      "size": 1907,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/b229199f17bb754e209e21b4df15aae822e8ccf8"
+    },
+    {
+      "path": "src/img/icon_a_822.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d40522859add99f57a69996c0aafc71b9481f09c",
+      "size": 1591,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/d40522859add99f57a69996c0aafc71b9481f09c"
+    },
+    {
+      "path": "src/img/icon_a_829.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0caba9a2e70a22aca1fa98c641d1c16e19b7066e",
+      "size": 1938,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/0caba9a2e70a22aca1fa98c641d1c16e19b7066e"
+    },
+    {
+      "path": "src/img/icon_a_93.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0fe013b7ed12adce63a55370082eb5f4e6d1a00e",
+      "size": 2327,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/0fe013b7ed12adce63a55370082eb5f4e6d1a00e"
+    },
+    {
+      "path": "src/img/icon_a_959.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f6d49743426afb79df8aac8347785610455ef16",
+      "size": 1802,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/3f6d49743426afb79df8aac8347785610455ef16"
+    },
+    {
+      "path": "src/img/icon_b_1245.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a95d7001a5ca699158fce461987db354f5e9b7c",
+      "size": 2911,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/5a95d7001a5ca699158fce461987db354f5e9b7c"
+    },
+    {
+      "path": "src/img/icon_b_364.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f7bcb0ed638aac6045499e5eecfeb731fa24900",
+      "size": 2901,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/4f7bcb0ed638aac6045499e5eecfeb731fa24900"
+    },
+    {
+      "path": "src/img/icon_b_822.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "901efa9614b3b5ac48c6a506d7867d0a264aefe7",
+      "size": 2431,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/901efa9614b3b5ac48c6a506d7867d0a264aefe7"
+    },
+    {
+      "path": "src/img/icon_b_829.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "018e27ebce0c1cc208e6e64c6823110a8d5f534e",
+      "size": 2795,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/018e27ebce0c1cc208e6e64c6823110a8d5f534e"
+    },
+    {
+      "path": "src/img/icon_b_93.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3141210f8e9cd6cfcf960a469722a14d9930d2b",
+      "size": 3272,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/a3141210f8e9cd6cfcf960a469722a14d9930d2b"
+    },
+    {
+      "path": "src/img/icon_b_959.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "811793f397b84515e0fc1829799fb6846db6d2a5",
+      "size": 2695,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/811793f397b84515e0fc1829799fb6846db6d2a5"
+    },
+    {
+      "path": "src/img/icon_list1.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3799b4675003bdb4838ef2a45e4f87d5baf36bef",
+      "size": 1575,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/3799b4675003bdb4838ef2a45e4f87d5baf36bef"
+    },
+    {
+      "path": "src/img/luntu1.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e390d62f30c0220224958dbe358ba5309b10da4",
+      "size": 92856,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/9e390d62f30c0220224958dbe358ba5309b10da4"
+    },
+    {
+      "path": "src/img/luntu2.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b542c89f333dc4f784fd076359744ae60654e674",
+      "size": 108562,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/b542c89f333dc4f784fd076359744ae60654e674"
+    },
+    {
+      "path": "src/img/luntu3.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1889e210f09b0ff424548e72facad09b78d73a25",
+      "size": 147129,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/1889e210f09b0ff424548e72facad09b78d73a25"
+    },
+    {
+      "path": "src/img/luntu4.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ccb269a177ebfe4d0dcb4589a59db427f9c12ffb",
+      "size": 184694,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/ccb269a177ebfe4d0dcb4589a59db427f9c12ffb"
+    },
+    {
+      "path": "src/img/luntu5.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "20d16ecf8b7c7178a23fcd6cd8eac85837086a06",
+      "size": 485728,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/20d16ecf8b7c7178a23fcd6cd8eac85837086a06"
+    },
+    {
+      "path": "src/img/menuhover_03.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ea62122ad98b9ea988040a20b7333cdb010ddcd",
+      "size": 1543,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/7ea62122ad98b9ea988040a20b7333cdb010ddcd"
+    },
+    {
+      "path": "src/img/menuimg_03.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "69a9e5e512941cf4a4cb34789a3c6afe4e927206",
+      "size": 709,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/69a9e5e512941cf4a4cb34789a3c6afe4e927206"
+    },
+    {
+      "path": "src/img/mily.PNG",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6e3720465364ce0bb8c7e9cf5d3814f6fa6bb7d1",
+      "size": 1150,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/6e3720465364ce0bb8c7e9cf5d3814f6fa6bb7d1"
+    },
+    {
+      "path": "src/img/price_explain.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "87fe1f480fd19005f2a3b7ddc4acdbd4b397aefb",
+      "size": 27908,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/87fe1f480fd19005f2a3b7ddc4acdbd4b397aefb"
+    },
+    {
+      "path": "src/img/return_goods_des.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4aab4899112bdf8d48b8b14ff49e784c7b524d28",
+      "size": 65290,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/4aab4899112bdf8d48b8b14ff49e784c7b524d28"
+    },
+    {
+      "path": "src/img/title_bg.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "816897722a442d352b419377bf96d8f6c0244094",
+      "size": 9792,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/816897722a442d352b419377bf96d8f6c0244094"
+    },
+    {
+      "path": "src/img/优购80_01.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8760680370f7c17899db23ab51334984445adc05",
+      "size": 153672,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/8760680370f7c17899db23ab51334984445adc05"
+    },
+    {
+      "path": "src/img/优购80_02.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9ab47f4618e1178ba9b6e94fa580290132a50ba",
+      "size": 76442,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/c9ab47f4618e1178ba9b6e94fa580290132a50ba"
+    },
+    {
+      "path": "src/img/优购80_03.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4abcea28c9c24a9b033b3291545264239d7935d5",
+      "size": 57444,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/4abcea28c9c24a9b033b3291545264239d7935d5"
+    },
+    {
+      "path": "src/img/优购80_05.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "533a1bfd24bf135b7e8290b028bd0f41e1ebbc03",
+      "size": 191051,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/533a1bfd24bf135b7e8290b028bd0f41e1ebbc03"
+    },
+    {
+      "path": "src/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7358be6d7659913438dc49704dadcb1a10c00f0b",
+      "size": 192,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/7358be6d7659913438dc49704dadcb1a10c00f0b"
+    },
+    {
+      "path": "src/js",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "28df9ed29e644716b498362cf8904726811895b1",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/28df9ed29e644716b498362cf8904726811895b1"
+    },
+    {
+      "path": "src/js/adNav.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c7126d2d1de17a07c93429ed9ea1198fd89ae7a0",
+      "size": 633,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/c7126d2d1de17a07c93429ed9ea1198fd89ae7a0"
+    },
+    {
+      "path": "src/js/car.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f21482b13ff7e0fb14742f1404aaddffb769cba0",
+      "size": 6921,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/f21482b13ff7e0fb14742f1404aaddffb769cba0"
+    },
+    {
+      "path": "src/js/common.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85f8bda27a3042c0c8c9ceccae09ed1b5fab73dd",
+      "size": 13617,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/85f8bda27a3042c0c8c9ceccae09ed1b5fab73dd"
+    },
+    {
+      "path": "src/js/footList.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "82449108f617cf9298c5c56624204fd441a5d07f",
+      "size": 6325,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/82449108f617cf9298c5c56624204fd441a5d07f"
+    },
+    {
+      "path": "src/js/home.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7d0ebe7b13dddfbf12fb36a023db875c20b0b04b",
+      "size": 3404,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/7d0ebe7b13dddfbf12fb36a023db875c20b0b04b"
+    },
+    {
+      "path": "src/js/iPublic.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b4c943f8a48bb33f3b0ed97dfd88098fa7dd2805",
+      "size": 291,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/b4c943f8a48bb33f3b0ed97dfd88098fa7dd2805"
+    },
+    {
+      "path": "src/js/item.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "daed51d33ac1e6f2573a4e25e84890a855d647b5",
+      "size": 6955,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/daed51d33ac1e6f2573a4e25e84890a855d647b5"
+    },
+    {
+      "path": "src/js/login.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "46dd33e95f970c727d3328224d72f87e1fa59212",
+      "size": 6344,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/46dd33e95f970c727d3328224d72f87e1fa59212"
+    },
+    {
+      "path": "src/js/module7.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04b1c38f24c7df8646236d30b3d51bacda2b6e17",
+      "size": 39,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/04b1c38f24c7df8646236d30b3d51bacda2b6e17"
+    },
+    {
+      "path": "src/js/newMenu.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c07ca0697e5cd916ab88502afb09bf08255338e9",
+      "size": 965,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/c07ca0697e5cd916ab88502afb09bf08255338e9"
+    },
+    {
+      "path": "src/lib",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5441a3b88087355cfd5cbf3dc320044016c418a3",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/5441a3b88087355cfd5cbf3dc320044016c418a3"
+    },
+    {
+      "path": "src/lib/cs.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fcac1409d835c6dc3366ebb3c064f8615cc7dbed",
+      "size": 1614,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/fcac1409d835c6dc3366ebb3c064f8615cc7dbed"
+    },
+    {
+      "path": "src/lib/jquery-1.10.1.min.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e407e7699240159f728d40f453901aa3eaf6ab8e",
+      "size": 93064,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/e407e7699240159f728d40f453901aa3eaf6ab8e"
+    },
+    {
+      "path": "src/lib/jquery-addShopping.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6acfecd1a027fa131f27ac8cbe48fa0d3401627d",
+      "size": 2016,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/6acfecd1a027fa131f27ac8cbe48fa0d3401627d"
+    },
+    {
+      "path": "src/lib/js.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04827a8e453c72ab46804e776f32440757c66149",
+      "size": 8629,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/04827a8e453c72ab46804e776f32440757c66149"
+    },
+    {
+      "path": "src/lib/mF",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1fd66cd0d15e8bb12384fead3c65e2683387f5ea",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/1fd66cd0d15e8bb12384fead3c65e2683387f5ea"
+    },
+    {
+      "path": "src/lib/mF/loading.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3dbe1c66b31222ef1c06a0bfbf808186d9a0e934",
+      "size": 4334,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/3dbe1c66b31222ef1c06a0bfbf808186d9a0e934"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "848eb87868ecceb45e73b1df84a6c903a45a6f58",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/848eb87868ecceb45e73b1df84a6c903a45a6f58"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4d9cf4c451f01b386a50d7e60b5463fade82e27c",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/4d9cf4c451f01b386a50d7e60b5463fade82e27c"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/loading.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3dbe1c66b31222ef1c06a0bfbf808186d9a0e934",
+      "size": 4334,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/3dbe1c66b31222ef1c06a0bfbf808186d9a0e934"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_51xflash",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e0e3e5189861729b5015bb889e6addf63d650ecb",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/e0e3e5189861729b5015bb889e6addf63d650ecb"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_51xflash/Thumbs.db",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "935f3b19ce53eed7e016dee8548ab2ba2a0c69be",
+      "size": 4608,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/935f3b19ce53eed7e016dee8548ab2ba2a0c69be"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_51xflash/play.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e799a237f950aed31e716a4eaa5de83c350f97db",
+      "size": 1282,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/e799a237f950aed31e716a4eaa5de83c350f97db"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_51xflash/tit-ar.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "84cdb3d29a36f1c04716cd9325212257b5a85044",
+      "size": 184,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/84cdb3d29a36f1c04716cd9325212257b5a85044"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_classicHB",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "178ba20065971715e4f47bec3ed7e01fee5d24a4",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/178ba20065971715e4f47bec3ed7e01fee5d24a4"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_classicHB/btn-blue.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa9f310876aef4bc0fa84ecb910457efc4809210",
+      "size": 1145,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/fa9f310876aef4bc0fa84ecb910457efc4809210"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_classicHB/btn-gray.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4ca9609f4d76b59db24094b52cc4e9f27a69bf7e",
+      "size": 649,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/4ca9609f4d76b59db24094b52cc4e9f27a69bf7e"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_classicHC",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "fbcb0c34759025a9119d8e2f68e89baf1ae311ea",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/fbcb0c34759025a9119d8e2f68e89baf1ae311ea"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_classicHC/btn-bg.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c7842267f236cdbf90347dd4b02727d8030051c",
+      "size": 2953,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/7c7842267f236cdbf90347dd4b02727d8030051c"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_classicHC/btn-red.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c250731d44dc8bd98d8d2c75ce26153ef9cb57ad",
+      "size": 90,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/c250731d44dc8bd98d8d2c75ce26153ef9cb57ad"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_games_tb",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "55ab4cb1fb838598f51ca435b26b176d8e496acf",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/55ab4cb1fb838598f51ca435b26b176d8e496acf"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_games_tb/ar.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6b6b883ae4613d737a94c0a75cb8d9621d7f25ff",
+      "size": 60,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/6b6b883ae4613d737a94c0a75cb8d9621d7f25ff"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_kdui",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "602c695a21c5d0cc7e2ad939e461cb827feb65d6",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/602c695a21c5d0cc7e2ad939e461cb827feb65d6"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_kdui/dots.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4612e8ab59ba3597ad05b921567ce1d953821c09",
+      "size": 1105,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/4612e8ab59ba3597ad05b921567ce1d953821c09"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_kdui/slider-arrows.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2593dfd692653e0b6f10b074050e08206d9ddc72",
+      "size": 1904,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/2593dfd692653e0b6f10b074050e08206d9ddc72"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_kiki",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b99ce36b8fe21dda9f2e99dc523f8a512cd909c8",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/b99ce36b8fe21dda9f2e99dc523f8a512cd909c8"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_kiki/Thumbs.db",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "418500e02c17c4c7ae9c6e58a8c091e580f8fb75",
+      "size": 5632,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/418500e02c17c4c7ae9c6e58a8c091e580f8fb75"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_kiki/ar-left.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ebf5ef46ffeb6c3b2b2784b6d319e914e05959ed",
+      "size": 193,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/ebf5ef46ffeb6c3b2b2784b6d319e914e05959ed"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_kiki/ar-right.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eeb755e977ff16b83cc83dbc8b2e6d021a614e63",
+      "size": 202,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/eeb755e977ff16b83cc83dbc8b2e6d021a614e63"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_kiki/tit-ar.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "84cdb3d29a36f1c04716cd9325212257b5a85044",
+      "size": 184,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/84cdb3d29a36f1c04716cd9325212257b5a85044"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_pithy_tb",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "778512413831ec92b94a0b7b3bfc652bb06ce437",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/778512413831ec92b94a0b7b3bfc652bb06ce437"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_pithy_tb/btn.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "75ca1796bc0d16b3f15ac8e826a9bf4fb165af13",
+      "size": 2034,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/75ca1796bc0d16b3f15ac8e826a9bf4fb165af13"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_pithy_tb/turn.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0b1b25d7cf99c89b9a213b643fe45b3134f8b6c5",
+      "size": 316,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/0b1b25d7cf99c89b9a213b643fe45b3134f8b6c5"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_qiyi",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5fa24549b4e3e29db6f127c5253ad96681bed794",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/5fa24549b4e3e29db6f127c5253ad96681bed794"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_qiyi/bg.jpg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "61daf5b89700090b009ca7dba846a540daa33dae",
+      "size": 33563,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/61daf5b89700090b009ca7dba846a540daa33dae"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_qiyi/loading.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92c5c30cadc2879350d5516c859fa3f49ba8629a",
+      "size": 7347,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/92c5c30cadc2879350d5516c859fa3f49ba8629a"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_sohusports",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b7510c84d4099b7292467ff42d996187eb24e250",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/b7510c84d4099b7292467ff42d996187eb24e250"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_sohusports/sh-btn.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a0bde9704755353c3526078a55b148f9c8922875",
+      "size": 346,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/a0bde9704755353c3526078a55b148f9c8922875"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_taobaomall",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "18de78b8f72d840a472a586c683cfd45f83fef5b",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/18de78b8f72d840a472a586c683cfd45f83fef5b"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_taobaomall/btn-bg2.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9501b843e198c6dfcd4ddd279c4a92331c5646f1",
+      "size": 666,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/9501b843e198c6dfcd4ddd279c4a92331c5646f1"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_tbhuabao",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e27d9b42f9389feba9f1ec8c3769a6158621ffe3",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/e27d9b42f9389feba9f1ec8c3769a6158621ffe3"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/img/mF_tbhuabao/btn-bg.gif",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "95304710a315fe9d5b2c6161db946bbf0b17c068",
+      "size": 102,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/95304710a315fe9d5b2c6161db946bbf0b17c068"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_51xflash.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a540280dce99c8cb6ef875041884f2241c60751",
+      "size": 1169,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/1a540280dce99c8cb6ef875041884f2241c60751"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_51xflash.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c6ed542017685bc25ff1c7fefbbee45e5a324323",
+      "size": 1895,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/c6ed542017685bc25ff1c7fefbbee45e5a324323"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_YSlider.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a10dbad55bc1df26a73af86d062365ff26891ac9",
+      "size": 1447,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/a10dbad55bc1df26a73af86d062365ff26891ac9"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_YSlider.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "03b7b7123b944dc02efdd557af2dda6c4ffdb7ce",
+      "size": 1147,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/03b7b7123b944dc02efdd557af2dda6c4ffdb7ce"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_classicHB.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "188c37f106b01f57c19e348b3133653bed81f256",
+      "size": 1632,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/188c37f106b01f57c19e348b3133653bed81f256"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_classicHB.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7833ea587e54877020e72b63fa461eec7685041",
+      "size": 1132,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/e7833ea587e54877020e72b63fa461eec7685041"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_classicHC.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "36c9c73de30265b26d9a4023495693d4aedb8706",
+      "size": 1622,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/36c9c73de30265b26d9a4023495693d4aedb8706"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_classicHC.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ad707464aae4e64ddf52bac602b26fcae3eb406",
+      "size": 1109,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/6ad707464aae4e64ddf52bac602b26fcae3eb406"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_dleung.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6d4959d96237124e4fe7fd13b91ea3eeba440cc6",
+      "size": 957,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/6d4959d96237124e4fe7fd13b91ea3eeba440cc6"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_dleung.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5fc6070cf3abd7e4ab7f669aeefe685104b8a0aa",
+      "size": 618,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/5fc6070cf3abd7e4ab7f669aeefe685104b8a0aa"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_expo2010.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ee6a97bd449e8a19b26fab188564e5f23a9dc1a",
+      "size": 1305,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/7ee6a97bd449e8a19b26fab188564e5f23a9dc1a"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_expo2010.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "194f443a6d55ed062e3cd637f662fd085ac8ccef",
+      "size": 958,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/194f443a6d55ed062e3cd637f662fd085ac8ccef"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_fancy.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a03e57e8124638677a96ec27844baaaca4f16431",
+      "size": 2958,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/a03e57e8124638677a96ec27844baaaca4f16431"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_fancy.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d607250c2723e6923ce5b2867b64fe5fedf80bb8",
+      "size": 4506,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/d607250c2723e6923ce5b2867b64fe5fedf80bb8"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_fscreen_tb.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d3f1f57d4c8501089171e8787797ecd654c079ec",
+      "size": 2108,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/d3f1f57d4c8501089171e8787797ecd654c079ec"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_fscreen_tb.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc3dadc4189440bff937de7d56c17812e2f9fbbd",
+      "size": 1908,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/bc3dadc4189440bff937de7d56c17812e2f9fbbd"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_games_tb.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e4a8dc25ee78c4085db39d5c5bfb2dbd836f320",
+      "size": 1807,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/4e4a8dc25ee78c4085db39d5c5bfb2dbd836f320"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_games_tb.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8081b658da1479224cb770e998469a090c46ba28",
+      "size": 1833,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/8081b658da1479224cb770e998469a090c46ba28"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_kdui.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c3bc7d47e1a455233aa3377c082b157b81e480ac",
+      "size": 2163,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/c3bc7d47e1a455233aa3377c082b157b81e480ac"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_kdui.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "190e0e180464d7f138bdc9028c3b173790dd0b81",
+      "size": 2003,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/190e0e180464d7f138bdc9028c3b173790dd0b81"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_kiki.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "447b38e654ce7d826cda171ea13380408d40b519",
+      "size": 1538,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/447b38e654ce7d826cda171ea13380408d40b519"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_kiki.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "081dae53486536784a43784ef50603e37f806e67",
+      "size": 1999,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/081dae53486536784a43784ef50603e37f806e67"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_ladyQ.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b67df353733c0c4a9f196e04a6ce50d2e41ef99",
+      "size": 1641,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/2b67df353733c0c4a9f196e04a6ce50d2e41ef99"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_ladyQ.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "effc9ed4de15bfa57454aeaf05557f35f86e04ce",
+      "size": 1676,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/effc9ed4de15bfa57454aeaf05557f35f86e04ce"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_liquid.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ceb64567dfe3d878597c4b4e8a0cce592d1ff5bd",
+      "size": 1412,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/ceb64567dfe3d878597c4b4e8a0cce592d1ff5bd"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_liquid.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e6c2edf590241d0ab210f3fd073700665ffaec6",
+      "size": 1177,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/8e6c2edf590241d0ab210f3fd073700665ffaec6"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_liuzg.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "48bc50f981be574e74750fbb8564f347d2454bad",
+      "size": 1343,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/48bc50f981be574e74750fbb8564f347d2454bad"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_liuzg.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "884654aaa854795fbd1f2bae5c37b22ee55bd299",
+      "size": 1676,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/884654aaa854795fbd1f2bae5c37b22ee55bd299"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_luluJQ.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c420f982f568d8dd4d889eec2fed86bed1a3be7",
+      "size": 874,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/2c420f982f568d8dd4d889eec2fed86bed1a3be7"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_luluJQ.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "51eb048dae41fbe9f2820f78252598860e5711ad",
+      "size": 1628,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/51eb048dae41fbe9f2820f78252598860e5711ad"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_pconline.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d06562f62e86394bbc82914dcb9de004dd7201b9",
+      "size": 1127,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/d06562f62e86394bbc82914dcb9de004dd7201b9"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_pconline.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "20d76752d1583e0ffe86df52ce7a9e0dd81d1973",
+      "size": 821,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/20d76752d1583e0ffe86df52ce7a9e0dd81d1973"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_peijianmall.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "21bdcf1d0d5f88fc71714f951140a431824fffd1",
+      "size": 1256,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/21bdcf1d0d5f88fc71714f951140a431824fffd1"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_peijianmall.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8cb4d6a586e31ed292901d325be66b612c155f27",
+      "size": 1385,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/8cb4d6a586e31ed292901d325be66b612c155f27"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_pithy_tb.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "487e22c234cc4f1fb545b70e216b5dcdfafe4e28",
+      "size": 1962,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/487e22c234cc4f1fb545b70e216b5dcdfafe4e28"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_pithy_tb.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf05088234d6ccdfc70f8f4a81794b4dca66b2e0",
+      "size": 2332,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/bf05088234d6ccdfc70f8f4a81794b4dca66b2e0"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_qiyi.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ed3f0ced9f1a2ad64a4c6aa16a46e277246730d0",
+      "size": 1400,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/ed3f0ced9f1a2ad64a4c6aa16a46e277246730d0"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_qiyi.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "66cb0d63a6f4f02eb9ac9cb787b3a5a074290d6c",
+      "size": 963,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/66cb0d63a6f4f02eb9ac9cb787b3a5a074290d6c"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_quwan.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ebf2dbff1e08245afabd9973abf06251ac9e8d14",
+      "size": 1292,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/ebf2dbff1e08245afabd9973abf06251ac9e8d14"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_quwan.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "749df2b127b27b0651687389b813e93fc64e9505",
+      "size": 742,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/749df2b127b27b0651687389b813e93fc64e9505"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_rapoo.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f47c52759b8c99b4f2fee04f320476a7c29fc92a",
+      "size": 1481,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/f47c52759b8c99b4f2fee04f320476a7c29fc92a"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_rapoo.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7776a3424ba3f1aa7d50f70a2a1ed0b07ca06d1a",
+      "size": 1865,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/7776a3424ba3f1aa7d50f70a2a1ed0b07ca06d1a"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_shutters.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "699e7706589a3d1730fe0fe1f242b4eeb6573a00",
+      "size": 1654,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/699e7706589a3d1730fe0fe1f242b4eeb6573a00"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_shutters.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92fdbf0d2adaa95256ecb301f93dc6841ad2886d",
+      "size": 1556,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/92fdbf0d2adaa95256ecb301f93dc6841ad2886d"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_slide3D.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06bee75062770c2efc48e70cda157b8e2d75af81",
+      "size": 1866,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/06bee75062770c2efc48e70cda157b8e2d75af81"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_slide3D.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a1b69f9e9dd3d426a11292cca752103f7c73b44",
+      "size": 1765,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/5a1b69f9e9dd3d426a11292cca752103f7c73b44"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_sohusports.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9449bb0b4f697e70f6539c1d6409d6a1a918c7a3",
+      "size": 1354,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/9449bb0b4f697e70f6539c1d6409d6a1a918c7a3"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_sohusports.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb4dc9922f0cffb0d66c8c7d7b5163789827f457",
+      "size": 590,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/bb4dc9922f0cffb0d66c8c7d7b5163789827f457"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_taobao2010.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba84dc351e26137b36244fe00401ea32403c569f",
+      "size": 1409,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/ba84dc351e26137b36244fe00401ea32403c569f"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_taobao2010.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8d8d0db8784fe3ab97f26210943d59d4137ac36b",
+      "size": 1529,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/8d8d0db8784fe3ab97f26210943d59d4137ac36b"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_taobaomall.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b720059371fc2283e8157af51073745a0012fae7",
+      "size": 965,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/b720059371fc2283e8157af51073745a0012fae7"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_taobaomall.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9d55de941806a295ed0233a6b87825b6d15403fe",
+      "size": 1701,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/9d55de941806a295ed0233a6b87825b6d15403fe"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_tbhuabao.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90d3421a04df2a5e51986ffa442bfb4ce3b973d1",
+      "size": 1658,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/90d3421a04df2a5e51986ffa442bfb4ce3b973d1"
+    },
+    {
+      "path": "src/lib/mF/mf-pattern/mF_tbhuabao.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc06cb80d4312aec2147c2ec0c552319f217be32",
+      "size": 1679,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/bc06cb80d4312aec2147c2ec0c552319f217be32"
+    },
+    {
+      "path": "src/lib/mF/myfocus-2.0.4.full.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6789ce8020e97bc18881193798c0ebe8db8548b3",
+      "size": 22369,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/6789ce8020e97bc18881193798c0ebe8db8548b3"
+    },
+    {
+      "path": "src/lib/mF/myfocus-2.0.4.min.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf57eb9e6fb752048f62bcdb2dec8c634d07547b",
+      "size": 11021,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/cf57eb9e6fb752048f62bcdb2dec8c634d07547b"
+    },
+    {
+      "path": "src/sass",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "fc53815533afe595789f000912e5987467d67198",
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/trees/fc53815533afe595789f000912e5987467d67198"
+    },
+    {
+      "path": "src/sass/ADTextView.scss",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a595c4a864360efc9df606e8be7675870b3691bc",
+      "size": 539,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/a595c4a864360efc9df606e8be7675870b3691bc"
+    },
+    {
+      "path": "src/sass/car.scss",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9659bba66a6e3a43b70e3797d0a0548226d7a37e",
+      "size": 5405,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/9659bba66a6e3a43b70e3797d0a0548226d7a37e"
+    },
+    {
+      "path": "src/sass/foodList_main.scss",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9de65f891d699ca5e21e4f58f0137db4ca666f3d",
+      "size": 6580,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/9de65f891d699ca5e21e4f58f0137db4ca666f3d"
+    },
+    {
+      "path": "src/sass/homepage.scss",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6998c8441cfad7ddffb76982e12065bffde01c1e",
+      "size": 10706,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/6998c8441cfad7ddffb76982e12065bffde01c1e"
+    },
+    {
+      "path": "src/sass/homepage_main.scss",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90be6dc1ebd1d2edd007e72321b4135d605f47fe",
+      "size": 16280,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/90be6dc1ebd1d2edd007e72321b4135d605f47fe"
+    },
+    {
+      "path": "src/sass/itemDetailed.scss",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "87069771f968a6dcc64efea9a97324d9ca0112d4",
+      "size": 7620,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/87069771f968a6dcc64efea9a97324d9ca0112d4"
+    },
+    {
+      "path": "src/sass/module7.scss",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "836267cd67e0126353dd7396f809e8cb21ed60c8",
+      "size": 60,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/836267cd67e0126353dd7396f809e8cb21ed60c8"
+    },
+    {
+      "path": "src/sass/reg.scss",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "150a4b7cfb665c0a07d528f425c5ce5c4bd33065",
+      "size": 7886,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/150a4b7cfb665c0a07d528f425c5ce5c4bd33065"
+    },
+    {
+      "path": "src/sass/text.scss",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "01c86a9c380c2a71682a529d9f6f73a318437ed9",
+      "size": 43,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/01c86a9c380c2a71682a529d9f6f73a318437ed9"
+    },
+    {
+      "path": "webpack.config.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13d50eddf78ea3585dc448910bcaeef7a6b8fdc6",
+      "size": 2005,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/13d50eddf78ea3585dc448910bcaeef7a6b8fdc6"
+    },
+    {
+      "path": "当前功能列表.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f64857170d74b9abdb5378c6b9319ad93f5c263",
+      "size": 9481,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/0f64857170d74b9abdb5378c6b9319ad93f5c263"
+    },
+    {
+      "path": "拯救计划.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5330deb3d1456a9ff3011b1b8d9f0aa8c8ce3c8f",
+      "size": 8776,
+      "url": "https://api.github.com/repos/cby2566/ugoshop/git/blobs/5330deb3d1456a9ff3011b1b8d9f0aa8c8ce3c8f"
+    }
+  ],
+  "truncated": false
+}
