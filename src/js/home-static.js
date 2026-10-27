@@ -10,8 +10,9 @@
  * 本文件把 src/js/home.js 的运行时逻辑与 src/js/newMenu.js 的
  * 菜单数据内联为一个普通脚本，彻底摆脱构建工具。
  * 依赖：jquery、common.js 需在本文件之前加载；
- *      页面底部内联脚本定义的 getMenuData() 需在本文件的
- *      setTimeout 回调执行前就绪（时序上必然满足）。
+ *      页面底部内联脚本定义的 getMenuData() 执行晚于本文件
+ *      （本文件位于 <head>，body 解析期间事件循环可插入定时器），
+ *      故喂菜单数据前需轮询等待其就绪，实现见文件末尾。
  */
 
 // —— 菜单数据（原样取自 src/js/newMenu.js，2019-07-26 ad3fa4d）——
@@ -105,6 +106,13 @@ $(function () {
 });
 
 // —— 喂给页面底部 Vue 数据站（对应 home.js 的 getMenuData(MenuData)）——
-setTimeout(function () {
-    getMenuData(UGOSHOP_MENU);
-});
+// 原代码的 0ms setTimeout 在 <head> 中入队，会在解析到 body 底部内联脚本
+// 之前触发（ReferenceError: getMenuData is not defined），改为轮询等待就绪。
+function feedMenuData() {
+    if (typeof getMenuData === 'function') {
+        getMenuData(UGOSHOP_MENU);
+    } else {
+        setTimeout(feedMenuData, 10);
+    }
+}
+feedMenuData();
