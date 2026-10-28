@@ -21,4 +21,14 @@ export default defineConfig({
       },
     },
   },
+  // 生产构建本地预览（npm run preview -w app）同样代理 /api，无需 CORS
+  preview: {
+    port: 4173,
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:3001',
+        changeOrigin: true,
+      },
+    },
+  },
 })

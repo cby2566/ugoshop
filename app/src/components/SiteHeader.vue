@@ -2,6 +2,7 @@
   logo / 搜索 / 购物车区（原站 #header_logo 原样移植）。
   购物车入口与 badge 接线（阶段 6）：badge 显示条目数（原版 .mycart span，
   数据源为 car.php?flag=y 数组长度，重写收敛到 cart store），点击进 /cart。
+  logo 接线（收尾）：点击归首页（原版无链接，纯行为增强、视觉不变）。
 -->
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
@@ -14,14 +15,18 @@ const cart = useCartStore()
 function goCart() {
   void router.push('/cart')
 }
+
+function goHome() {
+  void router.push('/')
+}
 </script>
 
 <template>
   <article id="header_logo">
     <article class="header_logo con">
       <div class="lbox">
-        <img src="/museum/css-img/logo.png" height="46" width="206" alt="" />
-        <img src="/museum/css-img/logom.jpg" height="30" width="206" alt="" />
+        <img src="/museum/css-img/logo.png" height="46" width="206" alt="" @click="goHome" />
+        <img src="/museum/css-img/logom.jpg" height="30" width="206" alt="" @click="goHome" />
       </div>
       <div class="lsearch fl">
         <div class="sch">
