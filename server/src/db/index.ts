@@ -1,14 +1,16 @@
 import { mkdirSync } from 'node:fs'
-import { fileURLToPath, URL } from 'node:url'
+import { fileURLToPath, pathToFileURL, URL } from 'node:url'
 
-import Database from 'better-sqlite3'
-import { drizzle } from 'drizzle-orm/better-sqlite3'
+import { createClient } from '@libsql/client'
+import { drizzle } from 'drizzle-orm/libsql'
 
 import * as schema from './schema.js'
 
 const dataDir = fileURLToPath(new URL('../../data', import.meta.url))
 mkdirSync(dataDir, { recursive: true })
 
-export const dbPath = `${dataDir}/ugoshop.db`
-export const sqlite = new Database(dbPath)
-export const db = drizzle(sqlite, { schema })
+export const dbPath = fileURLToPath(new URL('../../data/ugoshop.db', import.meta.url))
+
+// libsql 本地 file 模式即标准 SQLite 文件（napi 二进制，跨 Node 大版本通用）
+export const client = createClient({ url: pathToFileURL(dbPath).href })
+export const db = drizzle(client, { schema })

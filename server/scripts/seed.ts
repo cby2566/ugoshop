@@ -36,9 +36,9 @@ const rows = raw.map((p) => ({
   legacyUrl: p.URL,
 }))
 
-db.delete(products).run()
-db.insert(products).values(rows).run()
+await db.delete(products)
+await db.insert(products).values(rows)
 
-const count = db.select().from(products).all().length
+const count = (await db.select().from(products)).length
 console.log(`种子完成：入库 ${count} 条商品（清空重灌，幂等）`)
 process.exit(0)

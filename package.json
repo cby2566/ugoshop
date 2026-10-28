@@ -6,6 +6,9 @@
     "app",
     "server"
   ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "concurrently -n server,app -c blue,green \"npm run dev -w server\" \"npm run dev -w app\"",
     "dev:server": "npm run dev -w server",
@@ -16,5 +19,8 @@
   },
   "devDependencies": {
     "concurrently": "^10.0.6"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.11.1": true
   }
 }

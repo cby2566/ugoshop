@@ -28,11 +28,13 @@ npm run dev      # 一条命令同时起双端
 
 注意：本机 Node 24 下 Vite 以 `localhost` 解析为 IPv6 单栈监听，请用 `http://localhost:5173` 访问，勿用 `127.0.0.1` 直连。
 
+环境要求：Node ≥ 20（nvm4w 20.19.1 实测通过）。原生件 @libsql 为 napi 构建、经 npm 仓库分发，`npm install` 无需代理、无需本地编译，换 Node 大版本也不用重装。
+
 ## 目录结构
 
 ```
 app/      Vue 3 + Vite + TS + Pinia + Vue Router + Element Plus（PC 端，不做移动端）
-server/   Fastify + TS + Drizzle ORM + SQLite（better-sqlite3）
+server/   Fastify + TS + Drizzle ORM + SQLite（@libsql/client，napi 二进制跨 Node 20/22/24）
 assets/   AI 生成的视觉资产（banner / 图标 / 商品主图）——前端 publicDir 直指此处，单一素材源
 doc/      需求底稿（PROJECT_SUMMARY / 当前功能列表 / 拯救计划 / products.json）
 ```
@@ -49,7 +51,7 @@ doc/      需求底稿（PROJECT_SUMMARY / 当前功能列表 / 拯救计划 / p
 ## 技术选型（已定）
 
 - 前端：Vue 3 + Vite + TypeScript + Pinia + Vue Router + Element Plus（PC 端，还原原站视觉基因；不做移动端）
-- 后端：Node.js + TypeScript + Fastify + SQLite + Drizzle ORM（真后端一步到位）
+- 后端：Node.js + TypeScript + Fastify + SQLite（@libsql/client，本地 file 模式即标准 SQLite 文件）+ Drizzle ORM（真后端一步到位）
 - 部署：先纯本地开发，成品阶段再议（NAS 挂载 / 静态托管）
 
 历史原点：2018 年 README 的重构计划——"初期使用 node.js 写接口"、"我都webpack了为什么不用vue"。这条分支就是当年那个未竟心愿的完工版。
