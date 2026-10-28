@@ -1,4 +1,4 @@
-import type { Product } from '@/types'
+import type { MenuCategory, Product } from '@/types'
 
 async function request<T>(path: string): Promise<T> {
   const res = await fetch(path)
@@ -10,4 +10,5 @@ async function request<T>(path: string): Promise<T> {
 
 export const api = {
   products: () => request<Product[]>('/api/products'),
+  menu: () => request<MenuCategory[]>('/api/menu'),
 }

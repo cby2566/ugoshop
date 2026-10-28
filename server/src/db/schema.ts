@@ -14,3 +14,21 @@ export const products = sqliteTable('products', {
   image: text('image'),
   legacyUrl: text('legacy_url'),
 })
+
+/**
+ * 首页分类菜单。数据原样取自 museum 的 newMenu.js（2019-07-26 ad3fa4d），
+ * icon 存原文件名（newsix_03.png 等），前端拼 /museum/css-img/ 前缀。
+ */
+export const categories = sqliteTable('categories', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  title: text('title').notNull(),
+  icon: text('icon').notNull(),
+  sort: integer('sort').notNull(),
+})
+
+export const categoryItems = sqliteTable('category_items', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  categoryId: integer('category_id').notNull(),
+  name: text('name').notNull(),
+  sort: integer('sort').notNull(),
+})

@@ -8,3 +8,9 @@ export interface Product {
   image: string | null
   legacyUrl: string | null
 }
+
+export interface MenuCategory {
+  title: string
+  icon: string
+  items: string[]
+}

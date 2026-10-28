@@ -1,0 +1,72 @@
+<!--
+  页脚三段（原站 footer 原样移植：广告图 / 帮助列表+二维码 / 版权信息）。
+-->
+<template>
+  <footer>
+    <div class="con footer_box">
+      <img src="/museum/img/footer_ad.jpg" height="102" width="1000" alt="" />
+    </div>
+    <div class="con footer_flist">
+      <dl>
+        <dt>新手上路</dt>
+        <dd><a href="">新用户注册</a></dd>
+        <dd><a href="">忘记密码</a></dd>
+        <dd><a href="">购物流程</a></dd>
+      </dl>
+      <dl>
+        <dt>支付配送</dt>
+        <dd><a href="">货到付款</a></dd>
+        <dd><a href="">支付宝</a></dd>
+        <dd><a href="">配送方式</a></dd>
+      </dl>
+      <dl>
+        <dt>会员服务</dt>
+        <dd><a href="">服务承诺</a></dd>
+        <dd><a href="">会员制度</a></dd>
+        <dd><a href="">积分制度</a></dd>
+        <dd><a href="">退换货原则</a></dd>
+      </dl>
+      <dl>
+        <dt>关于惠优品</dt>
+        <dd><a href="">企业介绍</a></dd>
+        <dd><a href="">联系我们</a></dd>
+        <dd><a href="">招商专区</a></dd>
+      </dl>
+      <dl class="flistdl2">
+        <dt class="fl"><img src="/museum/img/foot_ewm.jpg" height="80" width="80" alt="" />
+          <i class="font12">手机优品惠</i>
+          <em class="font13">（优购物）</em></dt>
+        <dd class="fl f2f"><img src="/museum/img/foot_dh.jpg" height="38" width="149" alt="" /></dd>
+      </dl>
+    </div>
+    <div class="footer_info">
+      <p class="footer-list"><a target="_blank" href="http://www.ugoshop.com">首页</a> |
+        <a target="_blank">关于优品惠</a> |
+        <a target="_blank">优购物</a> |
+        <a target="_blank">联系我们</a> |
+        <a target="_blank">招贤纳士</a> |
+        <a target="_blank">招商专区</a> |
+        <a target="_blank">供应商入口</a> |
+        <a target="_blank">新人培训</a> |
+        <a target="_blank">友情链接</a> |
+        <a target="_blank">网站地图</a> |
+        <a target="_blank">资讯中心</a> |
+        <a target="_blank">评论</a> |
+        <a target="_blank"> 图片</a>
+      </p>
+      <p class="copyright">优品_优品惠（优购物）全球优品特卖网站 专属于千万女性的优品特卖网站,优品_优品惠（优购物）电视购物官方网站,100%正品保证 支持货到付款.</p>
+      <p class="copyright">Copyright©2007-2017 &nbsp;  公司名称:北京优品惠网络科技有限公司    &nbsp;   公司地址:北京市北京经济技术开发区同济南路19号7幢2层C区   服务热线：400-707-0707</p>
+      <p class="footer-list copyright"> 统一社会信用代码:91110302339739621C  &nbsp;  ICP备案号:京ICP备15039150号-1   &nbsp;  食品流通许可证编号:JY11131010332635 &nbsp;
+        <a>营业执照</a>
+        <a>京网文(2017)10902-1271</a>
+        <a>增值业务经营许可证：京B2-20181380 </a>
+      </p>
+      <div style="margin:0 auto;text-align:center;">
+        <a style="display:inline-block;text-decoration:none;height:22px;line-height:22px;">
+          <img src="/museum/img/bei.png" style="float:left;">
+          <p style="float:left;margin: 0px 0px 0px 5px;" class="scss">京公网安备 11030102000055号</p>
+        </a>
+      </div>
+    </div>
+  </footer>
+</template>

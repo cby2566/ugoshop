@@ -4,7 +4,7 @@ Vue 3 重构线。从 museum 纪念线分叉，旧实现已清场，本分支从
 
 ## 当前状态
 
-脚手架就绪：monorepo 双包（app + server）全链路打通，20 条商品已入 SQLite，浏览器实测商品列表渲染正常。
+脚手架就绪；**首页已完成像素级复刻**（对照 museum 原版双开验证一致）。下一阶段：列表页 → 详情页 → 购物车。
 
 ## 分支格局
 
@@ -35,7 +35,8 @@ npm run dev      # 一条命令同时起双端
 ```
 app/      Vue 3 + Vite + TS + Pinia + Vue Router + Element Plus（PC 端，不做移动端）
 server/   Fastify + TS + Drizzle ORM + SQLite（@libsql/client，napi 二进制跨 Node 20/22/24）
-assets/   AI 生成的视觉资产（banner / 图标 / 商品主图）——前端 publicDir 直指此处，单一素材源
+assets/   视觉资产——AI 生成（banner/icon/product）+ museum 原版素材（/museum/，像素级复刻用）
+          前端 publicDir 直指此处，单一素材源
 doc/      需求底稿（PROJECT_SUMMARY / 当前功能列表 / 拯救计划 / products.json）
 ```
 
