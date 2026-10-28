@@ -2,7 +2,7 @@
   首页主体（原站 homepage.html .scroll_tu + #webmain 原样移植）。
   与原站的三处有意差异（其余像素级照搬）：
   - 主轮播：原站 myfocus 焦点图自始被注释、呈现为静态单图，此处按设计意图
-    以 luntu1-5 五图自动淡入轮播等效还原（1704×340，沿用 -352px 居中手法）
+    以 luntu1-5 五图自动淡入轮播等效还原（素材实为 1920×340，原站顶格显示）
   - 今日限时购右侧小卡 d_prev/d_next：原站 fnuxn 仅定义未接线，此处接上
     （left 在 0 与 -473px 间切换，与原实现数值一致）
   - 全球尖货 .item_img 背景为失效外链，已在移植 CSS 内本地等效替换
@@ -212,5 +212,12 @@ function toggleLun() {
 }
 .scroll_tu .ugoshop-carousel li.on {
   opacity: 1;
+}
+/* 移植 CSS 的 .scroll_tu li img { margin-left:-352px } 在原站是从未命中的死规则
+   （原站 img 实为 .pic 直接子元素、顶格显示），rebuild 的 li 结构使其首次生效
+   曾致图片左移 352px、右侧露出 .scroll_tu 的粉色底。此处覆盖回 0，
+   恢复原站实际渲染：图片顶格、右缘随视口宽度自然裁切。 */
+.scroll_tu .ugoshop-carousel li img {
+  margin-left: 0;
 }
 </style>
