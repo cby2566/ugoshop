@@ -2,13 +2,13 @@
  * 移植自 museum src/css/itemDetailed.css（2018 原版原样）。
  * 改动仅两处：
  *  - 资源引用 img/（css/img/）→ /museum/css-img/、../img/ → /museum/img/
- *  - 原文末尾 `main { height: 5103px }` 为硬编码整页高度（内容溢出仍可见、
- *    且全局 main 选择器会波及首页 #webmain），rebuild 去除该值、页面自然撑开
+ *  - 原文 `body { font-size: 12px; height: 100% }` 为页面级规则；rebuild 全局引入
+ *    CSS 会波及登录/注册等页（原版按页引入、各页 body 字号本就不同），
+ *    限定到详情页根容器 main.con 等效还原，height:100% 无实际布局作用随迁去除
  */
 
-body {
-  font-size: 12px;
-  height: 100%; }
+main.con {
+  font-size: 12px; }
 
 .loc {
   padding: 20px 0;

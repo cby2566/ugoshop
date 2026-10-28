@@ -32,3 +32,13 @@ export const categoryItems = sqliteTable('category_items', {
   name: text('name').notNull(),
   sort: integer('sort').notNull(),
 })
+
+/**
+ * 用户表。字段映射自原 f_user 契约：fid→id、fname→username、fpws→password。
+ * 原版密码明文存储且接口直接返回明文比对；重写定为 scrypt 哈希（salt:hex 格式）。
+ */
+export const users = sqliteTable('users', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  username: text('username').notNull().unique(),
+  password: text('password').notNull(),
+})

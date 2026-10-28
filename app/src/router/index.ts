@@ -3,6 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import ItemView from '@/views/ItemView.vue'
 import ListView from '@/views/ListView.vue'
+import LoginView from '@/views/LoginView.vue'
+import RegView from '@/views/RegView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -10,6 +12,8 @@ const router = createRouter({
     { path: '/', name: 'home', component: HomeView },
     { path: '/list', name: 'list', component: ListView },
     { path: '/item/:sid', name: 'item', component: ItemView },
+    { path: '/login', name: 'login', component: LoginView },
+    { path: '/reg', name: 'reg', component: RegView },
   ],
 })
 

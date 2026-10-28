@@ -1,7 +1,15 @@
 import type { MenuCategory, Product, ProductPage } from '@/types'
 
-async function request<T>(path: string): Promise<T> {
-  const res = await fetch(path)
+async function request<T>(
+  path: string,
+  options?: { method?: 'GET' | 'POST'; body?: unknown },
+): Promise<T> {
+  const method = options?.method ?? 'GET'
+  const res = await fetch(path, {
+    method,
+    headers: method === 'POST' ? { 'Content-Type': 'application/json' } : undefined,
+    body: method === 'POST' ? JSON.stringify(options?.body ?? {}) : undefined,
+  })
   if (!res.ok) {
     throw new Error(`请求失败：${res.status} ${res.statusText}`)
   }
@@ -28,4 +36,20 @@ export const api = {
   },
   product: (sid: number): Promise<Product> => request<Product>(`/api/products/${sid}`),
   menu: (): Promise<MenuCategory[]> => request<MenuCategory[]>('/api/menu'),
+
+  // —— 认证（阶段 5；原版 login.php 明文密码接口的哈希重写） ——
+  authCheck: (username: string): Promise<{ available: boolean }> =>
+    request<{ available: boolean }>(`/api/auth/check?username=${encodeURIComponent(username)}`),
+  register: (username: string, password: string): Promise<{ ok: true; username: string }> =>
+    request<{ ok: true; username: string }>('/api/auth/register', {
+      method: 'POST',
+      body: { username, password },
+    }),
+  login: (username: string, password: string): Promise<{ ok: true; username: string }> =>
+    request<{ ok: true; username: string }>('/api/auth/login', {
+      method: 'POST',
+      body: { username, password },
+    }),
+  logout: (): Promise<{ ok: true }> => request<{ ok: true }>('/api/auth/logout', { method: 'POST' }),
+  me: (): Promise<{ username: string }> => request<{ username: string }>('/api/auth/me'),
 }

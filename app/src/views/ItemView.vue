@@ -7,7 +7,8 @@
   - 加购：A 方案（登录才能加购）。原站未登录仅 alert 且不拦截、请求照发（bug），
     此处拦截提示；飞入动画（jquery-addShopping 两段 jQuery animate + 末尾
     location.reload()）按行为等价以 WAAPI 重写，reload 已按定案丢弃（阶段 6
-    由响应式购物车 badge 替代）；登录判断为阶段 5 登录功能的预留占位；
+    由响应式购物车 badge 替代）；登录判断已接 auth store（阶段 5 激活，
+    原站为 Cookie name），加购接口与 badge 更新留待阶段 6；
   - 数量：原站手输非数字会产生 NaN 不修正，此处统一修正为 ≥1 整数；
   - 静态展示位（面包屑/优惠文案/送至栏/详情长图/评论(50)/服务说明/大家都在看）
     为原站硬编码，原样保留。
@@ -19,10 +20,12 @@ import { ElMessage } from 'element-plus'
 
 import GoodsGallery from '@/components/GoodsGallery.vue'
 import { api } from '@/api/client'
+import { useAuthStore } from '@/stores/auth'
 import type { Product } from '@/types'
 
 const route = useRoute()
 const router = useRouter()
+const auth = useAuthStore()
 
 const product = ref<Product | null>(null)
 const error = ref<string | null>(null)
@@ -62,10 +65,9 @@ function fixQty() {
   qty.value = Number.isFinite(n) && n >= 1 ? n : 1
 }
 
-// —— 加入购物车（A 方案：登录才能加购） ——
-// 阶段 5 登录功能完成后接入真实会话判断（原站为 Cookie name）
+// —— 加入购物车（A 方案：登录才能加购；阶段 5 接入真实会话判断） ——
 function isLoggedIn(): boolean {
-  return false
+  return auth.me != null
 }
 
 function onAddCart(e: MouseEvent) {
