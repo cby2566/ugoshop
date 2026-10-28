@@ -2,6 +2,7 @@ import Fastify from 'fastify'
 import cookiePlugin from '@fastify/cookie'
 
 import { authRoutes } from './routes/auth.js'
+import { cartRoutes } from './routes/cart.js'
 import { healthRoutes } from './routes/health.js'
 import { menuRoutes } from './routes/menu.js'
 import { productRoutes } from './routes/products.js'
@@ -17,6 +18,7 @@ await app.register(healthRoutes)
 await app.register(productRoutes)
 await app.register(menuRoutes)
 await app.register(authRoutes)
+await app.register(cartRoutes)
 
 const port = Number(process.env.PORT ?? 3001)
 const host = process.env.HOST ?? '127.0.0.1'

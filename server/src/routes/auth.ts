@@ -33,6 +33,14 @@ function verifyPassword(plain: string, stored: string): boolean {
   return timingSafeEqual(Buffer.from(hash, 'hex'), test)
 }
 
+/** 从签名 cookie 解出当前登录用户名（未登录/签名无效返回 null） */
+export function getSessionUsername(app: FastifyInstance, request: FastifyRequest): string | null {
+  const raw = request.cookies?.[SESSION_COOKIE]
+  if (!raw) return null
+  const unsigned = app.unsignCookie(raw)
+  return unsigned.valid ? unsigned.value : null
+}
+
 export async function authRoutes(app: FastifyInstance) {
   // 注册页用户名即时唯一性检查（原版 login.php?fname 的可用性查询部分）
   app.get('/api/auth/check', async (request) => {
@@ -46,7 +54,7 @@ export async function authRoutes(app: FastifyInstance) {
 
   // 注册（原版 login.php?fname&psw 的 INSERT 部分）
   app.post('/api/auth/register', async (request, reply) => {
-    const body = request.body as { username?: string; password?: string }
+    const body = (request.body ?? {}) as { username?: string; password?: string }
     const username = (body.username ?? '').trim()
     const password = body.password ?? ''
 
@@ -66,7 +74,7 @@ export async function authRoutes(app: FastifyInstance) {
 
   // 登录（原版为前端拿明文密码比对 + Cookie 存用户名；此处服务端校验 + 签名会话）
   app.post('/api/auth/login', async (request, reply) => {
-    const body = request.body as { username?: string; password?: string }
+    const body = (request.body ?? {}) as { username?: string; password?: string }
     const username = (body.username ?? '').trim()
     const password = body.password ?? ''
 
@@ -92,14 +100,10 @@ export async function authRoutes(app: FastifyInstance) {
 
   // 当前登录态（原版各页 Cookie.get('name') 直读；此处走签名校验）
   app.get('/api/auth/me', async (request: FastifyRequest, reply) => {
-    const raw = request.cookies?.[SESSION_COOKIE]
-    if (!raw) {
+    const username = getSessionUsername(app, request)
+    if (!username) {
       return reply.code(401).send({ message: '未登录' })
     }
-    const unsigned = app.unsignCookie(raw)
-    if (!unsigned.valid || !unsigned.value) {
-      return reply.code(401).send({ message: '未登录' })
-    }
-    return reply.send({ username: unsigned.value })
+    return reply.send({ username })
   })
 }

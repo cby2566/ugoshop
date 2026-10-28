@@ -42,3 +42,14 @@ export const users = sqliteTable('users', {
   username: text('username').notNull().unique(),
   password: text('password').notNull(),
 })
+
+/**
+ * 购物车表。字段映射自原 car 契约：fid→user_id（改存 users.id）、sid→sid、sum→quantity。
+ * 原版按用户名子查询关联用户、向 car 表插入/更新，重写按 (user_id, sid) upsert 语义。
+ */
+export const cart = sqliteTable('cart', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: integer('user_id').notNull(),
+  sid: integer('sid').notNull(),
+  quantity: integer('quantity').notNull(),
+})

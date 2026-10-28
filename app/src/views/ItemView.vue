@@ -6,9 +6,8 @@
     （原站呈现空白页）；
   - 加购：A 方案（登录才能加购）。原站未登录仅 alert 且不拦截、请求照发（bug），
     此处拦截提示；飞入动画（jquery-addShopping 两段 jQuery animate + 末尾
-    location.reload()）按行为等价以 WAAPI 重写，reload 已按定案丢弃（阶段 6
-    由响应式购物车 badge 替代）；登录判断已接 auth store（阶段 5 激活，
-    原站为 Cookie name），加购接口与 badge 更新留待阶段 6；
+    location.reload()）按行为等价以 WAAPI 重写，reload 已按定案丢弃；加购接口
+    已接 POST /api/cart（阶段 6），badge 随 cart store 响应式更新；
   - 数量：原站手输非数字会产生 NaN 不修正，此处统一修正为 ≥1 整数；
   - 静态展示位（面包屑/优惠文案/送至栏/详情长图/评论(50)/服务说明/大家都在看）
     为原站硬编码，原样保留。
@@ -21,11 +20,13 @@ import { ElMessage } from 'element-plus'
 import GoodsGallery from '@/components/GoodsGallery.vue'
 import { api } from '@/api/client'
 import { useAuthStore } from '@/stores/auth'
+import { useCartStore } from '@/stores/cart'
 import type { Product } from '@/types'
 
 const route = useRoute()
 const router = useRouter()
 const auth = useAuthStore()
+const cart = useCartStore()
 
 const product = ref<Product | null>(null)
 const error = ref<string | null>(null)
@@ -75,14 +76,27 @@ function onAddCart(e: MouseEvent) {
     ElMessage('请先登录后购买')
     return
   }
-  void flyToCart(e)
+  // 注意：await 之后 e.currentTarget 会被浏览器置空，需同步捕获按钮元素
+  const btn = e.currentTarget as HTMLElement
+  void addAndFly(btn)
+}
+
+// 原版 feirufei：加购请求 + 飞入动画（原版动画结束 location.reload 刷新 badge，
+// 重写由 cart store 响应式更新顶栏/侧栏 badge）
+async function addAndFly(btn: HTMLElement) {
+  try {
+    await cart.add(sid.value, qty.value)
+  } catch (err) {
+    ElMessage(err instanceof Error ? err.message : '加入购物车失败')
+    return
+  }
+  void flyToCart(btn)
 }
 
 // 飞入购物车（原站 lib/jquery-addShopping.js 按行为等价重写）：
 // 白底红边小图自按钮飞向侧栏 .cbl（两段各 500ms），原版动画结束后
-// location.reload() 整页刷新已按定案丢弃；badge 更新留待阶段 6 响应式接入
-async function flyToCart(e: MouseEvent) {
-  const btn = e.currentTarget as HTMLElement
+// location.reload() 整页刷新已按定案丢弃（badge 由 cart store 响应式更新）
+async function flyToCart(btn: HTMLElement) {
   const end = document.querySelector('.cbl')
   if (!btn || !(end instanceof HTMLElement)) return
   const s = btn.getBoundingClientRect()

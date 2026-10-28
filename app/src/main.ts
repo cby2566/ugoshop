@@ -11,6 +11,7 @@ import './styles/foodlist_main.css'
 import './styles/itemdetailed.css'
 import './styles/magnifier.css'
 import './styles/reg.css'
+import './styles/car.css'
 
 import App from './App.vue'
 import router from './router'

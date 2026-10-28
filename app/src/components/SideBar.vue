@@ -2,15 +2,24 @@
   右下固定侧边栏（原站 .cbl 原样移植）。
   交互 Vue 化对应原 home.js 的 cbl()：hover 显示对应标签、离开隐藏；
   第 4 格点击回顶（原 $(document).scrollTop(0)）。
-  第 2 格购物车点击跳转暂缺（阶段 3 建 CarCar 页后接路由）。
+  第 2 格购物车 badge 与跳转（阶段 6）：数字为条目数（原版 .go_wu_che），点击进 /cart。
 -->
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+import { useCartStore } from '@/stores/cart'
 
 const active = ref(0)
+const router = useRouter()
+const cart = useCartStore()
 
 function scrollToTop() {
   document.documentElement.scrollTop = 0
+}
+
+function goCart() {
+  void router.push('/cart')
 }
 </script>
 
@@ -24,8 +33,8 @@ function scrollToTop() {
     </div>
     <div class="you" @mouseleave="active = 0">
       <div data-ce="1" @mouseenter="active = 1"></div>
-      <div data-ce="2" @mouseenter="active = 2">
-        <a class="go_wu_che">0</a>
+      <div data-ce="2" @mouseenter="active = 2" @click="goCart">
+        <a class="go_wu_che">{{ cart.count }}</a>
       </div>
       <div data-ce="3" @mouseenter="active = 3"></div>
       <div data-ce="4" @mouseenter="active = 4" @click="scrollToTop"></div>

@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import CartView from '@/views/CartView.vue'
 import HomeView from '@/views/HomeView.vue'
 import ItemView from '@/views/ItemView.vue'
 import ListView from '@/views/ListView.vue'
@@ -14,6 +15,7 @@ const router = createRouter({
     { path: '/item/:sid', name: 'item', component: ItemView },
     { path: '/login', name: 'login', component: LoginView },
     { path: '/reg', name: 'reg', component: RegView },
+    { path: '/cart', name: 'cart', component: CartView },
   ],
 })
 
