@@ -14,3 +14,9 @@ dist/
 # WorkBuddy 工作区（2026-10）
 .workbuddy/
 .temp/
+
+# rebuild 本地数据与构建产物
+server/data/*.db
+server/data/*.db-journal
+.env
+*.tsbuildinfo
