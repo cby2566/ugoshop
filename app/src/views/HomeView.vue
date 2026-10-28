@@ -1,15 +1,21 @@
 <!--
   首页主体（原站 homepage.html .scroll_tu + #webmain 原样移植）。
-  与原站的三处有意差异（其余像素级照搬）：
+  与原站的有意差异（其余像素级照搬）——2026-10 起本分支按「新站优化」方向演进，
+  不再受原站 HTML/JS 缺陷束缚（原站 fnuxn()/gongg() 调用均被注释、从未生效）：
   - 主轮播：原站 myfocus 焦点图自始被注释、呈现为静态单图，此处按设计意图
     以 luntu1-5 五图自动淡入轮播等效还原（素材实为 1920×340，原站顶格显示）
-  - 今日限时购右侧小卡 d_prev/d_next：原站 fnuxn 仅定义未接线，此处接上
-    （left 在 0 与 -473px 间切换，与原实现数值一致）
+  - 今日限时购小卡 d_prev/d_next：接上原站未接线的 fnuxn 意图，并修正步进为
+    -480px（2×240px 数学对齐，原值 -473 会致第二屏起点偏 8px、右缘裁 8px）；
+    卡片渲染两份共 8 张实现两屏各满 3 张无缝切换（仿公告回绕手法）
+  - 今日限时购倒计时：接上原站从未驱动的走秒（归零后重置 24:00:00 常活）
+  - 今日限时购左卡（每日一品）排版修正：原站白卡内容高 339 > 307 溢出 17px，
+    价格压在渐变红底上且被「立减」标签遮挡，「每日一品」徽章压商品图 logo，
+    全部在增补样式中修正（见文末 style 注释）
   - 全球尖货 .item_img 背景为失效外链，已在移植 CSS 内本地等效替换
   楼层商品文案（双立人/SKG 养生壶/一品玉红枣等）为原站硬编码展示位，原样保留。
 -->
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 // —— 主轮播（luntu1-5，对应原站五张焦点图素材）——
 const banners = [1, 2, 3, 4, 5].map((n) => `/museum/img/luntu${n}.jpg`)
@@ -23,11 +29,32 @@ onMounted(() => {
 })
 onBeforeUnmount(() => window.clearInterval(timer))
 
-// —— 今日限时购小卡轮播（原站 fnuxn：left 在 0 与 -473px 之间切换）——
+// —— 今日限时购小卡轮播（fnuxn 意图，两屏切换）——
+// 步进 -480 = 2×240（单卡布局步进 240：盒宽 241 含 border-left 1，相邻卡以
+// margin-left:-1 重叠边线，故步进为 240 而非 241），第二屏起点与第一屏完全同位；
+// 卡片渲染两份（后份仅作回绕、aria-hidden），两屏各满 3 张
+const cardLoop = [1, 2, 3, 4, 5, 6, 7, 8].map((n) => (n > 4 ? n - 4 : n))
+const LUN_STEP = -480
 const lunLeft = ref(0)
 function toggleLun() {
-  lunLeft.value = lunLeft.value === 0 ? -473 : 0
+  lunLeft.value = lunLeft.value === 0 ? LUN_STEP : 0
 }
+
+// —— 今日限时购倒计时（原站硬编码 18:23:01 从未走秒，接上归零重置 24h 常活）——
+const DAY = 24 * 3600
+const remain = ref(18 * 3600 + 23 * 60 + 1)
+let remainTimer: number | undefined
+const pad = (n: number) => String(n).padStart(2, '0')
+const dHour = computed(() => pad(Math.floor(remain.value / 3600)))
+const dMinute = computed(() => pad(Math.floor((remain.value % 3600) / 60)))
+const dSecond = computed(() => pad(remain.value % 60))
+
+onMounted(() => {
+  remainTimer = window.setInterval(() => {
+    remain.value = remain.value > 0 ? remain.value - 1 : DAY
+  }, 1000)
+})
+onBeforeUnmount(() => window.clearInterval(remainTimer))
 </script>
 
 <template>
@@ -89,7 +116,7 @@ function toggleLun() {
         </span>
         <div class="day_djs fr">本场还剩
           <div class="fr livetime-day">
-            <span class="d_hour">18</span> : <span class="d_minute">23</span> : <span class="d_second">01</span>
+            <span class="d_hour">{{ dHour }}</span> : <span class="d_minute">{{ dMinute }}</span> : <span class="d_second">{{ dSecond }}</span>
           </div>
         </div>
       </article>
@@ -118,7 +145,7 @@ function toggleLun() {
           <div class="d_prev" @click="toggleLun"></div>
           <div class="d_next" @click="toggleLun"></div>
           <ul :style="{ left: lunLeft + 'px' }">
-            <li v-for="n in 4" :key="n">
+            <li v-for="(c, i) in cardLoop" :key="i" :aria-hidden="i >= 4 ? 'true' : undefined">
               <div>
                 <div class="lunImg">
                   <img src="/museum/img/goods1.jpg" alt="" />
@@ -219,5 +246,28 @@ function toggleLun() {
    恢复原站实际渲染：图片顶格、右缘随视口宽度自然裁切。 */
 .scroll_tu .ugoshop-carousel li img {
   margin-left: 0;
+}
+
+/* ———— 今日限时购左卡（每日一品）排版修正（新站优化，2026-10）————
+   原站白卡内容区高 307px，内容实需 339px（图 200 + 宣传语 34 + 两行标题 48 +
+   价格 57）：价格溢出白卡 17px 压在渐变红底上、被「立减」标签遮挡右半；
+   「每日一品」徽章（top:17）压住商品图顶部 logo。
+   修正后内容总高 ≈ 290px，价格完整收回白卡并远离标签；
+   徽章上移骑白卡上边线（top:2），下缘与商品图顶部相切不重叠。
+   选择器加 #webmain 前缀抬高特异性，不依赖注入顺序。 */
+#webmain .webz .zhuti .everyDay > div .everyDayimg {
+  height: 170px;
+}
+#webmain .webz .zhuti .everyDay > div .everyDay_tjs {
+  padding-top: 6px;
+}
+#webmain .webz .zhuti .everyDay > div .everyDay_price {
+  padding-top: 8px;
+}
+#webmain .webz .zhuti .everyDay > div .everyDay_price em {
+  line-height: 28px;
+}
+#webmain .webz .zhuti .everyDay > div .everyDay_tag2 {
+  top: 2px;
 }
 </style>
