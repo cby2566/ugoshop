@@ -7,6 +7,7 @@ import 'element-plus/dist/index.css'
 import './styles/base.css'
 import './styles/homepage.css'
 import './styles/homepage_main.css'
+import './styles/foodlist_main.css'
 
 import App from './App.vue'
 import router from './router'

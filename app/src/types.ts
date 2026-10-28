@@ -9,6 +9,15 @@ export interface Product {
   legacyUrl: string | null
 }
 
+/** 分页响应（GET /api/products），page 从 1 起，默认每页 6 条（原版行为） */
+export interface ProductPage {
+  items: Product[]
+  total: number
+  page: number
+  pageSize: number
+  totalPages: number
+}
+
 export interface MenuCategory {
   title: string
   icon: string
