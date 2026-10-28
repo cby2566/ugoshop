@@ -10,16 +10,23 @@
     与任何逻辑，视觉保留、点击等效无操作（仅高亮）；
   - 评论数 40 / 评价"好好好" / 积分 0 为原站模板硬编码展示位，原样保留；
   - 当前页码高亮为真分页新增视觉（站内主色 #00bfcf）。
-  卡片点击跳详情（原站 location.href itemDetailed.html?id=sid）留待详情页阶段接线。
+  - 卡片点击跳详情已按原站行为接上（原站 location.href itemDetailed.html?id=sid → /item/:sid）。
 -->
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 
 import { useProductsStore } from '@/stores/products'
 import type { Product } from '@/types'
 
 const store = useProductsStore()
+const router = useRouter()
+
+// 原站行为：卡片点击跳 itemDetailed.html?id=sid；此处接 /item/:sid（阶段 4 接线）
+function goDetail(sid: number) {
+  void router.push(`/item/${sid}`)
+}
 
 // 分类 icon 导航（原站硬编码展示位，原样保留；icon 素材已迁至 /museum/img/）
 const classifications = [
@@ -86,7 +93,7 @@ async function withFeedback(action: () => Promise<void>) {
 
   <div id="flist_t">
     <div class="flist_t con">
-      <div class="goods" v-for="p in store.items" :key="p.id">
+      <div class="goods" v-for="p in store.items" :key="p.id" @click="goDetail(p.sid)">
         <img class="goods_img" :src="productImage(p)" />
         <span class="goods_name">{{ p.name }}</span>
         <div class="qian_comment">

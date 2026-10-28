@@ -8,6 +8,8 @@ import './styles/base.css'
 import './styles/homepage.css'
 import './styles/homepage_main.css'
 import './styles/foodlist_main.css'
+import './styles/itemdetailed.css'
+import './styles/magnifier.css'
 
 import App from './App.vue'
 import router from './router'

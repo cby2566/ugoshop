@@ -1,0 +1,109 @@
+/*
+ * 移植自 museum src/lib/cs.css（2018 原版原样）。
+ * 内容即原版 MagnifierF 放大镜组件样式（含缩略图带与翻页箭头）。
+ * 唯一适配：原版 ul 移动靠 buttur 20ms 递归缓动，重写版由组件内联
+ * style 绑定 + 此处给 ul 本体补一条等效 transition（原文件仅作用于 ul 的后代）。
+ */
+
+#MagnifierWrap2 {
+  position: relative;
+  width: 350px;
+}
+
+.MagnifierMain {
+  position: relative;
+}
+
+.MagnifierMain img {
+  width: 100%;
+}
+
+.MagnifierDrag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #ccc;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  cursor: move;
+}
+
+.MagnifierPop {
+  position: absolute;
+  top: 0px;
+  /* rebuild 增补：原版靠 JS 动态压低右列 z-index 让放大层盖住商品信息区，
+     此处静态置高即可等效（goods_look 为 z-index:1） */
+  z-index: 9;
+  overflow: hidden;
+}
+
+.MagnifierImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.spec-items {
+  position: relative;
+  width: 292px;
+  height: 69px;
+  overflow: hidden;
+  padding-top: 10px;
+  margin: 0 auto;
+}
+
+.spec-items ul {
+  width: 500%;
+  position: absolute;
+  top: 10px;
+  left: 0;
+  transition: left 0.3s;
+}
+
+.spec-items li {
+  width: 65px;
+  height: 65px;
+  float: left;
+  overflow: hidden;
+  margin-right: 5px;
+  border: 2px solid #fff;
+  cursor: pointer;
+}
+
+.spec-items li.on {
+  border: 2px solid #000;
+}
+
+.spec-items li img {
+  width: 100%;
+}
+
+span.spe_leftBtn,
+span.spe_rightBtn {
+  position: absolute;
+  bottom: 0px;
+  display: block;
+  width: 20px;
+  height: 69px;
+  line-height: 69px;
+  font-family: "黑体";
+  text-align: center;
+  font-size: 30px;
+  color: #ddd;
+  cursor: default;
+  background-color: #f9f9f9;
+}
+
+span.on {
+  background-color: #ccc;
+  color: #999;
+  cursor: pointer;
+}
+
+span.spe_leftBtn {
+  left: 0;
+}
+
+span.spe_rightBtn {
+  right: -49px;
+}
