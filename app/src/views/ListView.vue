@@ -15,8 +15,9 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
+import { toast } from '@/utils/toast'
 
+import '@/styles/foodlist_main.css'
 import { useProductsStore } from '@/stores/products'
 import type { Product } from '@/types'
 
@@ -41,7 +42,7 @@ const classifications = [
 
 onMounted(async () => {
   await store.fetchList()
-  if (store.error) ElMessage.error(store.error)
+  if (store.error) toast(store.error, 'error')
 })
 
 // 原站渲染规则：${URL}_1.jpg（URL 形如 ../img/goods2），素材在 /museum/img/
@@ -53,7 +54,7 @@ function productImage(p: Product): string {
 
 async function withFeedback(action: () => Promise<void>) {
   await action()
-  if (store.error) ElMessage.error(store.error)
+  if (store.error) toast(store.error, 'error')
 }
 </script>
 
@@ -98,7 +99,7 @@ async function withFeedback(action: () => Promise<void>) {
         <span class="goods_name">{{ p.name }}</span>
         <div class="qian_comment">
           <span class="goods_qian fl">￥{{ p.price }}</span>
-          <span class="goods_comment fr">评论<a href="">40</a>条</span>
+          <span class="goods_comment fr">评论<a href="javascript:void(0)">40</a>条</span>
         </div>
         <div class="ping">
           <div class="fl"><span>免邮费</span></div>
@@ -126,3 +127,10 @@ async function withFeedback(action: () => Promise<void>) {
   </div>
   <div class="goods_b"></div>
 </template>
+
+<style>
+/* I1：列表页商品卡可点击光标（rebuild 增补） */
+.flist_t .goods {
+  cursor: pointer;
+}
+</style>

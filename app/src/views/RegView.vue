@@ -7,14 +7,15 @@
   - 验证码：随机 4 位字符 + skewX 变形 + 随机背景/文字色 + 点击刷新，均按原版
     funRoma/skew 行为等效重写；原版 rColor 生成非法色值（fromCharCode(NaN)），
     按设计意图修正为合法随机色；
-  - 各项校验失败提示由 alert 改为 ElMessage；
+  - 各项校验失败提示由 alert 改为 toast（T1：替代 ElMessage 的轻量消息）；
   - 其余静态展示位（条款链接、温馨提示、横幅文案）原样保留。
 -->
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
+import { toast } from '@/utils/toast'
 
+import '@/styles/reg.css'
 import { api } from '@/api/client'
 
 const router = useRouter()
@@ -106,30 +107,30 @@ function onCodeInput() {
 // —— 提交（原版 .submit：勾选条款 + flag 全过 → 注册 → 跳登录页） ——
 async function submit() {
   if (!agreed.value) {
-    ElMessage('请先阅读并同意服务承诺')
+    toast('请先阅读并同意服务承诺')
     return
   }
   if (!usernameOk.value) {
-    ElMessage('用户名输入有误')
+    toast('用户名输入有误')
     return
   }
   if (!pwdOk.value) {
-    ElMessage('密码输入有误')
+    toast('密码输入有误')
     return
   }
   if (!rpwdOk.value) {
-    ElMessage('密码重复输入有误')
+    toast('密码重复输入有误')
     return
   }
   if (!codeOk.value) {
-    ElMessage('验证码输入有误')
+    toast('验证码输入有误')
     return
   }
   try {
     await api.register(tel.value, rpwd.value)
     void router.push('/login')
   } catch (e) {
-    ElMessage(e instanceof Error ? e.message : '注册失败')
+    toast(e instanceof Error ? e.message : '注册失败')
   }
 }
 
@@ -139,15 +140,15 @@ onMounted(refreshCode)
 <template>
   <div class="con">
     <div class="reg_lg">
-      <a href=""></a>
+      <a href="javascript:void(0)"></a>
       <span></span>
-      <p>已经注册，<a href="" @click.prevent="router.push('/login')">现在登录》</a></p>
+      <p>已经注册，<a href="javascript:void(0)" @click.prevent="router.push('/login')">现在登录》</a></p>
     </div>
     <div class="reg_til">
       <div class="reg1 fl">
         <span><i></i>注册/TV激活</span>
       </div>
-      <p class="fr">如有疑问请点击<a href="">帮助中心</a>，或拨打客服热线：<span>400-707-0707</span></p>
+      <p class="fr">如有疑问请点击<a href="javascript:void(0)">帮助中心</a>，或拨打客服热线：<span>400-707-0707</span></p>
     </div>
 
     <!-- 内框 -->
@@ -163,7 +164,7 @@ onMounted(refreshCode)
           <input type="text" class="tel" v-model="tel" @input="onUsernameInput" @blur="onUsernameBlur" />
           <input type="text" class="yanz" v-model="yanz" @input="onCodeInput" />
           <span :style="{ background: codeStyle.background, color: codeStyle.color }">
-            <a href="javascript:;" @click="refreshCode" :style="{ transform: `skewX(${codeSkew})`, display: 'block' }">{{ code }}</a>
+            <a href="javascript:void(0)" @click="refreshCode" :style="{ transform: `skewX(${codeSkew})`, display: 'block' }">{{ code }}</a>
           </span>
           <input type="password" class="pwd" v-model="pwd" @input="onPwdInput" @blur="onPwdBlur" />
           <input type="password" class="r_pwd" v-model="rpwd" @input="onRpwdInput" @blur="onPwdBlur" />
@@ -176,7 +177,7 @@ onMounted(refreshCode)
       <div class="asd">
         <div class="tiaokuan">
           <input type="checkbox" v-model="agreed" />
-          <span>我已阅读并同意<a href="" class="tiaokuan1">《优品惠用户服务承诺》</a></span>
+          <span>我已阅读并同意<a href="javascript:void(0)" class="tiaokuan1">《优品惠用户服务承诺》</a></span>
         </div>
         <div class="submit" @click="submit"></div>
         <div class="login_tips">

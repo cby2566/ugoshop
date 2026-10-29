@@ -10,13 +10,14 @@
     重写按定案丢弃，优惠金额显示 0、实付=勾选商品小计之和；「共 X 件商品」沿原版
     按勾选行数计；
   - 删除：原版 del.php 后 location.reload() 整页刷新，重写 DELETE 响应式更新；
-  - 「立即结算」为原站死链接（href=""），视觉保留、无操作。
+  - 「立即结算」为原站死链接（href=""），视觉保留、无操作（I3 待接线）。
 -->
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
+import { toast } from '@/utils/toast'
 
+import '@/styles/car.css'
 import { useAuthStore } from '@/stores/auth'
 import { useCartStore } from '@/stores/cart'
 import type { CartItem } from '@/api/client'
@@ -74,7 +75,7 @@ async function changeQty(item: CartItem, quantity: number) {
   try {
     await store.updateQuantity(item.sid, quantity)
   } catch (e) {
-    ElMessage(e instanceof Error ? e.message : '更新失败')
+    toast(e instanceof Error ? e.message : '更新失败')
   }
 }
 
@@ -91,7 +92,7 @@ async function del(item: CartItem) {
   try {
     await store.remove(item.sid)
   } catch (e) {
-    ElMessage(e instanceof Error ? e.message : '删除失败')
+    toast(e instanceof Error ? e.message : '删除失败')
   }
 }
 
@@ -108,7 +109,7 @@ onMounted(async () => {
   // 直接访问 /cart 时登录态会话校验可能尚未完成（App 壳层异步初始化），先确保就绪
   if (!auth.loaded) await auth.fetchMe()
   if (!auth.me) {
-    ElMessage('请先登录')
+    toast('请先登录')
     void router.replace('/login')
     return
   }
@@ -149,10 +150,10 @@ onMounted(async () => {
             <div class="c_meg">
               <dl>
                 <dt>
-                  <a href="javascript:;"><img :src="productImage(item)" width="78" height="78" /></a>
+                  <a href="javascript:void(0)"><img :src="productImage(item)" width="78" height="78" /></a>
                 </dt>
                 <dd>
-                  <p class="m_tit"><a href="javascript:;">{{ item.name }}</a></p>
+                  <p class="m_tit"><a href="javascript:void(0)">{{ item.name }}</a></p>
                 </dd>
               </dl>
             </div>
@@ -206,7 +207,7 @@ onMounted(async () => {
             <span>全选</span>
           </div>
           <div class="fr">
-            <a href="" class="balance_bt" @click.prevent>立即结算</a>
+            <a href="javascript:void(0)" class="balance_bt" @click.prevent>立即结算</a>
           </div>
         </div>
       </div>

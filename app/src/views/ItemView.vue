@@ -15,8 +15,10 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
+import { toast } from '@/utils/toast'
 
+import '@/styles/itemdetailed.css'
+import '@/styles/magnifier.css'
 import GoodsGallery from '@/components/GoodsGallery.vue'
 import { api } from '@/api/client'
 import { useAuthStore } from '@/stores/auth'
@@ -45,7 +47,7 @@ async function fetchProduct() {
     product.value = await api.product(sid.value)
   } catch (e) {
     error.value = e instanceof Error ? e.message : String(e)
-    ElMessage('商品不存在或已下架')
+    toast('商品不存在或已下架')
     void router.replace('/list')
   }
 }
@@ -73,7 +75,7 @@ function isLoggedIn(): boolean {
 
 function onAddCart(e: MouseEvent) {
   if (!isLoggedIn()) {
-    ElMessage('请先登录后购买')
+    toast('请先登录后购买')
     return
   }
   // 注意：await 之后 e.currentTarget 会被浏览器置空，需同步捕获按钮元素
@@ -87,7 +89,7 @@ async function addAndFly(btn: HTMLElement) {
   try {
     await cart.add(sid.value, qty.value)
   } catch (err) {
-    ElMessage(err instanceof Error ? err.message : '加入购物车失败')
+    toast(err instanceof Error ? err.message : '加入购物车失败')
     return
   }
   void flyToCart(btn)
@@ -200,11 +202,11 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
           <span>数量</span>
         </div>
         <div class="fl">
-          <div class="emqs"></div><a href=""></a><br />
+          <div class="emqs"></div><a href="javascript:void(0)"></a><br />
           <div class="box">
-            <a href="javascript:;" id="lessBtn" @click="minus">-</a>
+            <a href="javascript:void(0)" id="lessBtn" @click="minus">-</a>
             <input id="goodsNumberInput" type="text" v-model="qty" @blur="fixQty" />
-            <a href="javascript:;" id="addBtn" @click="plus">+</a>
+            <a href="javascript:void(0)" id="addBtn" @click="plus">+</a>
           </div>
         </div>
       </div>

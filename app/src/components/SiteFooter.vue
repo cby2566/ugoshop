@@ -9,28 +9,28 @@
     <div class="con footer_flist">
       <dl>
         <dt>新手上路</dt>
-        <dd><a href="">新用户注册</a></dd>
-        <dd><a href="">忘记密码</a></dd>
-        <dd><a href="">购物流程</a></dd>
+        <dd><a href="javascript:void(0)">新用户注册</a></dd>
+        <dd><a href="javascript:void(0)">忘记密码</a></dd>
+        <dd><a href="javascript:void(0)">购物流程</a></dd>
       </dl>
       <dl>
         <dt>支付配送</dt>
-        <dd><a href="">货到付款</a></dd>
-        <dd><a href="">支付宝</a></dd>
-        <dd><a href="">配送方式</a></dd>
+        <dd><a href="javascript:void(0)">货到付款</a></dd>
+        <dd><a href="javascript:void(0)">支付宝</a></dd>
+        <dd><a href="javascript:void(0)">配送方式</a></dd>
       </dl>
       <dl>
         <dt>会员服务</dt>
-        <dd><a href="">服务承诺</a></dd>
-        <dd><a href="">会员制度</a></dd>
-        <dd><a href="">积分制度</a></dd>
-        <dd><a href="">退换货原则</a></dd>
+        <dd><a href="javascript:void(0)">服务承诺</a></dd>
+        <dd><a href="javascript:void(0)">会员制度</a></dd>
+        <dd><a href="javascript:void(0)">积分制度</a></dd>
+        <dd><a href="javascript:void(0)">退换货原则</a></dd>
       </dl>
       <dl>
         <dt>关于惠优品</dt>
-        <dd><a href="">企业介绍</a></dd>
-        <dd><a href="">联系我们</a></dd>
-        <dd><a href="">招商专区</a></dd>
+        <dd><a href="javascript:void(0)">企业介绍</a></dd>
+        <dd><a href="javascript:void(0)">联系我们</a></dd>
+        <dd><a href="javascript:void(0)">招商专区</a></dd>
       </dl>
       <dl class="flistdl2">
         <dt class="fl"><img src="/museum/img/foot_ewm.jpg" height="80" width="80" alt="" />

@@ -12,8 +12,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { ElMessage } from 'element-plus'
+import { toast } from '@/utils/toast'
 
+import '@/styles/reg.css'
 import { useAuthStore } from '@/stores/auth'
 
 const router = useRouter()
@@ -26,7 +27,7 @@ const shakeBorder = ref(false)
 
 async function login() {
   if (!username.value || !password.value) {
-    ElMessage('请输入用户名和密码')
+    toast('请输入用户名和密码')
     return
   }
   try {
@@ -45,11 +46,11 @@ async function login() {
 <template>
   <div class="con">
     <div class="reg_lg2">
-      <a href=""></a>
+      <a href="javascript:void(0)"></a>
       <span></span>
     </div>
     <div class="reg_til">
-      <p class="fr logti">如有疑问请点击<a href="">帮助中心</a>，或拨打客服热线：<span>400-707-0707</span></p>
+      <p class="fr logti">如有疑问请点击<a href="javascript:void(0)">帮助中心</a>，或拨打客服热线：<span>400-707-0707</span></p>
     </div>
 
     <!-- 内框 -->
@@ -70,7 +71,7 @@ async function login() {
         <i class="ik2"></i>
       </div>
       <div class="ktips" :style="{ display: ktips ? 'block' : 'none' }">您输入的用户名或密码错误，请核对后重新输入！</div>
-      <input type="checkbox" /><span>记住用户名</span><a href="" class="wangle">忘记密码？</a>
+      <input type="checkbox" /><span>记住用户名</span><a href="javascript:void(0)" class="wangle">忘记密码？</a>
       <div class="log_sit" @click="login"></div>
 
       <div class="login_tips">
@@ -80,7 +81,7 @@ async function login() {
       <div class="feng">
         <div class="land_item3">
           <span>您还不是优品惠的会员？</span>
-          <a href="" @click.prevent="router.push('/reg')">免费注册 &gt;</a>
+          <a href="javascript:void(0)" @click.prevent="router.push('/reg')">免费注册 &gt;</a>
         </div>
         <div class="land_item3">
           <span>电话订购过优品惠商品？</span>

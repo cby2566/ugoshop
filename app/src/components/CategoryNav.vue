@@ -35,10 +35,10 @@ onMounted(() => menu.fetchMenu())
             <div class="stat">
               <img :src="'/museum/css-img/' + v.icon" height="42" width="30" alt="" />
             </div>
-            <a href="">{{ v.title }}</a>
+            <a href="javascript:void(0)">{{ v.title }}</a>
           </div>
           <div class="kindsbot">
-            <a href="" v-for="(j, x) of v.items" :key="x">{{ j }}</a>
+            <a href="javascript:void(0)" v-for="(j, x) of v.items" :key="x">{{ j }}</a>
           </div>
         </div>
       </div>

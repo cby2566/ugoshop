@@ -77,7 +77,7 @@ onBeforeUnmount(() => window.clearInterval(remainTimer))
           <span class="webz_title_tt"><i>TV</i>直播</span>
           网站下单立减10元
         </span>
-        <a href="" class="toTv fr"></a>
+        <a href="javascript:void(0)" class="toTv fr"></a>
       </article>
       <article class="webz_live">
         <article class="webz_live_list">
@@ -91,7 +91,7 @@ onBeforeUnmount(() => window.clearInterval(remainTimer))
                     <span>20:20:20</span>
                   </div>
                 </div>
-                <a href="">
+                <a href="javascript:void(0)">
                   <p class="live_tit">
                     <em class="img_tit">
                       双立人287周年狂欢限量套装
