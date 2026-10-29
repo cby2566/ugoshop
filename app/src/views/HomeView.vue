@@ -14,13 +14,19 @@
   - 全球尖货 .item_img 背景为失效外链，已在移植 CSS 内本地等效替换
   新站化（N1/N2/N4，2026-10）：
   - TV 直播区：原站三卡同文同图（双立人文案 + ￥2998 + 家纺场景图，图文不匹配），
-    且倒计时 20:20:20 静态不走；现取 3 件真商品差异化（图/名/价匹配），倒计时
-    接走秒（复用限时购逻辑），卡片点击跳详情；
-  - 全球尖货：原站四卡一品玉红枣完全重复 + 「1970已购买」数字突兀，现取 4 件
-    真商品差异化，已购买数取真实销量，卡片点击跳详情；
+    且倒计时 20:20:20 静态不走；现取 3 件真商品差异化，倒计时接走秒（复用
+    限时购逻辑），卡片点击跳详情；
+  - 全球尖货：原站四卡一品玉红枣完全重复 + 「1970已购买」数字突兀，现为
+    2 行 8 卡网格（grid 4 列等分），已购买数取真实销量，卡片点击跳详情；
   - 品类促销：原站仅标题空模块，补 6 个品类入口卡（复用列表页分类 icon 素材），
     点击跳 /list?category=；
-  - 今日限时购（左卡 + 小卡轮播 + 倒计时）为 1a47646 已修部分，保持原样。
+  - 图文匹配工程（2026-10-29）：楼层卡图与商品主图同源（products.json 的
+    image / legacyUrl），TV 三卡（蜂蜜/挂烫机/翡翠）、尖货八卡（香米/珍珠/
+    巧克力/燕麦/饼干/果酱/牛排/小方包）、每日一品（goods_midea 实为挂烫机，
+    文案由原站「SKG 养生壶」错配改为贴图）、限时购小卡（goods1 实为黑巧
+    克力，文案由原站「干洗剂」错配改为贴图）全部图文一致；
+  - 今日限时购排版（左卡布局 + 小卡两屏轮播 + 倒计时走秒）为 1a47646 已修
+    部分，结构保持原样。
 -->
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
@@ -97,27 +103,26 @@ onMounted(() => {
 onBeforeUnmount(() => window.clearInterval(tvTimer))
 
 // —— N1/N2：楼层真商品数据（取自 doc/products.json，展示位静态定义，不额外发请求）——
-// 原站三卡同文同图 / 四卡一品玉红枣完全重复，新站化为真商品差异化；
-// 图与商品一一对应（legacyUrl 系列 goods2~goods6 的 _1 图），消除图文不匹配
-// —— TV 直播卡（同页另一楼层，避开重复选品）
+// 图文匹配工程（2026-10-29）：楼层图与商品主图一一对应（products.json 的
+// image/legacyUrl 同源），消除原站「楼层图与商品无关」的硬编码图文错配；
+// 选品避开同页跨楼层重复（TV 3 件、尖货 8 件互不重叠）
+// —— TV 直播卡（中高价大件贴 TV 购物调性）
 const tvShows = [
-  { sid: 2,  name: '双立人 德国不锈钢刀具七件套', price: 399, img: '/museum/img/goods3_1.jpg' },
-  { sid: 11, name: '飞利浦空气炸锅 大容量 5L',   price: 499, img: '/museum/img/goods2_1.jpg' },
-  { sid: 3,  name: '进口澳洲安格斯牛排 10片装',  price: 158, img: '/museum/img/goods4_1.jpg' },
+  { sid: 10, name: '新西兰麦卢卡蜂蜜 250g×3罐', price: 529,  img: '/museum/img/goods3_1.jpg' },
+  { sid: 2,  name: '美的立式蒸汽挂烫机 香芋紫',  price: 399,  img: '/museum/img/goods_midea.jpg' },
+  { sid: 6,  name: '天然冰种飘花翡翠手镯',        price: 1299, img: '/product/jade-bracelet.jpg' },
 ]
-// —— 全球尖货：8 卡 2 行 4 列网格（用户需求）；选品保持进口/全球品牌调性，
-// 已购买数取真实 sales；图取各自商品系列图（goodsN_1/_2）序号错开，
-// 保证 8 卡视觉不重复且与商品系列一致（goods 系列仅 5 套，同楼层 8 卡必然
-// 跨系列复用，用系列二图错开避免同图相邻）；「直降」标签保持第 2 卡位置
+// —— 全球尖货：8 卡 2 行 4 列网格（用户需求）；选品全为进口/全球品牌贴楼层
+// 调性，已购买数取真实 sales；图与商品主图同源，「直降」标签保持第 2 卡位置
 const globalGoods = [
-  { sid: 9,  name: '泰国香米 10斤装',            price: 79,  img: '/museum/img/goods5_1.jpg', abstract: '泰国原装进口 茉莉香米',        purchased: 1880, tag: '',    regular: 95 },
-  { sid: 8,  name: '全自动家用咖啡机',           price: 899, img: '/museum/img/goods4_1.jpg', abstract: '15bar 意式萃取 现磨现煮',    purchased: 720,  tag: '直降', regular: 1079 },
-  { sid: 16, name: '保温杯 316不锈钢 500ml',   price: 159, img: '/museum/img/goods2_1.jpg', abstract: '316L医用级不锈钢 真空断热', purchased: 510,  tag: '',    regular: 189 },
-  { sid: 17, name: '橄榄油 特级初榨 750ml×2', price: 128, img: '/museum/img/goods3_1.jpg', abstract: '西班牙原瓶进口 第一道冷榨',   purchased: 890,  tag: '',    regular: 155 },
-  { sid: 18, name: '运动蓝牙耳机 挂颈式',       price: 349, img: '/museum/img/goods4_2.jpg', abstract: '磁吸入耳 IPX5防水',          purchased: 630,  tag: '',    regular: 399 },
-  { sid: 19, name: '珍珠项链 淡水正圆强光',     price: 899, img: '/museum/img/goods5_2.jpg', abstract: '正圆强光珍珠 附权威证书',    purchased: 145,  tag: '',    regular: 1099 },
-  { sid: 5,  name: '女士真皮单肩小方包',        price: 499, img: '/museum/img/goods6_1.jpg', abstract: '头层牛皮 复古五金件',        purchased: 320,  tag: '',    regular: 599 },
-  { sid: 7,  name: '玻尿酸补水面膜 30片',      price: 89,  img: '/museum/img/goods3_2.jpg', abstract: '小分子玻尿酸 敏感肌可用',   purchased: 1560, tag: '',    regular: 109 },
+  { sid: 9,  name: '泰国茉莉香米 10斤装',              price: 79,  img: '/product/jasmine-rice.jpg',  abstract: '泰国原装进口 茉莉香米',        purchased: 1880, tag: '',    regular: 95 },
+  { sid: 19, name: '淡水珍珠项链 7.5-8mm 正圆强光',    price: 899, img: '/product/pearl-necklace.jpg', abstract: '正圆强光珍珠 附分级证书',    purchased: 145,  tag: '直降', regular: 1099 },
+  { sid: 1,  name: '奥地利 Zotter 100% 黑巧克力排块',   price: 79,  img: '/museum/img/goods1.jpg',     abstract: '奥地利进口 100%秘鲁可可',   purchased: 1280, tag: '',    regular: 99 },
+  { sid: 18, name: '新西兰进口亚麻籽即食燕麦片 500g',  price: 89,  img: '/museum/img/goods2_1.jpg',    abstract: '新西兰原产 低GI代餐',       purchased: 630,  tag: '',    regular: 109 },
+  { sid: 11, name: '英国 Go ahead 酸奶涂层夹心饼干',    price: 128, img: '/museum/img/goods6_1.jpg',    abstract: '英国进口 酸奶涂层夹心',      purchased: 980,  tag: '',    regular: 159 },
+  { sid: 13, name: 'BEBE 特级草莓果酱 340g',            price: 59,  img: '/museum/img/goods5_1.jpg',    abstract: '57%高果肉含量 进口果酱',    purchased: 1320, tag: '',    regular: 79 },
+  { sid: 3,  name: '进口澳洲安格斯原切牛排 10片装',    price: 158, img: '/product/beef-steak.jpg',   abstract: '原肉整切 冷链直达',          purchased: 2140, tag: '',    regular: 199 },
+  { sid: 5,  name: '女士真皮单肩小方包 酒红色',        price: 499, img: '/product/leather-bag.jpg',  abstract: '头层牛皮 复古五金件',        purchased: 320,  tag: '',    regular: 599 },
 ]
 
 // —— N4：品类促销入口（原站空模块，补 6 个频道分类卡，icon 素材同列表页 tab）——
@@ -224,14 +229,14 @@ function goCategoryList(title: string) {
             <div class="everyDayimg">
               <img src="/museum/img/goods_midea.jpg"/>
             </div>
-            <p class="everyDay_tjs"> 滋补养生 一壶多用</p>
-            <p class="everyDay_tt">SKG 多功能养生壶 加厚硼硅玻璃1.8L保温电水壶 8056C 咖啡色  共同</p>
+            <p class="everyDay_tjs"> 轻松熨烫 衣物除皱</p>
+            <p class="everyDay_tt">美的立式蒸汽挂烫机 多档位面料调节 可升降衣架 香芋紫</p>
             <p class="everyDay_price">
-              <span>￥149</span>
-              <em>￥199</em>
+              <span>￥399</span>
+              <em>￥499</em>
             </p>
             <div class="everyDay_tag">
-              <span>立减<br />50元</span>
+              <span>立减<br />100元</span>
             </div>
             <div class="everyDay_tag2">
               <i></i><span>每日一品</span>
@@ -247,10 +252,10 @@ function goCategoryList(title: string) {
                 <div class="lunImg">
                   <img src="/museum/img/goods1.jpg" alt="" />
                 </div>
-                <p class="everyDay_tt">澳洲进口喜运亨羽绒服毛呢干洗剂清洗剂衣物免水洗家用大衣布艺去油清洁剂50ml*2</p>
+                <p class="everyDay_tt">奥地利进口 Zotter 100%秘鲁可可 黑巧克力排块 纯素无乳糖零蔗糖</p>
                 <p class="everyDay_price">
-                  <span>￥149</span>
-                  <em>￥199</em>
+                  <span>￥79</span>
+                  <em>￥109</em>
                 </p>
               </div>
             </li>

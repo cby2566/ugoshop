@@ -26,9 +26,27 @@ const MENU_DATA: { title: string; item: string[]; icon: string }[] = [
   { title: '美肤靓妆', item: ['面部护理', '洗护护理', '美容仪器', '身体护理', '彩妆香水'], icon: 'newsix_11.png' },
 ]
 
-// 已有 AI 商品主图的商品（assets/product/，前端经 publicDir 直取）
+// AI 商品主图（assets/product/，前端经 publicDir 直取）。
+// 图文匹配工程（2026-10-29）：13 件 AI 生成白底主图逐张视觉质检合格后接入；
+// 贴 legacy 系列图的商品（8/10/11/13/18 → goods3~goods6 同一商品多角度系列）
+// 不设 image，列表/相册沿用 legacyUrl 拼图；goods1/goods_midea 无 _1/_2/_3 系列
+// 后缀，以 image 直指原图路径。
 const imageOverrides: Record<number, string> = {
+  1: '/museum/img/goods1.jpg',
+  2: '/museum/img/goods_midea.jpg',
+  3: '/product/beef-steak.jpg',
+  4: '/product/buckwheat-pillow.jpg',
+  5: '/product/leather-bag.jpg',
   6: '/product/jade-bracelet.jpg',
+  7: '/product/goji-berry.jpg',
+  9: '/product/jasmine-rice.jpg',
+  12: '/product/cotton-bedding.jpg',
+  14: '/product/bone-china.jpg',
+  15: '/product/hair-care-set.jpg',
+  16: '/product/thermo-cup.jpg',
+  17: '/product/yellow-millet.jpg',
+  19: '/product/pearl-necklace.jpg',
+  20: '/product/storage-box.jpg',
 }
 
 const rawPath = fileURLToPath(new URL('../../doc/products.json', import.meta.url))

@@ -38,9 +38,12 @@ const product = ref<Product | null>(null)
 const error = ref<string | null>(null)
 const sid = computed(() => Number(route.params.sid))
 
-// 原站渲染规则：${URL}_1/_2/_3.jpg 三图系列，素材已迁至 /museum/img/
+// 原站渲染规则：${URL}_1/_2/_3.jpg 三图系列，素材已迁至 /museum/img/。
+// 图文匹配工程（2026-10）：有 AI 主图（image）的商品相册为单图；
+// 贴 legacy 系列图的商品沿用 _1/_2/_3 三图相册（原站系列即同商品多角度）
 const galleryImgs = computed(() => {
   if (!product.value) return []
+  if (product.value.image) return [product.value.image]
   const base = (product.value.legacyUrl ?? '').split('/').pop() ?? ''
   return [1, 2, 3].map((n) => `/museum/img/${base}_${n}.jpg`)
 })
@@ -74,10 +77,10 @@ function goCategory(category: string) {
 }
 
 // N6：「大家都在看」真商品卡（取 doc/products.json 销量 TOP2，静态展示位定位
-// 同首页楼层，不额外发请求），点击跳对应详情
+// 同首页楼层，不额外发请求），点击跳对应详情；图同商品主图（图文匹配工程）
 const alsoLikes = [
-  { sid: 3, name: '进口澳洲安格斯牛排 10片装', price: 158, img: '/museum/img/goods4_1.jpg' },
-  { sid: 9, name: '泰国香米 10斤装', price: 79, img: '/museum/img/goods5_1.jpg' },
+  { sid: 3, name: '进口澳洲安格斯原切牛排 10片装', price: 158, img: '/product/beef-steak.jpg' },
+  { sid: 9, name: '泰国茉莉香米 10斤装', price: 79, img: '/product/jasmine-rice.jpg' },
 ]
 
 // —— 数量选择器（原站：减到 1 为止、加无上限） ——
