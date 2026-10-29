@@ -278,7 +278,10 @@ function goCategoryList(title: string) {
           <span class="webz_title_tt"><i></i>全球尖货</span>
         </span>
       </article>
-      <!-- 主体 -->
+      <!-- 主体（N2 客观重构：原站 ul 1020 固定宽一行仅容三卡、第 4 卡孤悬二行
+           （3+1 断裂），li 全 float 无清浮动致 ul/容器实测高度 0；卡内 span>p
+           非法嵌套 + absolute 悬浮直降标签 + visibility:hidden 空占位。改 flex
+           一行四卡等分版心 + 语义化价格两行，视觉基因保留，差异详见文末样式） -->
       <article class="item_list_box">
         <ul>
           <li v-for="g in globalGoods" :key="g.sid" @click="goDetail(g.sid)">
@@ -287,20 +290,14 @@ function goCategoryList(title: string) {
               <p class="img_title">{{ g.name }}</p>
               <p class="img_abstract">{{ g.abstract }}</p>
               <div class="img_qian">
-                <span class="fl img_qian_price"><i>￥</i>{{ g.price }}</span>
-                <span class="sale_price" v-if="g.tag">
-                  <p>
-                    <em>{{ g.tag }}</em>
-                  </p>
-                  <span>平日价</span><em><i>￥</i>{{ g.regular }}</em>
-                </span>
-                <span class="sale_price" style="visibility:hidden;" v-else>
-                  <p>
-                    <em></em>
-                  </p>
-                  <span>平日价</span><em><i>￥</i>{{ g.regular }}</em>
-                </span>
-                <span class="fr img_qian_purchased"><i>{{ g.purchased }}</i>已购买</span>
+                <div class="qian_main">
+                  <span class="img_qian_price"><i>￥</i>{{ g.price }}</span>
+                  <span v-if="g.tag" class="sale_tag">{{ g.tag }}</span>
+                </div>
+                <div class="qian_sub">
+                  <span class="regular_price">平日价<i>￥</i><em>{{ g.regular }}</em></span>
+                  <span class="img_qian_purchased"><i>{{ g.purchased }}</i>已购买</span>
+                </div>
               </div>
             </div>
           </li>
@@ -407,6 +404,86 @@ function goCategoryList(title: string) {
 /* ———— N2：全球尖货卡接跳详情补手型光标（hover 红边为原站样式） ———— */
 #webmain .webz .item_list_box ul li {
   cursor: pointer;
+}
+
+/* ———— N2 客观重构（2026-10 复查）：全球尖货模块布局修复 ————
+   原站移植 CSS 的客观缺陷（非风格差异）：
+   ① ul 固定 width:1020px 溢出 1000px 版心，每卡实占 340px（含 20 右 margin），
+     一行仅容 3 张，第 4 张孤悬第二行，右侧约 680px 空白（3+1 断裂）；
+   ② li 全 float 且无清浮动，实测 ul 与 item_list_box 高度均塌陷为 0，
+     页脚未叠压纯靠巧合；
+   ③ li 固定 height:452 + overflow:hidden，内容增高即被静默裁切；
+   ④ span.sale_price 内嵌 p（HTML 非法嵌套），「直降」靠 absolute top:-16px
+     悬浮 hack，非直降卡整块 visibility:hidden 空元素占位。
+   重构：flex 一行四卡等分版心（gap 12、等高拉伸），item_img 宽自适应卡宽
+   （aspect-ratio 保持正方不变形），价格区改语义两行流式布局；hover 红边、
+   26px 现价、红胶囊标签、划线平日价、灰已购买等视觉基因全部保留。 */
+#webmain .webz .item_list_box ul {
+  display: flex;
+  gap: 12px;
+  width: auto; /* 覆盖原 1020px 固定宽，回归版心 1000px */
+}
+#webmain .webz .item_list_box ul li {
+  float: none;
+  flex: 1;
+  display: flex;
+  width: auto;
+  height: auto; /* 解除 452 固定高，四卡 flex 等高 */
+  margin: 20px 0 0; /* 顶部楼层间隔保留，右 margin 交由 gap 接管 */
+}
+#webmain .webz .item_list_box ul li .item_box {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+#webmain .webz .item_list_box ul li .item_box .item_img {
+  width: auto; /* 原 298 固定宽 → 自适应卡宽 */
+  height: auto;
+  aspect-ratio: 1 / 1; /* 商品图为正方，保持不变形 */
+}
+#webmain .webz .item_list_box ul li .item_box .img_qian {
+  margin-top: 10px;
+}
+#webmain .webz .item_list_box ul li .item_box .img_qian .qian_main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#webmain .webz .item_list_box ul li .item_box .img_qian .qian_main .img_qian_price {
+  margin-right: 0; /* 间距由 gap 接管 */
+}
+#webmain .webz .item_list_box ul li .item_box .img_qian .sale_tag {
+  display: inline-block;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 6px;
+  border-radius: 9px;
+  background: #ff504a;
+  color: #fff;
+  font-size: 12px;
+}
+#webmain .webz .item_list_box ul li .item_box .img_qian .qian_sub {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 6px;
+  font-size: 12px;
+}
+#webmain .webz .item_list_box ul li .item_box .img_qian .qian_sub .regular_price {
+  color: #999;
+}
+#webmain .webz .item_list_box ul li .item_box .img_qian .qian_sub .regular_price i {
+  margin-right: 1px;
+}
+#webmain .webz .item_list_box ul li .item_box .img_qian .qian_sub .regular_price em {
+  text-decoration: line-through; /* 仅划线数字，「平日价」文案不划 */
+}
+#webmain .webz .item_list_box ul li .item_box .img_qian .qian_sub .img_qian_purchased {
+  margin-top: 0; /* 覆盖原 float 版 margin-top:9 */
+  color: #666;
+}
+#webmain .webz .item_list_box ul li .item_box .img_qian .qian_sub .img_qian_purchased i {
+  color: #f70800;
 }
 
 /* ———— N4：品类促销楼层（原站空模块补齐，2026-10）————
