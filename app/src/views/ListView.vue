@@ -6,16 +6,16 @@
     与真分页（#P_fan），页码修正为正序（原版 3-i 生成倒序页码 0-3，属 bug）；
   - 价格排序两态 toggle（升↔降，与 museum 实测一致），
     箭头复用原站 .jg_pai/.jg_pai2 雪碧图位；
-  - 其余查找项（销量/上架时间等）与自营/商家 checkbox：原站无对应数据维度
-    与任何逻辑，视觉保留、点击等效无操作（仅高亮）；
   - 评论数 40 / 评价"好好好" / 积分 0 为原站模板硬编码展示位，原样保留；
-  - 当前页码高亮为真分页新增视觉（站内主色 #00bfcf）。
-  - 卡片点击跳详情已按原站行为接上（原站 location.href itemDetail.html?id=sid → /item/:sid）。
-  - I2 搜索：路由 ?q= 关键词透传 /api/products（name/brand ilike），无结果给空态；
-    h1 标题跟随关键词（D1 落地后扩展分类）；I7 加载中/空态。
+  - 当前页码高亮为真分页新增视觉（站内主色 #00cf）。
+  - 卡片点击跳详情已按原站行为接上（→ /item/:sid）。
+  - I2 搜索：路由 ?q= 关键词透传，无结果给空态，h1 跟随关键词；
+  - D1 分类 tab：7 个 icon 接真过滤（?category=，全部商品不过滤），active 高亮；
+  - D2 查找项：今日推荐/销量=sales 降序、上架时间=created_at 降序、特惠=price 升序；
+  - I7 加载中/空态。
 -->
 <script setup lang="ts">
-import { computed, onMounted, watch } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { toast } from '@/utils/toast'
 
@@ -32,7 +32,7 @@ function goDetail(sid: number) {
   void router.push(`/item/${sid}`)
 }
 
-// 分类 icon 导航（原站硬编码展示位，原样保留；icon 素材已迁至 /museum/img/）
+// D1：分类 tab（7 项 = 全部商品 + 6 频道；icon 素材已迁至 /museum/img/）
 const classifications = [
   { icon: '/museum/img/menuimg_03.png', title: '全部商品' },
   { icon: '/museum/img/icon_a_93.png', title: '进口食品' },
@@ -42,16 +42,30 @@ const classifications = [
   { icon: '/museum/img/icon_a_822.png', title: '酒水茶饮' },
   { icon: '/museum/img/icon_a_1245.png', title: '生鲜食品' },
 ]
+const activeCategory = ref('全部商品')
 
-/** 同步路由 ?q= 到 store（搜索关键词） */
-function syncKeyword() {
-  store.setKeyword(typeof route.query.q === 'string' ? route.query.q : '')
+function onCategory(title: string) {
+  if (title === activeCategory.value) return
+  activeCategory.value = title
+  store.setCategory(title === '全部商品' ? '' : title)
+  void load()
 }
 
-/** 列表标题：I2 搜索态显示关键词，默认保持原站标题 */
+/** 同步路由 query（?q= 搜索 / ?category= 分类）到 store */
+function syncFilters() {
+  const q = typeof route.query.q === 'string' ? route.query.q : ''
+  const c = typeof route.query.category === 'string' ? route.query.category : ''
+  store.setKeyword(q)
+  store.setCategory(c)
+  activeCategory.value = c || '全部商品'
+}
+
+/** 列表标题：搜索态 > 分类态 > 原站默认「进口食品」 */
 const listTitle = computed(() => {
-  const kw = typeof route.query.q === 'string' ? route.query.q : ''
-  return kw ? `搜索：${kw}` : '进口食品'
+  const q = typeof route.query.q === 'string' ? route.query.q : ''
+  if (q) return `搜索：${q}`
+  if (activeCategory.value !== '全部商品') return activeCategory.value
+  return '进口食品'
 })
 
 async function load() {
@@ -60,15 +74,15 @@ async function load() {
 }
 
 onMounted(async () => {
-  syncKeyword()
+  syncFilters()
   await load()
 })
 
-// 列表页内再次搜索（同路由 query 变化）时刷新
+// 列表页内再次搜索/分类变化（同路由 query 变化）时刷新
 watch(
-  () => route.query.q,
+  () => [route.query.q, route.query.category] as const,
   async () => {
-    syncKeyword()
+    syncFilters()
     await load()
   },
 )
@@ -89,7 +103,13 @@ async function withFeedback(action: () => Promise<void>) {
 <template>
   <div class="classify">
     <div id="div1" class="con clearfix">
-      <div class="nav_zz" v-for="c in classifications" :key="c.title">
+      <div
+        class="nav_zz"
+        v-for="c in classifications"
+        :key="c.title"
+        :class="{ cur: activeCategory === c.title }"
+        @click="onCategory(c.title)"
+      >
         <img :src="c.icon" height="60" width="80" alt="" />
         <span>{{ c.title }}</span>
       </div>
@@ -102,15 +122,15 @@ async function withFeedback(action: () => Promise<void>) {
       <div class="list_nav_l fl">
         <ul>
           <li style="pointer-events: none;">快速查找：</li>
-          <li @click="withFeedback(store.resetOrder)"><span>今日推荐</span></li>
+          <li :class="{ on: store.activeLook === 'recommend' }" @click="withFeedback(() => store.lookup('recommend'))"><span>今日推荐</span></li>
           <li style="pointer-events: none;"><b>|</b></li>
-          <li @click="withFeedback(store.resetOrder)"><span>销量</span></li>
-          <li @click="withFeedback(store.resetOrder)"><span>上架时间</span></li>
+          <li :class="{ on: store.activeLook === 'sales' }" @click="withFeedback(() => store.lookup('sales'))"><span>销量</span></li>
+          <li :class="{ on: store.activeLook === 'created' }" @click="withFeedback(() => store.lookup('created'))"><span>上架时间</span></li>
           <li :class="{ paipai: store.priceActive }" @click="withFeedback(store.togglePrice)">
             <span id="jg_pai" :class="store.priceDesc ? 'jg_pai2' : 'jg_pai'">价格</span>
           </li>
           <li style="pointer-events: none;"><b>|</b></li>
-          <li @click="withFeedback(store.resetOrder)"><span>特惠</span></li>
+          <li :class="{ on: store.activeLook === 'deal' }" @click="withFeedback(() => store.lookup('deal'))"><span>特惠</span></li>
         </ul>
       </div>
       <div class="list_nav_r fr">
@@ -169,5 +189,16 @@ async function withFeedback(action: () => Promise<void>) {
   text-align: center;
   color: #999;
   font-size: 14px;
+}
+/* D1：分类 tab 选中态（主色文字 + 下划线）；D2：查找项选中态（主色文字） */
+.nav_zz {
+  cursor: pointer;
+}
+.nav_zz.cur span {
+  color: #00bfcf;
+  font-weight: 700;
+}
+.foot_list_nav .list_nav_l li.on span {
+  color: #00bfcf;
 }
 </style>

@@ -1,14 +1,15 @@
 import type { FastifyInstance } from 'fastify'
-import { asc, count, desc, eq, like, or } from 'drizzle-orm'
+import { and, asc, count, desc, eq, like, or } from 'drizzle-orm'
 
 import { db } from '../db/index.js'
 import { products } from '../db/schema.js'
 
 /**
  * 商品接口。对应原站 ulist2.php 的三种 flag（s 全量 / d 分页 / i 单查），
- * 以现代 REST 语义重写：分页/排序/关键词走查询参数，单查走路径参数。
+ * 以现代 REST 语义重写：分页/排序/关键词/分类走查询参数，单查走路径参数。
  * 原版每页 6 条（LIMIT page*6），此处 pageSize 默认值保持 6。
  * I2：q 参数对 name/brand 做 like 模糊匹配（Drizzle 参数化，防注入）。
+ * D1：category 精确过滤；D2：sort 支持 sales/created_at 降序。
  */
 export async function productRoutes(app: FastifyInstance) {
   app.get('/api/products', async (request) => {
@@ -18,6 +19,7 @@ export async function productRoutes(app: FastifyInstance) {
       sort?: string
       order?: string
       q?: string
+      category?: string
     }
 
     const pageRaw = Number.parseInt(q.page ?? '', 10)
@@ -25,13 +27,17 @@ export async function productRoutes(app: FastifyInstance) {
     const page = Number.isFinite(pageRaw) && pageRaw >= 1 ? pageRaw : 1
     const pageSize = Number.isFinite(sizeRaw) && sizeRaw >= 1 && sizeRaw <= 100 ? sizeRaw : 6
 
-    // 默认按 sid 升序（原版默认序）；sort=price 时按价格，order 控制升降
+    // 默认按 sid 升序（原版默认序）；price 两态；D2：sales/created_at 降序
     const orderExpr =
       q.sort === 'price'
         ? q.order === 'desc'
           ? desc(products.price)
           : asc(products.price)
-        : asc(products.sid)
+        : q.sort === 'sales'
+          ? desc(products.sales)
+          : q.sort === 'created_at'
+            ? desc(products.createdAt)
+            : asc(products.sid)
 
     // I2：关键词过滤（名称或品牌模糊匹配；空关键词不过滤）。
     // 注意：libsql 本地 file 模式为标准 SQLite，不支持 ilike（turso 扩展），
@@ -41,11 +47,18 @@ export async function productRoutes(app: FastifyInstance) {
       ? or(like(products.name, `%${keyword}%`), like(products.brand, `%${keyword}%`))
       : undefined
 
-    const [{ total }] = await db.select({ total: count() }).from(products).where(keywordExpr)
+    // D1：分类精确过滤（空=不过滤）
+    const category = (q.category ?? '').trim()
+    const categoryExpr = category ? eq(products.category, category) : undefined
+
+    const whereExpr =
+      keywordExpr && categoryExpr ? and(keywordExpr, categoryExpr) : keywordExpr ?? categoryExpr
+
+    const [{ total }] = await db.select({ total: count() }).from(products).where(whereExpr)
     const items = await db
       .select()
       .from(products)
-      .where(keywordExpr)
+      .where(whereExpr)
       .orderBy(orderExpr)
       .limit(pageSize)
       .offset((page - 1) * pageSize)

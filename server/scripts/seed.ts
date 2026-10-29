@@ -11,6 +11,9 @@ interface RawProduct {
   PRICE: number
   URL: string
   SCON: string
+  CATEGORY?: string | null
+  SALES?: number
+  CREATED_AT?: string
 }
 
 // 首页分类菜单（原样取自 museum 的 newMenu.js，2019-07-26 ad3fa4d）
@@ -44,6 +47,10 @@ const rows = raw.map((p) => ({
   description: p.SCON,
   image: imageOverrides[p.SID] ?? null,
   legacyUrl: p.URL,
+  // D1/D2：分类（null=未分类）与销量/上架时间（ms 时间戳）
+  category: p.CATEGORY ?? null,
+  sales: p.SALES ?? 0,
+  createdAt: p.CREATED_AT ? new Date(p.CREATED_AT).getTime() : 0,
 }))
 
 await db.delete(products)

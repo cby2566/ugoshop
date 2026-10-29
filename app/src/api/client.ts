@@ -19,11 +19,13 @@ async function request<T>(
 export interface ProductQuery {
   page?: number
   pageSize?: number
-  /** sid=默认序，price=按价格（原版唯一实现了维度的排序） */
-  sort?: 'sid' | 'price'
+  /** sid=默认序；price=价格两态（原版唯一实现了维度的排序）；D2：sales/created_at 降序 */
+  sort?: 'sid' | 'price' | 'sales' | 'created_at'
   order?: 'asc' | 'desc'
-  /** 关键词（name/brand ilike 模糊匹配，I2 搜索） */
+  /** 关键词（name/brand like 模糊匹配，I2 搜索） */
   q?: string
+  /** 分类精确过滤（D1 列表页分类 tab；空=不过滤） */
+  category?: string
 }
 
 /** 购物车行（JOIN 商品信息，对应原版 car.php?flag=g） */
@@ -50,6 +52,7 @@ export const api = {
     if (query.sort != null) qs.set('sort', query.sort)
     if (query.order != null) qs.set('order', query.order)
     if (query.q != null && query.q !== '') qs.set('q', query.q)
+    if (query.category != null && query.category !== '') qs.set('category', query.category)
     const suffix = qs.toString()
     return request<ProductPage>(`/api/products${suffix ? `?${suffix}` : ''}`)
   },

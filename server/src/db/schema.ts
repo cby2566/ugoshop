@@ -3,6 +3,8 @@ import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core'
 /**
  * 商品表。字段映射自原 mock-api.js 的 ulist 契约（doc/products.json 为底稿）：
  * SID→sid, SNAME→name, STAG→brand, PRICE→price, SCON→description, URL→legacyUrl
+ * D1：category 列表页分类（对齐 6 个频道 tab，null=未分类）；
+ * D2：sales=销量、createdAt=上架时间戳（ms），供列表页排序维度。
  */
 export const products = sqliteTable('products', {
   id: integer('id').primaryKey({ autoIncrement: true }),
@@ -13,6 +15,9 @@ export const products = sqliteTable('products', {
   description: text('description').notNull(),
   image: text('image'),
   legacyUrl: text('legacy_url'),
+  category: text('category'),
+  sales: integer('sales').notNull().default(0),
+  createdAt: integer('created_at').notNull().default(0),
 })
 
 /**

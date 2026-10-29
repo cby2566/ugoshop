@@ -64,6 +64,11 @@ watch(
   { immediate: true },
 )
 
+// D3：面包屑——首页回 /、美食回 /list、分类接 /list?category=（依赖 D1 分类字段）
+function goCategory(category: string) {
+  void router.push({ path: '/list', query: { category } })
+}
+
 // —— 数量选择器（原站：减到 1 为止、加无上限） ——
 const qty = ref(1)
 function minus() {
@@ -174,15 +179,14 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 
 <template>
   <main class="con">
-    <!-- 面包屑（原站静态硬编码） -->
+    <!-- 面包屑（D3：首页/分类接真路由，末级为当前商品品牌） -->
     <div class="loc">
       <ul>
         <li>当前位置：</li>
-        <li>首页<i>></i></li>
-        <li>美食<i>></i></li>
-        <li>进口食品<i>></i></li>
-        <li>冲调饮品<i>></i></li>
-        <li>德国BLUBIO</li>
+        <li><a href="javascript:void(0)" @click="router.push('/')">首页</a><i>></i></li>
+        <li><a href="javascript:void(0)" @click="router.push('/list')">美食</a><i>></i></li>
+        <li v-if="product?.category"><a href="javascript:void(0)" @click="goCategory(product.category!)">{{ product.category }}</a><i>></i></li>
+        <li>{{ product?.brand || '商品详情' }}</li>
       </ul>
     </div>
 
