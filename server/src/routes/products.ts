@@ -10,6 +10,8 @@ import { products } from '../db/schema.js'
  * 原版每页 6 条（LIMIT page*6），此处 pageSize 默认值保持 6。
  * I2：q 参数对 name/brand 做 like 模糊匹配（Drizzle 参数化，防注入）。
  * D1：category 精确过滤；D2：sort 支持 sales/created_at 降序。
+ * admin 联动批次 2：固定过滤 status=1（后台下架 → 前台列表不可见、详情 404），
+ * 管理端查全量走 /api/admin/products；前台六页零改动。
  */
 export async function productRoutes(app: FastifyInstance) {
   app.get('/api/products', async (request) => {
@@ -51,8 +53,11 @@ export async function productRoutes(app: FastifyInstance) {
     const category = (q.category ?? '').trim()
     const categoryExpr = category ? eq(products.category, category) : undefined
 
-    const whereExpr =
-      keywordExpr && categoryExpr ? and(keywordExpr, categoryExpr) : keywordExpr ?? categoryExpr
+    // admin 联动批次 2：仅上架商品对 C 端可见
+    const conditions = [eq(products.status, 1)]
+    if (keywordExpr) conditions.push(keywordExpr)
+    if (categoryExpr) conditions.push(categoryExpr)
+    const whereExpr = and(...conditions)
 
     const [{ total }] = await db.select({ total: count() }).from(products).where(whereExpr)
     const items = await db
@@ -79,7 +84,11 @@ export async function productRoutes(app: FastifyInstance) {
     if (!Number.isFinite(id)) {
       return reply.code(400).send({ message: '商品 ID 应为数字' })
     }
-    const [item] = await db.select().from(products).where(eq(products.sid, id))
+    // admin 联动批次 2：下架商品详情 404（与列表可见性一致）
+    const [item] = await db
+      .select()
+      .from(products)
+      .where(and(eq(products.sid, id), eq(products.status, 1)))
     if (!item) {
       return reply.code(404).send({ message: '商品不存在' })
     }
