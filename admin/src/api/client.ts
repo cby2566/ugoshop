@@ -156,6 +156,10 @@ export const api = {
   adminProductRemove: (sid: number): Promise<{ ok: true }> =>
     request<{ ok: true }>(`/api/admin/products/${sid}`, { method: 'DELETE' }),
 
+  // —— 图片上传（admin 联动批次 4；蓝本：src-one goods.js multer /goods/upload 的断链修复）——
+  adminUpload: (dataUrl: string): Promise<{ url: string }> =>
+    request<{ url: string }>('/api/admin/upload', { method: 'POST', body: { dataUrl } }),
+
   // —— 公开数据（C 端接口复用）——
   menu: (): Promise<MenuCategory[]> => request<MenuCategory[]>('/api/menu'),
 

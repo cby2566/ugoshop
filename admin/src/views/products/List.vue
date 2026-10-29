@@ -38,6 +38,7 @@ const form = reactive({
   category: '',
   stock: 0,
   status: 1 as 0 | 1,
+  image: '',
 })
 
 /** 原站渲染规则（与 C 端 ListView productImage 同源）：image 优先，legacyUrl 拼系列图 */
@@ -102,6 +103,7 @@ function openCreate() {
     category: '',
     stock: 0,
     status: 1,
+    image: '',
   })
   dialogVisible.value = true
 }
@@ -116,12 +118,13 @@ function openEdit(row: AdminProduct) {
     category: row.category ?? '',
     stock: row.stock,
     status: row.status as 0 | 1,
+    image: row.image ?? '',
   })
   dialogVisible.value = true
 }
 
 async function onSave() {
-  const payload = { ...form, category: form.category || null }
+  const payload = { ...form, category: form.category || null, image: form.image || null }
   try {
     if (editingSid.value == null) {
       await api.adminProductCreate(payload)
@@ -135,6 +138,37 @@ async function onSave() {
   } catch (err) {
     ElMessage.error(err instanceof Error ? err.message : '保存失败')
   }
+}
+
+/** 批次 4：图片上传——手写轻量控件（隐藏 input[type=file] + 按钮触发），FileReader 转 base64 → POST /api/admin/upload → URL 写入表单（保存后入库，修复原版只落盘不入库的断链）。不用 el-upload：其内部状态机与自定义 http-request 的组合行为不可控（实测 200 成功后仍误标 FAILED） */
+const fileInput = ref<HTMLInputElement | null>(null)
+const uploading = ref(false)
+
+async function onFileChange(e: Event) {
+  const input = e.target as HTMLInputElement
+  const file = input.files?.[0]
+  if (!file) return
+  uploading.value = true
+  try {
+    const dataUrl = await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader()
+      reader.onload = () => resolve(String(reader.result))
+      reader.onerror = () => reject(new Error('读取文件失败'))
+      reader.readAsDataURL(file)
+    })
+    const { url } = await api.adminUpload(dataUrl)
+    form.image = url
+    ElMessage.success('图片已上传，保存商品后生效')
+  } catch (err) {
+    ElMessage.error(err instanceof Error ? err.message : '上传失败')
+  } finally {
+    uploading.value = false
+    input.value = ''
+  }
+}
+
+function onClearImage() {
+  form.image = ''
 }
 
 async function onRemove(row: AdminProduct) {
@@ -289,6 +323,30 @@ onMounted(async () => {
         <el-form-item label="上架">
           <el-switch v-model="form.status" :active-value="1" :inactive-value="0" />
         </el-form-item>
+        <el-form-item label="商品主图">
+          <div class="img-editor">
+            <el-image v-if="form.image" :src="form.image" fit="cover" class="img-preview">
+              <template #error>
+                <div class="img-empty">加载失败</div>
+              </template>
+            </el-image>
+            <div v-else class="img-empty">暂无</div>
+            <input
+              ref="fileInput"
+              type="file"
+              accept="image/png,image/jpeg,image/gif,image/webp"
+              style="display: none"
+              @change="onFileChange"
+            />
+            <el-button size="small" :loading="uploading" @click="fileInput?.click()">
+              {{ form.image ? '重新上传' : '上传图片' }}
+            </el-button>
+            <el-button v-if="form.image" size="small" text type="danger" @click="onClearImage">
+              清除
+            </el-button>
+            <span class="dim">png/jpg/gif/webp ≤ 2MB；上传后点保存写入商品</span>
+          </div>
+        </el-form-item>
         <el-form-item label="描述">
           <el-input v-model="form.description" type="textarea" :rows="3" placeholder="商品描述" />
         </el-form-item>
@@ -329,5 +387,32 @@ onMounted(async () => {
   color: #c0c4cc;
   font-size: 12px;
   border-radius: 4px;
+}
+
+.img-editor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.img-preview {
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  border: 1px solid #e4e7ed;
+}
+
+.img-empty {
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f7fa;
+  color: #c0c4cc;
+  font-size: 12px;
+  border-radius: 6px;
+  border: 1px dashed #dcdfe6;
 }
 </style>
