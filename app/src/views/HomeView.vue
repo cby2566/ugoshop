@@ -99,16 +99,25 @@ onBeforeUnmount(() => window.clearInterval(tvTimer))
 // —— N1/N2：楼层真商品数据（取自 doc/products.json，展示位静态定义，不额外发请求）——
 // 原站三卡同文同图 / 四卡一品玉红枣完全重复，新站化为真商品差异化；
 // 图与商品一一对应（legacyUrl 系列 goods2~goods6 的 _1 图），消除图文不匹配
+// —— TV 直播卡（同页另一楼层，避开重复选品）
 const tvShows = [
   { sid: 2,  name: '双立人 德国不锈钢刀具七件套', price: 399, img: '/museum/img/goods3_1.jpg' },
   { sid: 11, name: '飞利浦空气炸锅 大容量 5L',   price: 499, img: '/museum/img/goods2_1.jpg' },
   { sid: 3,  name: '进口澳洲安格斯牛排 10片装',  price: 158, img: '/museum/img/goods4_1.jpg' },
 ]
+// —— 全球尖货：8 卡 2 行 4 列网格（用户需求）；选品保持进口/全球品牌调性，
+// 已购买数取真实 sales；图取各自商品系列图（goodsN_1/_2）序号错开，
+// 保证 8 卡视觉不重复且与商品系列一致（goods 系列仅 5 套，同楼层 8 卡必然
+// 跨系列复用，用系列二图错开避免同图相邻）；「直降」标签保持第 2 卡位置
 const globalGoods = [
   { sid: 9,  name: '泰国香米 10斤装',            price: 79,  img: '/museum/img/goods5_1.jpg', abstract: '泰国原装进口 茉莉香米',        purchased: 1880, tag: '',    regular: 95 },
   { sid: 8,  name: '全自动家用咖啡机',           price: 899, img: '/museum/img/goods4_1.jpg', abstract: '15bar 意式萃取 现磨现煮',    purchased: 720,  tag: '直降', regular: 1079 },
   { sid: 16, name: '保温杯 316不锈钢 500ml',   price: 159, img: '/museum/img/goods2_1.jpg', abstract: '316L医用级不锈钢 真空断热', purchased: 510,  tag: '',    regular: 189 },
   { sid: 17, name: '橄榄油 特级初榨 750ml×2', price: 128, img: '/museum/img/goods3_1.jpg', abstract: '西班牙原瓶进口 第一道冷榨',   purchased: 890,  tag: '',    regular: 155 },
+  { sid: 18, name: '运动蓝牙耳机 挂颈式',       price: 349, img: '/museum/img/goods4_2.jpg', abstract: '磁吸入耳 IPX5防水',          purchased: 630,  tag: '',    regular: 399 },
+  { sid: 19, name: '珍珠项链 淡水正圆强光',     price: 899, img: '/museum/img/goods5_2.jpg', abstract: '正圆强光珍珠 附权威证书',    purchased: 145,  tag: '',    regular: 1099 },
+  { sid: 5,  name: '女士真皮单肩小方包',        price: 499, img: '/museum/img/goods6_1.jpg', abstract: '头层牛皮 复古五金件',        purchased: 320,  tag: '',    regular: 599 },
+  { sid: 7,  name: '玻尿酸补水面膜 30片',      price: 89,  img: '/museum/img/goods3_2.jpg', abstract: '小分子玻尿酸 敏感肌可用',   purchased: 1560, tag: '',    regular: 109 },
 ]
 
 // —— N4：品类促销入口（原站空模块，补 6 个频道分类卡，icon 素材同列表页 tab）——
@@ -278,10 +287,10 @@ function goCategoryList(title: string) {
           <span class="webz_title_tt"><i></i>全球尖货</span>
         </span>
       </article>
-      <!-- 主体（N2 客观重构：原站 ul 1020 固定宽一行仅容三卡、第 4 卡孤悬二行
-           （3+1 断裂），li 全 float 无清浮动致 ul/容器实测高度 0；卡内 span>p
-           非法嵌套 + absolute 悬浮直降标签 + visibility:hidden 空占位。改 flex
-           一行四卡等分版心 + 语义化价格两行，视觉基因保留，差异详见文末样式） -->
+      <!-- 主体（N2 客观重构：原站 ul 1020 固定宽一行仅容三卡、float 无清浮动致
+           ul/容器实测高度 0，卡内 span>p 非法嵌套 + absolute 悬浮直降标签 +
+           visibility:hidden 空占位。改 flex 网格 2 行 8 卡（每行 4 卡等分版心）
+           + 语义化价格两行，视觉基因保留，差异详见文末样式） -->
       <article class="item_list_box">
         <ul>
           <li v-for="g in globalGoods" :key="g.sid" @click="goDetail(g.sid)">
@@ -406,30 +415,34 @@ function goCategoryList(title: string) {
   cursor: pointer;
 }
 
-/* ———— N2 客观重构（2026-10 复查）：全球尖货模块布局修复 ————
+/* ———— N2 客观重构（2026-10 复查二修）：全球尖货模块布局修复 ————
    原站移植 CSS 的客观缺陷（非风格差异）：
    ① ul 固定 width:1020px 溢出 1000px 版心，每卡实占 340px（含 20 右 margin），
-     一行仅容 3 张，第 4 张孤悬第二行，右侧约 680px 空白（3+1 断裂）；
-   ② li 全 float 且无清浮动，实测 ul 与 item_list_box 高度均塌陷为 0，
-     页脚未叠压纯靠巧合；
+     一行仅容 3 张，第 4 张孤悬第二行（3+1 断裂）；
+   ② li 全 float 且无清浮动，ul 与 item_list_box 高度塌陷为 0
+     （仅靠 .webz overflow:hidden BFC 兑底，footer 未叠压非自适应能力）；
    ③ li 固定 height:452 + overflow:hidden，内容增高即被静默裁切；
    ④ span.sale_price 内嵌 p（HTML 非法嵌套），「直降」靠 absolute top:-16px
      悬浮 hack，非直降卡整块 visibility:hidden 空元素占位。
-   重构：flex 一行四卡等分版心（gap 12、等高拉伸），item_img 宽自适应卡宽
-   （aspect-ratio 保持正方不变形），价格区改语义两行流式布局；hover 红边、
-   26px 现价、红胶囊标签、划线平日价、灰已购买等视觉基因全部保留。 */
+   重构（用户需求：2 行 8 卡）：grid 网格每行 4 卡等分版心（repeat(4, 1fr)
+   ——分配型等分无亚像素换行问题；曾试 flex-wrap + calc(25%) 等分，四卡加
+   gap 恰等 1000px，亚像素累积溢出即触发拆行），列间 12px / 行间 20px，
+   标题到首行 20px 由容器 margin-top 提供，8 卡等高拉伸，item_img 宽自适应
+   卡宽（aspect-ratio 保持正方不变形），价格区改语义两行；hover 红边、
+   26px 现价、红胶囊、划线平日价、灰已购买等视觉基因全部保留。 */
 #webmain .webz .item_list_box ul {
-  display: flex;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px 12px; /* 行间 20 / 列间 12 */
   width: auto; /* 覆盖原 1020px 固定宽，回归版心 1000px */
+  margin-top: 20px; /* 原由 li margin-top 提供，统一收敛到容器 */
 }
 #webmain .webz .item_list_box ul li {
   float: none;
-  flex: 1;
-  display: flex;
+  display: flex; /* cell 内撑满，行内等高由 grid stretch 保证 */
   width: auto;
-  height: auto; /* 解除 452 固定高，四卡 flex 等高 */
-  margin: 20px 0 0; /* 顶部楼层间隔保留，右 margin 交由 gap 接管 */
+  height: auto; /* 解除 452 固定高 */
+  margin: 0; /* 间距全部交由容器 gap 接管 */
 }
 #webmain .webz .item_list_box ul li .item_box {
   flex: 1;
