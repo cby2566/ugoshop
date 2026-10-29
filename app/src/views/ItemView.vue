@@ -9,8 +9,11 @@
     location.reload()）按行为等价以 WAAPI 重写，reload 已按定案丢弃；加购接口
     已接 POST /api/cart（阶段 6），badge 随 cart store 响应式更新；
   - 数量：原站手输非数字会产生 NaN 不修正，此处统一修正为 ≥1 整数；
-  - 静态展示位（面包屑/优惠文案/送至栏/详情长图/评论(50)/服务说明/大家都在看）
-    为原站硬编码，原样保留。
+  - 静态展示位（面包屑/优惠文案/送至栏/详情长图/服务说明）为原站硬编码，原样保留；
+  - N3/N8 评论数：原站「评论(50)」硬编码改为共用 commentCount(sid) 确定性伪随机
+    （与列表页「评论 N 条」同源同值）；
+  - N6「大家都在看」：原站 .cainixihuan 为 SOWOOL 羊绒大衣整图静态卡（hover 换
+    整图、点击无动作），新站化为结构化真商品卡（取销量 TOP2 商品），点击跳详情。
 -->
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
@@ -23,6 +26,7 @@ import GoodsGallery from '@/components/GoodsGallery.vue'
 import { api } from '@/api/client'
 import { useAuthStore } from '@/stores/auth'
 import { useCartStore } from '@/stores/cart'
+import { commentCount } from '@/utils/comment'
 import type { Product } from '@/types'
 
 const route = useRoute()
@@ -68,6 +72,13 @@ watch(
 function goCategory(category: string) {
   void router.push({ path: '/list', query: { category } })
 }
+
+// N6：「大家都在看」真商品卡（取 doc/products.json 销量 TOP2，静态展示位定位
+// 同首页楼层，不额外发请求），点击跳对应详情
+const alsoLikes = [
+  { sid: 3, name: '进口澳洲安格斯牛排 10片装', price: 158, img: '/museum/img/goods4_1.jpg' },
+  { sid: 9, name: '泰国香米 10斤装', price: 79, img: '/museum/img/goods5_1.jpg' },
+]
 
 // —— 数量选择器（原站：减到 1 为止、加无上限） ——
 const qty = ref(1)
@@ -239,7 +250,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
     <div class="item_xia lf">
       <div ref="tabEl" class="xia_tag" :class="{ xia_tag_xi: tagFixed }">
         <a href="javascript:void(0)" class="xia_xiang" :class="{ asd: tab === 'detail' }" @click="tab = 'detail'; scrollTo('k1')">商品详情</a>
-        <a href="javascript:void(0)" class="xia_ping" :class="{ asd: tab === 'comment' }" @click="tab = 'comment'; scrollTo('k2')">评论<span>(50)</span></a>
+        <a href="javascript:void(0)" class="xia_ping" :class="{ asd: tab === 'comment' }" @click="tab = 'comment'; scrollTo('k2')">评论<span>({{ commentCount(sid) }})</span></a>
         <a href="javascript:void(0)" class="xia_tu" :class="{ asd: tab === 'service' }" @click="tab = 'service'; scrollTo('k3')">服务说明</a>
       </div>
       <h3 id="k1" class="fw_title sp_fw_title"></h3>
@@ -256,12 +267,61 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
       <div><img src="/museum/img/price_explain.jpg" alt="" /></div>
     </div>
 
-    <!-- 大家都在看（原站静态硬编码） -->
+    <!-- 大家都在看（N6：原站整图静态卡 → 真商品卡接详情） -->
     <div class="item_xiayou">
       <h3>大家都在看</h3>
-      <div class="cainixihuan"></div>
-      <div class="cainixihuan"></div>
+      <div
+        class="cainixihuan"
+        v-for="g in alsoLikes"
+        :key="g.sid"
+        @click="router.push(`/item/${g.sid}`)"
+      >
+        <img class="cnxh_img" :src="g.img" alt="" />
+        <p class="cnxh_name">{{ g.name }}</p>
+        <p class="cnxh_price"><i>￥</i>{{ g.price }}</p>
+      </div>
     </div>
   </main>
   <div class="ceshiyon"></div>
 </template>
+
+<style>
+/* ———— N6「大家都在看」新站化（2026-10）————
+   原站 .cainixihuan 为 SOWOOL 羊绒大衣整图背景静态卡（184×269 一张 PNG，hover
+   换另一张整图，点击无任何动作），且两个容器内容完全相同。新站化为结构化真商品
+   卡：保持 184×269 外框与楼层节奏，内部改为图/名/价，hover 红边、点击跳详情。 */
+.item_xiayou .cainixihuan {
+  background: none;
+  cursor: pointer;
+  padding: 7px 7px 0;
+  box-sizing: border-box;
+}
+.item_xiayou .cainixihuan:hover {
+  background: none;
+  outline: 1px solid #ff504a;
+}
+.item_xiayou .cainixihuan .cnxh_img {
+  display: block;
+  width: 170px;
+  height: 170px;
+  margin: 0 auto;
+}
+.item_xiayou .cainixihuan .cnxh_name {
+  margin: 8px 4px 0;
+  font-size: 12px;
+  line-height: 18px;
+  height: 36px;
+  overflow: hidden;
+  color: #333;
+}
+.item_xiayou .cainixihuan .cnxh_price {
+  margin: 8px 4px 0;
+  font-size: 16px;
+  font-family: arial;
+  color: #f70800;
+}
+.item_xiayou .cainixihuan .cnxh_price i {
+  font-size: 12px;
+  margin-right: 1px;
+}
+</style>

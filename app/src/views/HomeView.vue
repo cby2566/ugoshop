@@ -12,10 +12,21 @@
     价格压在渐变红底上且被「立减」标签遮挡，「每日一品」徽章压商品图 logo，
     全部在增补样式中修正（见文末 style 注释）
   - 全球尖货 .item_img 背景为失效外链，已在移植 CSS 内本地等效替换
-  楼层商品文案（双立人/SKG 养生壶/一品玉红枣等）为原站硬编码展示位，原样保留。
+  新站化（N1/N2/N4，2026-10）：
+  - TV 直播区：原站三卡同文同图（双立人文案 + ￥2998 + 家纺场景图，图文不匹配），
+    且倒计时 20:20:20 静态不走；现取 3 件真商品差异化（图/名/价匹配），倒计时
+    接走秒（复用限时购逻辑），卡片点击跳详情；
+  - 全球尖货：原站四卡一品玉红枣完全重复 + 「1970已购买」数字突兀，现取 4 件
+    真商品差异化，已购买数取真实销量，卡片点击跳详情；
+  - 品类促销：原站仅标题空模块，补 6 个品类入口卡（复用列表页分类 icon 素材），
+    点击跳 /list?category=；
+  - 今日限时购（左卡 + 小卡轮播 + 倒计时）为 1a47646 已修部分，保持原样。
 -->
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 // —— 主轮播（luntu1-5，对应原站五张焦点图素材）——
 // I5：加指示圆点（点击切帧）+ 悬停暂停/移开恢复；prefers-reduced-motion 下停用自动轮播
@@ -71,6 +82,52 @@ onMounted(() => {
   }, 1000)
 })
 onBeforeUnmount(() => window.clearInterval(remainTimer))
+
+// —— N1：TV 直播倒计时（原站硬编码 20:20:20 从未走秒，复用限时购逻辑：每秒递减、归零重置 24h 常活）——
+const tvRemain = ref(20 * 3600 + 20 * 60 + 20)
+let tvTimer: number | undefined
+const tvTimeText = computed(
+  () => `${pad(Math.floor(tvRemain.value / 3600))}:${pad(Math.floor((tvRemain.value % 3600) / 60))}:${pad(tvRemain.value % 60)}`,
+)
+onMounted(() => {
+  tvTimer = window.setInterval(() => {
+    tvRemain.value = tvRemain.value > 0 ? tvRemain.value - 1 : DAY
+  }, 1000)
+})
+onBeforeUnmount(() => window.clearInterval(tvTimer))
+
+// —— N1/N2：楼层真商品数据（取自 doc/products.json，展示位静态定义，不额外发请求）——
+// 原站三卡同文同图 / 四卡一品玉红枣完全重复，新站化为真商品差异化；
+// 图与商品一一对应（legacyUrl 系列 goods2~goods6 的 _1 图），消除图文不匹配
+const tvShows = [
+  { sid: 2,  name: '双立人 德国不锈钢刀具七件套', price: 399, img: '/museum/img/goods3_1.jpg' },
+  { sid: 11, name: '飞利浦空气炸锅 大容量 5L',   price: 499, img: '/museum/img/goods2_1.jpg' },
+  { sid: 3,  name: '进口澳洲安格斯牛排 10片装',  price: 158, img: '/museum/img/goods4_1.jpg' },
+]
+const globalGoods = [
+  { sid: 9,  name: '泰国香米 10斤装',            price: 79,  img: '/museum/img/goods5_1.jpg', abstract: '泰国原装进口 茉莉香米',        purchased: 1880, tag: '',    regular: 95 },
+  { sid: 8,  name: '全自动家用咖啡机',           price: 899, img: '/museum/img/goods4_1.jpg', abstract: '15bar 意式萃取 现磨现煮',    purchased: 720,  tag: '直降', regular: 1079 },
+  { sid: 16, name: '保温杯 316不锈钢 500ml',   price: 159, img: '/museum/img/goods2_1.jpg', abstract: '316L医用级不锈钢 真空断热', purchased: 510,  tag: '',    regular: 189 },
+  { sid: 17, name: '橄榄油 特级初榨 750ml×2', price: 128, img: '/museum/img/goods3_1.jpg', abstract: '西班牙原瓶进口 第一道冷榨',   purchased: 890,  tag: '',    regular: 155 },
+]
+
+// —— N4：品类促销入口（原站空模块，补 6 个频道分类卡，icon 素材同列表页 tab）——
+const promoCats = [
+  { icon: '/museum/img/icon_a_93.png',   title: '进口食品' },
+  { icon: '/museum/img/icon_a_829.png',  title: '营养保健' },
+  { icon: '/museum/img/icon_a_364.png',  title: '休闲食品' },
+  { icon: '/museum/img/icon_a_959.png',  title: '粮油干货' },
+  { icon: '/museum/img/icon_a_822.png',  title: '酒水茶饮' },
+  { icon: '/museum/img/icon_a_1245.png', title: '生鲜食品' },
+]
+
+// 楼层卡跳详情 / 品类入口跳列表分类过滤（与列表页 tab、详情页面包屑同一 query 契约）
+function goDetail(sid: number) {
+  void router.push(`/item/${sid}`)
+}
+function goCategoryList(title: string) {
+  void router.push({ path: '/list', query: { category: title } })
+}
 </script>
 
 <template>
@@ -114,22 +171,22 @@ onBeforeUnmount(() => window.clearInterval(remainTimer))
         <article class="webz_live_list">
           <ul>
             <li>
-              <div class="live_cc" v-for="n in 3" :key="n">
-                <div class="live_cc_img">
+              <div class="live_cc" v-for="s in tvShows" :key="s.sid" @click="goDetail(s.sid)">
+                <div class="live_cc_img" :style="{ backgroundImage: `url(${s.img})` }">
                   <i class="live_ing">TV直播中</i>
                   <img class="live_logo" src="/museum/css-img/u_shopping.png" height="60" width="200" alt="" />
                   <div class="live_back">
-                    <span>20:20:20</span>
+                    <span>{{ tvTimeText }}</span>
                   </div>
                 </div>
                 <a href="javascript:void(0)">
                   <p class="live_tit">
                     <em class="img_tit">
-                      双立人287周年狂欢限量套装
+                      {{ s.name }}
                     </em>
                   </p>
                   <div class="live_qian">
-                    <span class="live_qian_v">￥2998</span>
+                    <span class="live_qian_v">￥{{ s.price }}</span>
                   </div>
                 </a>
               </div>
@@ -192,12 +249,25 @@ onBeforeUnmount(() => window.clearInterval(remainTimer))
         </div>
       </article>
 
-      <!-- 品类促销 -->
+      <!-- 品类促销（N4：原站仅标题空模块，补 6 个品类入口卡，点击跳列表分类过滤） -->
       <article class="webz_title">
         <span class="fl">
           <i class="fl webz_title_line"></i>
           <span class="webz_title_tt"><i>品类精选</i>促销</span>
         </span>
+      </article>
+      <article class="category_promo">
+        <a
+          v-for="c in promoCats"
+          :key="c.title"
+          href="javascript:void(0)"
+          class="category_promo_item"
+          @click="goCategoryList(c.title)"
+        >
+          <img :src="c.icon" height="60" width="80" alt="" />
+          <span class="cp_name">{{ c.title }}</span>
+          <span class="cp_enter">进入专区<i>&gt;</i></span>
+        </a>
       </article>
 
       <!-- 全球尖货 -->
@@ -211,35 +281,26 @@ onBeforeUnmount(() => window.clearInterval(remainTimer))
       <!-- 主体 -->
       <article class="item_list_box">
         <ul>
-          <li v-for="n in 4" :key="n">
+          <li v-for="g in globalGoods" :key="g.sid" @click="goDetail(g.sid)">
             <div class="item_box">
-              <div class="item_img"></div>
-              <p class="img_title">一品玉富硒红枣夹核桃</p>
-              <p class="img_abstract">
-                含有微量元素硒
-                组合力度 性价比高
-                独立包装 携带便捷
-                包装精美 重量升级
-                老少皆宜 营养丰富</p>
+              <div class="item_img" :style="{ backgroundImage: `url(${g.img})` }"></div>
+              <p class="img_title">{{ g.name }}</p>
+              <p class="img_abstract">{{ g.abstract }}</p>
               <div class="img_qian">
-                <span class="fl img_qian_price"><i>￥</i>298</span>
-                <span class="sale_price" v-if="n === 2">
+                <span class="fl img_qian_price"><i>￥</i>{{ g.price }}</span>
+                <span class="sale_price" v-if="g.tag">
                   <p>
-                    <em>
-                      直降
-                    </em>
+                    <em>{{ g.tag }}</em>
                   </p>
-                  <span>平日价</span><em><i>￥</i>118</em>
+                  <span>平日价</span><em><i>￥</i>{{ g.regular }}</em>
                 </span>
                 <span class="sale_price" style="visibility:hidden;" v-else>
                   <p>
-                    <em>
-
-                    </em>
+                    <em></em>
                   </p>
-                  <span>平日价</span><em><i>￥</i>118</em>
+                  <span>平日价</span><em><i>￥</i>{{ g.regular }}</em>
                 </span>
-                <span class="fr img_qian_purchased"><i>1970</i>已购买</span>
+                <span class="fr img_qian_purchased"><i>{{ g.purchased }}</i>已购买</span>
               </div>
             </div>
           </li>
@@ -329,5 +390,63 @@ onBeforeUnmount(() => window.clearInterval(remainTimer))
 }
 #webmain .webz .zhuti .everyDay > div .everyDay_tag2 {
   top: 2px;
+}
+
+/* ———— N1：TV 直播卡新站化增补 ————
+   原背景图 dooo.jpg 为 750×400（1.875 比例恰满铺 300×160 容器）；N1 换上
+   450×450 正方商品图后 background-size:100% 会纵向压扁变形，改 cover+center
+   居中裁切保商品主体；卡片接跳详情补手型光标。 */
+#webmain .webz .webz_live .webz_live_list ul li .live_cc {
+  cursor: pointer;
+}
+#webmain .webz .webz_live .webz_live_list ul li .live_cc .live_cc_img {
+  background-size: cover;
+  background-position: center;
+}
+
+/* ———— N2：全球尖货卡接跳详情补手型光标（hover 红边为原站样式） ———— */
+#webmain .webz .item_list_box ul li {
+  cursor: pointer;
+}
+
+/* ———— N4：品类促销楼层（原站空模块补齐，2026-10）————
+   6 个品类入口卡横排：白底 1px 灰边（同全球尖货卡），hover 红边（同
+   item_list_box li:hover 风格），icon 复用列表页分类 tab 素材 80×60。 */
+.webz .category_promo {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.webz .category_promo .category_promo_item {
+  flex: 1;
+  padding: 20px 0 16px;
+  background: #fff;
+  border: 1px solid #ddd;
+  text-align: center;
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+.webz .category_promo .category_promo_item img {
+  display: block;
+  margin: 0 auto;
+}
+.webz .category_promo .category_promo_item:hover {
+  border-color: #ff504a;
+}
+.webz .category_promo .category_promo_item .cp_name {
+  display: block;
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+}
+.webz .category_promo .category_promo_item .cp_enter {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #999;
+}
+.webz .category_promo .category_promo_item:hover .cp_enter {
+  color: #ff504a;
 }
 </style>

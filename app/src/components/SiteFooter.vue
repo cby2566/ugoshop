@@ -1,5 +1,10 @@
 <!--
-  页脚三段（原站 footer 原样移植：广告图 / 帮助列表+二维码 / 版权信息）。
+  页脚三段（原站 footer 移植：广告图 / 帮助列表+二维码 / 版权信息）。
+  N7 新站化：原站版权区为北京优品惠网络科技有限公司的真实信息
+  （Copyright©2007-2017 / 统一社会信用代码 / ICP备案 / 食品流通许可证 /
+  京公网安备号，另有一处指向原站官网的外链），与练手演示站定位不符，
+  已替换为演示站声明：与原公司无关、不进行真实交易；广告图/帮助列表/二维码
+  等纯展示位结构不动。
 -->
 <template>
   <footer>
@@ -40,7 +45,7 @@
       </dl>
     </div>
     <div class="footer_info">
-      <p class="footer-list"><a target="_blank" href="http://www.ugoshop.com">首页</a> |
+      <p class="footer-list"><a href="javascript:void(0)">首页</a> |
         <a target="_blank">关于优品惠</a> |
         <a target="_blank">优购物</a> |
         <a target="_blank">联系我们</a> |
@@ -54,17 +59,13 @@
         <a target="_blank">评论</a> |
         <a target="_blank"> 图片</a>
       </p>
-      <p class="copyright">优品_优品惠（优购物）全球优品特卖网站 专属于千万女性的优品特卖网站,优品_优品惠（优购物）电视购物官方网站,100%正品保证 支持货到付款.</p>
-      <p class="copyright">Copyright©2007-2017 &nbsp;  公司名称:北京优品惠网络科技有限公司    &nbsp;   公司地址:北京市北京经济技术开发区同济南路19号7幢2层C区   服务热线：400-707-0707</p>
-      <p class="footer-list copyright"> 统一社会信用代码:91110302339739621C  &nbsp;  ICP备案号:京ICP备15039150号-1   &nbsp;  食品流通许可证编号:JY11131010332635 &nbsp;
-        <a>营业执照</a>
-        <a>京网文(2017)10902-1271</a>
-        <a>增值业务经营许可证：京B2-20181380 </a>
-      </p>
+      <p class="copyright">优品惠 UGOShop 演示站 —— 2018 电商练手项目的 Vue 3 重构版（rebuild 分支），复刻历史站点视觉，仅用于学习交流。</p>
+      <p class="copyright">© 2026 优品惠演示站 · 本站为个人学习项目，与北京优品惠网络科技有限公司及其运营的原网站无关。</p>
+      <p class="footer-list copyright">演示站提示：本站不进行真实交易，所有商品信息仅作界面展示，不构成任何销售要约。</p>
       <div style="margin:0 auto;text-align:center;">
         <a style="display:inline-block;text-decoration:none;height:22px;line-height:22px;">
           <img src="/museum/img/bei.png" style="float:left;">
-          <p style="float:left;margin: 0px 0px 0px 5px;" class="scss">京公网安备 11030102000055号</p>
+          <p style="float:left;margin: 0px 0px 0px 5px;" class="scss">演示站点 · 仅供学习交流</p>
         </a>
       </div>
     </div>

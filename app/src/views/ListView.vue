@@ -6,7 +6,8 @@
     与真分页（#P_fan），页码修正为正序（原版 3-i 生成倒序页码 0-3，属 bug）；
   - 价格排序两态 toggle（升↔降，与 museum 实测一致），
     箭头复用原站 .jg_pai/.jg_pai2 雪碧图位；
-  - 评论数 40 / 评价"好好好" / 积分 0 为原站模板硬编码展示位，原样保留；
+  - N3/N8 评论数：原站「评论 40」/评价"好好好"硬编码改为共用 commentCount(sid)
+    确定性伪随机（与详情页同源），"好好好"改占位文案；
   - 当前页码高亮为真分页新增视觉（站内主色 #00cf）。
   - 卡片点击跳详情已按原站行为接上（→ /item/:sid）。
   - I2 搜索：路由 ?q= 关键词透传，无结果给空态，h1 跟随关键词；
@@ -21,6 +22,7 @@ import { toast } from '@/utils/toast'
 
 import '@/styles/foodlist_main.css'
 import { useProductsStore } from '@/stores/products'
+import { commentCount } from '@/utils/comment'
 import type { Product } from '@/types'
 
 const store = useProductsStore()
@@ -147,7 +149,7 @@ async function withFeedback(action: () => Promise<void>) {
         <span class="goods_name">{{ p.name }}</span>
         <div class="qian_comment">
           <span class="goods_qian fl">￥{{ p.price }}</span>
-          <span class="goods_comment fr">评论<a href="javascript:void(0)">40</a>条</span>
+          <span class="goods_comment fr">评论<a href="javascript:void(0)">{{ commentCount(p.sid) }}</a>条</span>
         </div>
         <div class="ping">
           <div class="fl"><span>免邮费</span></div>
@@ -155,7 +157,7 @@ async function withFeedback(action: () => Promise<void>) {
           <div>
             <p>用户评价</p>
             <span><img src="/museum/css-img/leftyin.jpg" height="9" width="13" alt="" /></span>
-            <span class="zhongPing">好好好</span>
+            <span class="zhongPing">暂无评价</span>
             <span><img src="/museum/css-img/rightyin.jpg" height="10" width="14" alt="" /></span>
           </div>
         </div>
