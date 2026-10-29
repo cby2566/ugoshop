@@ -20,13 +20,13 @@ const USERNAME_RE = /^[0-9a-z]{3,11}$/
 const SESSION_COOKIE = 'ugoshop_session'
 const SESSION_MAX_AGE = 60 * 60 * 24 * 30 // 30 天
 
-function hashPassword(plain: string): string {
+export function hashPassword(plain: string): string {
   const salt = randomBytes(16).toString('hex')
   const hash = scryptSync(plain, salt, 64).toString('hex')
   return `${salt}:${hash}`
 }
 
-function verifyPassword(plain: string, stored: string): boolean {
+export function verifyPassword(plain: string, stored: string): boolean {
   const [salt, hash] = stored.split(':')
   if (!salt || !hash) return false
   const test = scryptSync(plain, salt, 64)

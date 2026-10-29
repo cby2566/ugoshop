@@ -18,6 +18,13 @@ export const products = sqliteTable('products', {
   category: text('category'),
   sales: integer('sales').notNull().default(0),
   createdAt: integer('created_at').notNull().default(0),
+  /**
+   * 管理端字段（2026-10-29 admin 联动批次 1）：对应原版 ulist.DIAN（1 上架 / 2 下架），
+   * 归一化为 1/0；REPE 语义不可考（疑库存），按库存使用。
+   * C 端列表/单查过滤 status=1（后台下架 → 前台不可见），随 admin 批次 2 接入。
+   */
+  status: integer('status').notNull().default(1),
+  stock: integer('stock').notNull().default(0),
 })
 
 /**
@@ -41,11 +48,14 @@ export const categoryItems = sqliteTable('category_items', {
 /**
  * 用户表。字段映射自原 f_user 契约：fid→id、fname→username、fpws→password。
  * 原版密码明文存储且接口直接返回明文比对；重写定为 scrypt 哈希（salt:hex 格式）。
+ * role（2026-10-29 admin 联动批次 1）：当年 f_user 同表混管前台注册用户与
+ * 后台登录（login.js 仅查 status=1），重写以 role 区分；管理员由种子脚本创建。
  */
 export const users = sqliteTable('users', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   username: text('username').notNull().unique(),
   password: text('password').notNull(),
+  role: text('role').notNull().default('user'),
 })
 
 /**

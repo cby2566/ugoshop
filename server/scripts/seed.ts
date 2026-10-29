@@ -1,8 +1,11 @@
 import { readFileSync } from 'node:fs'
 import { fileURLToPath, URL } from 'node:url'
 
+import { eq } from 'drizzle-orm'
+
 import { db } from '../src/db/index.js'
-import { categories, categoryItems, products } from '../src/db/schema.js'
+import { categories, categoryItems, products, users } from '../src/db/schema.js'
+import { hashPassword } from '../src/routes/auth.js'
 
 interface RawProduct {
   SID: number
@@ -83,6 +86,25 @@ for (let i = 0; i < MENU_DATA.length; i++) {
   const catId = inserted[0].id
   const itemRows = m.item.map((name, j) => ({ categoryId: catId, name, sort: j }))
   await db.insert(categoryItems).values(itemRows)
+}
+
+// —— 管理员种子（2026-10-29 admin 联动批次 1）——
+// 幂等 upsert：users 表存有前台注册用户真数据，绝不清空重灌；
+// 仅在不存在时创建（密码 scrypt），已存在但缺 role 时补齐，其余跳过。
+// 账号可由 ADMIN_USERNAME / ADMIN_PASSWORD 环境变量覆盖（默认 admin / admin123456）。
+const adminUsername = process.env.ADMIN_USERNAME ?? 'admin'
+const adminPassword = process.env.ADMIN_PASSWORD ?? 'admin123456'
+const existingAdmin = await db.select().from(users).where(eq(users.username, adminUsername))
+if (existingAdmin.length === 0) {
+  await db
+    .insert(users)
+    .values({ username: adminUsername, password: hashPassword(adminPassword), role: 'admin' })
+  console.log(`管理员种子：已创建 ${adminUsername}（role=admin）`)
+} else if (existingAdmin[0].role !== 'admin') {
+  await db.update(users).set({ role: 'admin' }).where(eq(users.username, adminUsername))
+  console.log(`管理员种子：${adminUsername} 已存在，已补 role=admin`)
+} else {
+  console.log(`管理员种子：${adminUsername} 已存在，跳过`)
 }
 
 const count = (await db.select().from(products)).length
