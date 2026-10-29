@@ -15,8 +15,9 @@ import { cart, products } from '../../db/schema.js'
  *   （越权面大），重写为单资源接口，并级联清理 cart 残留引用——
  *   cart 行 innerJoin products，商品删除后残留行为幽灵数据（原版无级联，重写补上）。
  *
- * 本组返回全量（含下架）；C 端 /api/products 自本批起过滤 status=1。
- * 图片编辑不入本批（原版上传只落盘不入库的缺陷修复 + 静态托管，见批次 4）。
+ * 本组返回全量（含下架）；C 端 /api/products 自批次 2 起过滤 status=1。
+ * 图片：批次 2 遵原版 UPDATE 不动 URL 字段，批次 4 随上传链路解除——
+ * image 可选可写（原版上传只落盘不入库的断链缺陷由 upload.ts + 前端写入 image 闭环）。
  */
 
 interface ProductPayload {
@@ -27,6 +28,7 @@ interface ProductPayload {
   category?: string | null
   stock?: number
   status?: number
+  image?: string | null
 }
 
 /** 校验并提取可写字段；返回 null 表示载荷不合法 */
@@ -39,6 +41,8 @@ function parsePayload(body: ProductPayload) {
   }
   const stock = Number.isFinite(Number(body.stock)) ? Number(body.stock) : 0
   const status = body.status === 0 || body.status === 1 ? body.status : 1
+  // 批次 4：image 可选——仅当载荷携带时更新（不传则不动原值，避免编辑其他字段时抹图）
+  const hasImage = body.image !== undefined
   return {
     name,
     brand,
@@ -47,6 +51,7 @@ function parsePayload(body: ProductPayload) {
     category: (body.category ?? '') === '' ? null : (body.category as string),
     stock: stock < 0 ? 0 : Math.round(stock),
     status,
+    ...(hasImage ? { image: (body.image ?? '') === '' ? null : String(body.image) } : {}),
   }
 }
 
