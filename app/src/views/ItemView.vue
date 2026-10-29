@@ -240,6 +240,8 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
             <input id="goodsNumberInput" type="text" v-model="qty" @blur="fixQty" />
             <a href="javascript:void(0)" id="addBtn" @click="plus">+</a>
           </div>
+          <!-- admin 联动：库存展示（products.stock，随管理端编辑实时变化） -->
+          <span class="stock_note">库存 {{ product?.stock ?? 0 }} 件</span>
         </div>
       </div>
       <div class="addCart" @click="onAddCart"><i></i>加入购物车</div>
@@ -326,5 +328,17 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 .item_xiayou .cainixihuan .cnxh_price i {
   font-size: 12px;
   margin-right: 1px;
+}
+
+/* ———— admin 联动：库存展示（2026-10）————
+   products.stock 随管理端联动批次 1 入库（原版 ulist.REPE，语义不可考按库存用），
+   在数量选择器下增补一行小字展示加购参考；管理端改库存后详情页实时变化，
+   不改动原站布局结构。 */
+.stock_note {
+  display: inline-block;
+  margin-left: 10px;
+  color: #999;
+  font-size: 12px;
+  line-height: 28px;
 }
 </style>

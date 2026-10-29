@@ -12,6 +12,8 @@ export interface Product {
   /** D2：销量与上架时间戳（ms） */
   sales: number
   createdAt: number
+  /** admin 联动批次 1：库存（原版 ulist.REPE，管理端可编辑，详情页展示） */
+  stock: number
 }
 
 /** 分页响应（GET /api/products），page 从 1 起，默认每页 6 条（原版行为） */

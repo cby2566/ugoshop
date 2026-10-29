@@ -72,6 +72,9 @@ const rows = raw.map((p) => ({
   category: p.CATEGORY ?? null,
   sales: p.SALES ?? 0,
   createdAt: p.CREATED_AT ? new Date(p.CREATED_AT).getTime() : 0,
+  // admin 联动批次 1/4：库存散布（products.json 底稿无该字段——原版 REPE 语义不可考，
+  // 按确定性公式造 10~99 合理观感值，管理端可随时编辑覆盖）
+  stock: (p.SID * 37) % 90 + 10,
 }))
 
 await db.delete(products)
