@@ -29,6 +29,16 @@ const store = useCartStore()
 // 勾选状态（原版为 DOM 勾选，不落后端；重写用本地集合）
 const selected = ref<Set<number>>(new Set())
 
+// I6：购物车行商品回详情（列表/详情已接线，补齐最后一环）
+function goItem(sid: number) {
+  void router.push(`/item/${sid}`)
+}
+
+// I3：站点无下单流程，「立即结算」给出明确提示（原站死链）
+function checkout() {
+  toast('演示站点，暂未开通下单功能')
+}
+
 function syncSelected() {
   // 默认全选（原版商品行 checkbox 初始 checked）
   selected.value = new Set(store.items.map((i) => i.sid))
@@ -150,10 +160,10 @@ onMounted(async () => {
             <div class="c_meg">
               <dl>
                 <dt>
-                  <a href="javascript:void(0)"><img :src="productImage(item)" width="78" height="78" /></a>
+                  <a href="javascript:void(0)" @click.prevent="goItem(item.sid)"><img :src="productImage(item)" width="78" height="78" /></a>
                 </dt>
                 <dd>
-                  <p class="m_tit"><a href="javascript:void(0)">{{ item.name }}</a></p>
+                  <p class="m_tit"><a href="javascript:void(0)" @click.prevent="goItem(item.sid)">{{ item.name }}</a></p>
                 </dd>
               </dl>
             </div>
@@ -207,7 +217,7 @@ onMounted(async () => {
             <span>全选</span>
           </div>
           <div class="fr">
-            <a href="javascript:void(0)" class="balance_bt" @click.prevent>立即结算</a>
+            <a href="javascript:void(0)" class="balance_bt" @click.prevent="checkout">立即结算</a>
           </div>
         </div>
       </div>

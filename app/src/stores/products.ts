@@ -17,6 +17,7 @@ export const useProductsStore = defineStore('products', () => {
   const totalPages = ref(1)
   const sort = ref<'sid' | 'price'>('sid')
   const order = ref<'asc' | 'desc'>('asc')
+  const keyword = ref('')
   const loading = ref(false)
   const error = ref<string | null>(null)
 
@@ -28,7 +29,13 @@ export const useProductsStore = defineStore('products', () => {
     loading.value = true
     error.value = null
     try {
-      const res = await api.products({ page: page.value, pageSize: pageSize.value, sort: sort.value, order: order.value })
+      const res = await api.products({
+        page: page.value,
+        pageSize: pageSize.value,
+        sort: sort.value,
+        order: order.value,
+        q: keyword.value,
+      })
       items.value = res.items
       total.value = res.total
       page.value = res.page
@@ -75,9 +82,15 @@ export const useProductsStore = defineStore('products', () => {
     return fetchList()
   }
 
+  /** I2：设置搜索关键词（不清空即透传给下一次 fetch；列表页在 fetch 前调用） */
+  function setKeyword(k: string) {
+    keyword.value = k
+    page.value = 1
+  }
+
   return {
-    items, total, page, pageSize, totalPages, sort, order, loading, error,
+    items, total, page, pageSize, totalPages, sort, order, keyword, loading, error,
     priceActive, priceDesc,
-    fetchList, goto, nextPage, prevPage, togglePrice, resetOrder,
+    fetchList, goto, nextPage, prevPage, togglePrice, resetOrder, setKeyword,
   }
 })

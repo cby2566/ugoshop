@@ -55,6 +55,15 @@ async function fetchProduct() {
 // 同路由不同商品直接换数据（原站为多页跳转整页加载）
 watch(sid, fetchProduct)
 
+// I9：详情页标题跟随商品名（路由 afterEach 兜底其他页）
+watch(
+  product,
+  (p) => {
+    if (p) document.title = `${p.name} - 优品惠`
+  },
+  { immediate: true },
+)
+
 // —— 数量选择器（原站：减到 1 为止、加无上限） ——
 const qty = ref(1)
 function minus() {
@@ -145,6 +154,11 @@ const tab = ref<'detail' | 'comment' | 'service'>('detail')
 const tabEl = ref<HTMLElement | null>(null)
 const tagFixed = ref(false)
 
+// I8：锚点改为 scrollIntoView，避免改写 URL hash
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+}
+
 function onScroll() {
   const el = tabEl.value
   if (el) tagFixed.value = el.getBoundingClientRect().top <= 0
@@ -220,9 +234,9 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
     <!-- 详情长图区（原站静态硬编码） -->
     <div class="item_xia lf">
       <div ref="tabEl" class="xia_tag" :class="{ xia_tag_xi: tagFixed }">
-        <a href="#k1" class="xia_xiang" :class="{ asd: tab === 'detail' }" @click="tab = 'detail'">商品详情</a>
-        <a href="#k2" class="xia_ping" :class="{ asd: tab === 'comment' }" @click="tab = 'comment'">评论<span>(50)</span></a>
-        <a href="#k3" class="xia_tu" :class="{ asd: tab === 'service' }" @click="tab = 'service'">服务说明</a>
+        <a href="javascript:void(0)" class="xia_xiang" :class="{ asd: tab === 'detail' }" @click="tab = 'detail'; scrollTo('k1')">商品详情</a>
+        <a href="javascript:void(0)" class="xia_ping" :class="{ asd: tab === 'comment' }" @click="tab = 'comment'; scrollTo('k2')">评论<span>(50)</span></a>
+        <a href="javascript:void(0)" class="xia_tu" :class="{ asd: tab === 'service' }" @click="tab = 'service'; scrollTo('k3')">服务说明</a>
       </div>
       <h3 id="k1" class="fw_title sp_fw_title"></h3>
       <div><img src="/museum/img/dog.PNG" alt="" /></div>

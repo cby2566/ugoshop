@@ -22,6 +22,8 @@ export interface ProductQuery {
   /** sid=默认序，price=按价格（原版唯一实现了维度的排序） */
   sort?: 'sid' | 'price'
   order?: 'asc' | 'desc'
+  /** 关键词（name/brand ilike 模糊匹配，I2 搜索） */
+  q?: string
 }
 
 /** 购物车行（JOIN 商品信息，对应原版 car.php?flag=g） */
@@ -47,6 +49,7 @@ export const api = {
     if (query.pageSize != null) qs.set('pageSize', String(query.pageSize))
     if (query.sort != null) qs.set('sort', query.sort)
     if (query.order != null) qs.set('order', query.order)
+    if (query.q != null && query.q !== '') qs.set('q', query.q)
     const suffix = qs.toString()
     return request<ProductPage>(`/api/products${suffix ? `?${suffix}` : ''}`)
   },

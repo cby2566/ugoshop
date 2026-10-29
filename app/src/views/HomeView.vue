@@ -18,16 +18,32 @@
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 
 // —— 主轮播（luntu1-5，对应原站五张焦点图素材）——
+// I5：加指示圆点（点击切帧）+ 悬停暂停/移开恢复；prefers-reduced-motion 下停用自动轮播
 const banners = [1, 2, 3, 4, 5].map((n) => `/museum/img/luntu${n}.jpg`)
 const current = ref(0)
 let timer: number | undefined
+const hoverPaused = ref(false)
+
+function goSlide(i: number) {
+  current.value = i
+}
+
+function startAuto() {
+  stopAuto()
+  timer = window.setInterval(() => {
+    if (!hoverPaused.value) current.value = (current.value + 1) % banners.length
+  }, 3500)
+}
+
+function stopAuto() {
+  window.clearInterval(timer)
+}
 
 onMounted(() => {
-  timer = window.setInterval(() => {
-    current.value = (current.value + 1) % banners.length
-  }, 3500)
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+  startAuto()
 })
-onBeforeUnmount(() => window.clearInterval(timer))
+onBeforeUnmount(() => stopAuto())
 
 // —— 今日限时购小卡轮播（fnuxn 意图，两屏切换）——
 // 步进 -480 = 2×240（单卡布局步进 240：盒宽 241 含 border-left 1，相邻卡以
@@ -59,11 +75,26 @@ onBeforeUnmount(() => window.clearInterval(remainTimer))
 
 <template>
   <!-- 轮播图 -->
-  <div class="scroll_tu" id="scroll_tu">
+  <div
+    class="scroll_tu"
+    id="scroll_tu"
+    @mouseenter="hoverPaused = true"
+    @mouseleave="hoverPaused = false"
+  >
     <ul class="ugoshop-carousel">
       <li v-for="(b, i) in banners" :key="b" :class="{ on: i === current }">
         <img :src="b" alt="" />
       </li>
+    </ul>
+    <!-- I5：指示圆点 -->
+    <ul class="ugoshop-carousel-dots">
+      <li
+        v-for="(b, i) in banners"
+        :key="'dot-' + i"
+        :class="{ on: i === current }"
+        :aria-label="`切换到第 ${i + 1} 张`"
+        @click="goSlide(i)"
+      ></li>
     </ul>
   </div>
 
@@ -246,6 +277,35 @@ onBeforeUnmount(() => window.clearInterval(remainTimer))
    恢复原站实际渲染：图片顶格、右缘随视口宽度自然裁切。 */
 .scroll_tu .ugoshop-carousel li img {
   margin-left: 0;
+}
+/* I5：指示圆点（半透明白点，当前帧站内主色 #00bfcf） */
+.ugoshop-carousel-dots {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.ugoshop-carousel-dots li {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.ugoshop-carousel-dots li.on {
+  background: #00bfcf;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ugoshop-carousel-dots li {
+    transition: none;
+  }
 }
 
 /* ———— 今日限时购左卡（每日一品）排版修正（新站优化，2026-10）————

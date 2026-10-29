@@ -10,11 +10,13 @@
     与任何逻辑，视觉保留、点击等效无操作（仅高亮）；
   - 评论数 40 / 评价"好好好" / 积分 0 为原站模板硬编码展示位，原样保留；
   - 当前页码高亮为真分页新增视觉（站内主色 #00bfcf）。
-  - 卡片点击跳详情已按原站行为接上（原站 location.href itemDetailed.html?id=sid → /item/:sid）。
+  - 卡片点击跳详情已按原站行为接上（原站 location.href itemDetail.html?id=sid → /item/:sid）。
+  - I2 搜索：路由 ?q= 关键词透传 /api/products（name/brand ilike），无结果给空态；
+    h1 标题跟随关键词（D1 落地后扩展分类）；I7 加载中/空态。
 -->
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, onMounted, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import { toast } from '@/utils/toast'
 
 import '@/styles/foodlist_main.css'
@@ -23,8 +25,9 @@ import type { Product } from '@/types'
 
 const store = useProductsStore()
 const router = useRouter()
+const route = useRoute()
 
-// 原站行为：卡片点击跳 itemDetailed.html?id=sid；此处接 /item/:sid（阶段 4 接线）
+// 原站行为：卡片点击跳 itemDetail.html?id=sid；此处接 /item/:sid（阶段 4 接线）
 function goDetail(sid: number) {
   void router.push(`/item/${sid}`)
 }
@@ -40,10 +43,35 @@ const classifications = [
   { icon: '/museum/img/icon_a_1245.png', title: '生鲜食品' },
 ]
 
-onMounted(async () => {
+/** 同步路由 ?q= 到 store（搜索关键词） */
+function syncKeyword() {
+  store.setKeyword(typeof route.query.q === 'string' ? route.query.q : '')
+}
+
+/** 列表标题：I2 搜索态显示关键词，默认保持原站标题 */
+const listTitle = computed(() => {
+  const kw = typeof route.query.q === 'string' ? route.query.q : ''
+  return kw ? `搜索：${kw}` : '进口食品'
+})
+
+async function load() {
   await store.fetchList()
   if (store.error) toast(store.error, 'error')
+}
+
+onMounted(async () => {
+  syncKeyword()
+  await load()
 })
+
+// 列表页内再次搜索（同路由 query 变化）时刷新
+watch(
+  () => route.query.q,
+  async () => {
+    syncKeyword()
+    await load()
+  },
+)
 
 // 原站渲染规则：${URL}_1.jpg（URL 形如 ../img/goods2），素材在 /museum/img/
 function productImage(p: Product): string {
@@ -68,7 +96,7 @@ async function withFeedback(action: () => Promise<void>) {
     </div>
     <div class="foot_list_title con">
       <img src="/museum/img/icon_list1.png" height="24" width="24" alt="" />
-      <h1>进口食品</h1>
+      <h1>{{ listTitle }}</h1>
     </div>
     <div class="foot_list_nav con">
       <div class="list_nav_l fl">
@@ -112,6 +140,8 @@ async function withFeedback(action: () => Promise<void>) {
           </div>
         </div>
       </div>
+      <div v-if="store.loading" class="goods-state">加载中…</div>
+      <div v-else-if="store.items.length === 0" class="goods-state">未找到相关商品</div>
     </div>
   </div>
 
@@ -132,5 +162,12 @@ async function withFeedback(action: () => Promise<void>) {
 /* I1：列表页商品卡可点击光标（rebuild 增补） */
 .flist_t .goods {
   cursor: pointer;
+}
+/* I2/I7：加载中与空态提示（rebuild 增补，站内灰字） */
+.goods-state {
+  padding: 60px 0;
+  text-align: center;
+  color: #999;
+  font-size: 14px;
 }
 </style>
