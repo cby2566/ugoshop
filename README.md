@@ -17,7 +17,7 @@ Vue 3 + Fastify + Drizzle + SQLite 全栈实现的电商演示站（PC 端前台
 | 注册 | `/reg` | 即时唯一性检查、验证码（skew 变形/随机彩色） |
 | 购物车 | `/cart` | 真后端购物车：加购/数量/删除/全选/总价/空车提示 |
 
-部分展示位（面包屑文案、优惠标签、详情长图、评论数、大家都在看等）为静态展示内容，见各视图文件头部注释。
+部分展示位（面包屑文案、优惠标签、详情长图、评论数、大家都在看等）为静态展示内容。
 
 ## 快速开始
 
@@ -86,7 +86,7 @@ server/   Fastify + TS + Drizzle ORM + SQLite（@libsql/client，napi 二进制�
           scripts/seed.ts 商品与菜单种子 + 管理员账号（幂等；仅 insert-if-absent，绝不清空重灌 users）
 assets/   视觉资产——AI 生成（banner/icon/product）+ 站内展示素材
           前端 publicDir 直指此处，单一素材源
-doc/      项目文档与数据（PROJECT_SUMMARY / 当前功能列表 / products.json / 优化清单）
+doc/      商品种子数据（products.json）
           screenshots/  管理端页面截图
 ```
 
